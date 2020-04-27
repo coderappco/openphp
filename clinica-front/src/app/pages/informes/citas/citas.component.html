@@ -1,0 +1,121 @@
+<header class="content__title" id="foco">
+    <h1>Informes</h1>
+	<small>Podra generar el informe de citas, con criterios de búsqueda personalisados!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Critérios
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="citaForm">
+	                		<div *ngIf="disabled == false" class="row col-md-12">
+	                			<div class="col-md-3 mb-4">
+						            <div class="form-group">
+						                <label for="ID_EMPRESA">Empresa</label>
+						                <select class="select2 empresa" id="ID_EMPRESA" formControlName="ID_EMPRESA" data-placeholder="Seleccione...">
+						                	<option></option>
+						                	<option *ngFor="let empresa of empresas" [value]="empresa.ID_EMPRESA">{{empresa.NOM_EMPRESA}}</option>
+						               	</select>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+	                		</div>
+	                		<div class="row col-md-12">
+						    	<div class="col-md-3 mb-4">
+						            <div class="form-group">
+						                <label for="ID_PRESTADOR">Prestador</label>
+						                <select class="select2 prestador" id="ID_PRESTADOR" formControlName="ID_PRESTADOR" data-placeholder="Seleccione...">
+						                	<option></option>
+						                	<option *ngFor="let prestador of prestadores" [value]="prestador.ID_USUARIO">{{prestador.NOMBRES}} {{prestador.APELLIDOS}}</option>
+						               	</select>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3">
+				                    <div class="form-group">
+					                    <label for="ID_ADMINISTRADORA">Administradora</label>
+					                    <select class="select2 admin" data-placeholder="Seleccione..." id="ID_ADMINISTRADORA" formControlName="ID_ADMINISTRADORA">
+											<option></option>
+											<option *ngFor="let admin of administradoras" [value]="admin.ID_ADMINISTRADORA">{{admin.NOM_ADMINISTRADORA}}</option>
+					                    </select>
+										<i class="form-group__bar"></i>
+				                	</div>
+				                </div>
+				                <div class="col-md-3">
+									<label for="FECHA">Fecha Desde - Hasta</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+										</div>
+										<input type="text" id="FECHA" placeholder="Desde - Hasta" class="form-control date-picker fecha" formControlName="FECHA"/>
+										<i class="form-group__bar"></i>
+									</div>			
+								</div>
+								<div class="col-md-3">
+					                <div class="form-group">
+					                    <label for="ID_MOTIVO_CONSULTA">Motivo Consulta</label>
+					                    <select class="select2 motivoc" data-placeholder="Seleccione..." id="ID_MOTIVO_CONSULTA" formControlName="ID_MOTIVO_CONSULTA">
+					                    	<option></option>
+											<option *ngFor="let motivo of motivoc" [value]="motivo.ID_MOTIVO_CONSULTA">{{motivo.NOM_MOTIVO_CONSULTA}}</option>
+					                    </select>
+										<i class="form-group__bar"></i>
+					                </div>
+					            </div>	
+					            <div class="form-group mb-4">
+					            	<label>Estado de la cita</label>
+									<div class="btn-group btn-group-toggle col-md-12" data-toggle="buttons">
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="sinconfi" autocomplete="off" value="1"> Sin confirmar
+		                                </label>
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="confirmada" autocomplete="off" value="2"> Confirmada
+		                                </label>
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="ensala" autocomplete="off" value="3"> En sala
+		                                </label>
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="enconsult" autocomplete="off" value="4"> En consultorio
+		                                </label>
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="atendio" autocomplete="off" value="5"> Atendido
+		                                </label>
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="cancelado" autocomplete="off" value="6"> Cancelado
+		                                </label>
+	                            	</div>
+	                            </div>
+	                            <div class="col-md-2">
+									<label>Paciente activo</label>
+									<div class="form-group">
+				                        <div class="toggle-switch">
+				                            <input type="checkbox" class="toggle-switch__checkbox" name="estadop" id="estadop" checked>
+				                            <i class="toggle-switch__helper"></i>
+				                        </div>
+				                    </div>
+								</div>						
+							</div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Buscar();"><i class="zmdi zmdi-search"></i> Buscar</button>
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="GenerarPdf();"><i class="zmdi zmdi-collection-pdf"></i> Generar PDF</button>
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="exportAsXLSX();"><i class="zmdi zmdi-file-text"></i> Generar Excel</button>
+								<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Reiniciar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	    <div id="print" *ngIf="print" class="row"></div>
+	</div>
+</div>

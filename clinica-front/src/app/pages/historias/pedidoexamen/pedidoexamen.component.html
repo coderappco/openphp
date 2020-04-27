@@ -1,0 +1,72 @@
+<p class="text-center" id="foco"><p>
+<form [formGroup]="examenForm">
+		<div class="row col-md-12 mb-2 mt-1">
+			<div class="col-md-5">
+				<div class="form-group">
+					<label>Historia clínica de referencia</label>
+					<select class="select2 hist" id="HISTORIAEX" name="HISTORIAEX" data-placeholder="Seleccione...">
+						<option></option>
+						<option *ngFor="let hist of historias" [value]="hist.ID_HISTORIA_PACIENTE">{{hist.historia.NOM_HISTORIA}}</option>					
+					</select>
+					<i class="form-group__bar"></i>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>Fecha diligenciada</label>
+					<input type="text" class="form-control" name="FECHA" id="FECHA" [disabled]="true"/>
+					<i class="form-group__bar"></i>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label>Prestador</label>
+					<input type="text" class="form-control" name="PRESTADOR" id="PRESTADOR" [disabled]="true"/>
+					<i class="form-group__bar"></i>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="row col-md-12 mb-4 mt-1">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Examen de Laboratorio</label>
+						<select class="select2 codigo" id="CODIGO" name="CODIGO" data-placeholder="Seleccione...">
+							<option></option>
+							<option *ngFor="let item of items" [value]="item.ID_ITEM">{{item.COD_ITEM}} {{item.NOM_ITEM}}</option>					
+						</select>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label>Cantidad</label>
+						<input type="text" class="form-control" name="CANTIDAD" id="CANTIDAD" value="1"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Observación</label>
+						<input type="text" class="form-control" name="OBSERVACION" id="OBSERVACION"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div *ngIf="id_examen != 0" class="col-md-12">
+					<div class="form-group">
+						<label>Resultado</label>
+						<input type="text" class="form-control" name="RESULTADO" id="RESULTADO"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>				
+			</div>				
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary btn--icon-text mr-2 btn-sol" type="button" (click)="Solicitar()"><i class="zmdi zmdi-hospital-alt"></i> Solicitar examen</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+		<div class="table-responsive">
+			<table id="data-table-examen" class="table table-hover table-striped table-sm table-bordered">
+			</table>
+		</div>
+</form>

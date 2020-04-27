@@ -1,0 +1,60 @@
+<aside class="sidebar sidebar-mio">
+    <div class="scrollbar-inner">
+        <div class="user">
+            <div class="user__info" data-toggle="dropdown">
+                <img class="user__img" src="{{foto}}" alt="">
+                <div>
+                    <div class="user__name">{{name}}</div>
+                    <div class="user__email">{{email}}</div>
+                    <div class="user__email">{{role.length > 1 ? "Multiple Roles" : role}}</div>
+                </div>
+            </div>
+
+            <div class="dropdown-menu">
+                <a class="dropdown-item" style="border: 1px #cccccc solid; height: 50px; vertical-align: middle;" [routerLink]="" (click)="logout();"><i class="zmdi zmdi-run"></i> Salir</a>
+            </div>
+        </div>
+        <ul class="navigation">
+            <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/boards']"><i class="zmdi zmdi-home"></i> Principal</a></li>
+            <li *ngIf="role.indexOf('PRESTADOR') != -1" routerLinkActive="navigation__sub--active"><a [routerLink]="['/agenda']"><i class="zmdi zmdi-calendar-note"></i> Agenda Médica</a></li>
+            <li *ngIf="role.indexOf('ADMINISTRADOR') != -1 || role.indexOf('ADMIN') != -1" class="{{globals.getUrl == 'users' || globals.getUrl == 'empresa' || globals.getUrl == 'sede' || globals.getUrl == 'consultorio' || globals.getUrl == 'paciente' || globals.getUrl == 'administradora' || globals.getUrl == 'nolaboral' || globals.getUrl == 'contrato' || globals.getUrl == 'item' || globals.getUrl == 'grupoh' || globals.getUrl == 'import' || globals.getUrl == 'rangoe' || globals.getUrl == 'historia' || globals.getUrl == 'tipocita' ? 'navigation__sub navigation__sub--active navigation__sub--toggled' : 'navigation__sub'}}">
+                <a href=""><i class="zmdi zmdi-settings"></i> Configuración</a>
+                <ul>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/usuarios']"><i class="zmdi zmdi-accounts-list zmdi-hc-lg"></i> Usuarios</a></li>
+                    <li *ngIf="role == 'ADMINISTRADOR'" routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/empresas']"><i class="zmdi zmdi-balance zmdi-hc-lg"></i> Empresas</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/sedes']"><i class="zmdi zmdi-city zmdi-hc-lg"></i> Sedes</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/consultorios']"><i class="zmdi zmdi-hospital-alt zmdi-hc-lg"></i> Consultorios</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/camas']"><i class="zmdi zmdi-local-hotel zmdi-hc-lg"></i> Camas</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/administradoras']"><i class="zmdi zmdi-shield-security zmdi-hc-lg"></i> Administradoras</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/contratos']"><i class="zmdi zmdi-case-check zmdi-hc-lg"></i> Contratos</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/nolaboral']"><i class="zmdi zmdi-calendar zmdi-hc-lg"></i> Días No Laborales</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/pacientes']"><i class="zmdi zmdi-male-female zmdi-hc-lg"></i> Pacientes</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/items']"><i class="zmdi zmdi-collection-plus zmdi-hc-lg"></i> Servicios</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/gruposh']"><i class="zmdi zmdi-time-interval zmdi-hc-lg"></i> Grupos Horarios</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/import']"><i class="zmdi zmdi-inbox zmdi-hc-lg"></i> Importar Pacientes</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/rangoe']"><i class="zmdi zmdi-accounts-alt zmdi-hc-lg"></i> Rango de Edades</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/ghistoria']"><i class="zmdi zmdi-collection-text zmdi-hc-lg"></i> Gestionar Historias</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/confg/tipocita']"><i class="zmdi zmdi-labels zmdi-hc-lg"></i> Tipo Cita</a></li>
+                </ul>
+            </li>
+            <li *ngIf="role.indexOf('ADMINISTRADOR') != -1 || role.indexOf('CITAS') != -1 || role.indexOf('ADMIN') != -1" class="{{globals.getUrl == 'acita' || globals.getUrl == 'autorizacion' || globals.getUrl == 'search' ? 'navigation__sub navigation__sub--active navigation__sub--toggled' : 'navigation__sub'}}">
+                <a href=""><i class="zmdi zmdi-calendar-note"></i> Citas</a>
+                <ul>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/citas/autorizacion']"><i class="zmdi zmdi-lock zmdi-hc-lg"></i> Autorizacion</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/citas/asignar']"><i class="zmdi zmdi-alarm-plus zmdi-hc-lg"></i> Asignar Cita</a></li>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/citas/search']"><i class="zmdi zmdi-search-for zmdi-hc-lg"></i> Buscar Cita</a></li>
+                </ul>
+            </li>
+            <li *ngIf="role.indexOf('PRESTADOR') != -1" routerLinkActive="navigation__sub--active"><a [routerLink]="['/citas/search']"><i class="zmdi zmdi-search-for"></i> Buscar Cita</a></li>
+            <li *ngIf="role.indexOf('ADMINISTRADOR') != -1 || role.indexOf('PRESTADOR') != -1 || role.indexOf('ADMIN') != -1" routerLinkActive="navigation__sub--active"><a [routerLink]="['/historias']"><i class="zmdi zmdi-assignment-account"></i> Historias Clínicas</a></li>
+            <li *ngIf="role.indexOf('ADMINISTRADOR') != -1 || role.indexOf('CITAS') != -1 || role.indexOf('ADMIN') != -1" class="{{globals.getUrl == 'informecita' ? 'navigation__sub navigation__sub--active navigation__sub--toggled' : 'navigation__sub'}}">
+                <a href=""><i class="zmdi zmdi-assignment"></i> Informes</a>
+                <ul>
+                    <li routerLinkActive="navigation__sub--active"><a [routerLink]="['/informes/citas']"><i class="zmdi zmdi-calendar-note zmdi-hc-lg"></i> Citas</a></li>
+                </ul>
+            </li>
+            
+            <li *ngIf="role.indexOf('ADMINISTRADOR') != -1 || role.indexOf('PRESTADOR') != -1 || role.indexOf('ADMIN') != -1" routerLinkActive="navigation__sub--active"><a [routerLink]="['/promocion']"><i class="zmdi zmdi-assignment-account"></i> Promoción y Prevención</a></li>
+        </ul>
+    </div>
+</aside>

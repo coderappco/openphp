@@ -1,0 +1,425 @@
+<p class="text-center" id="foco">
+<p>
+<hr>
+<div class="tab-container">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#datosg" role="tab">Datos Generales</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#examenes" role="tab">Examen de Laboratorio</a>
+        </li>
+    </ul>
+    <form [formGroup]="ayudadForm">
+	    <div class="tab-content">
+	    	<div class="tab-pane active fade show" id="datosg" role="tabpanel">
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-4">
+						<div class="col-md-6 mb-2">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts"></i></span>
+								</div>
+								<input type="text" class="form-control" id="NOMBRE" name="NOMBRE" placeholder="Nombre"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+								</div>
+								<input type="text" class="form-control" id="DIRECCIONP" name="DIRECCIONP" placeholder="Dirección"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<div class="form-group">
+							   	<label>Parentesco</label>
+							    <select class="select2 parentesco" id="PARENTESCO" name="PARENTESCO" data-placeholder="Seleccione...">
+							    	<option></option>
+							    	<option *ngFor="let parent of parentesco" [value]="parent.ID_PARENTESCO" [selected]="parent.ID_PARENTESCO == 23 ? true : null">{{parent.NOM_PARENTESCO}}</option>					
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Teléfono</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-account-box-phone"></i></span>
+								</div>
+								<input type="text" class="form-control" id="TELEFONO" name="TELEFONO" placeholder="Teléfono"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-male-female"></i></span>
+								</div>
+								<input type="text" class="form-control" id="ACOMPANANTE" name="ACOMPANANTE" placeholder="Acompañante"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ESCOLARIDAD">Nivel Educativo</label>
+							    <select class="select2 escolaridad" id="ID_ESCOLARIDAD" name="ID_ESCOLARIDAD">
+									<option></option>
+									<option *ngFor="let escolar of escolaridad" [value]="escolar.ID_ESCOLARIDAD" [selected]="escolar.ID_ESCOLARIDAD == 1 ? true : null">{{escolar.NOM_ESCOLARIDAD}}</option>
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_DISCAPACIDAD">Discapacidad</label>
+						        <select class="select2 discapacidad" id="ID_DISCAPACIDAD" name="ID_DISCAPACIDAD">
+						            <option></option>
+									<option *ngFor="let disc of discapacidad" [value]="disc.ID_DISCAPACIDAD" [selected]="disc.ID_DISCAPACIDAD == 5 ? true : null">{{disc.NOM_DISCAPACIDAD}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="GESTACION">Gestación</label>
+						        <select class="select2 gestacion" id="GESTACION" name="GESTACION">
+									<option value="1">SI</option>
+									<option value="2" [selected]="true">NO</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_OCUPACION">Ocupación</label>
+						        <select class="select2 ocupacion" id="ID_OCUPACION" name="ID_OCUPACION">
+									<option></option>
+									<option *ngFor="let ocupa of ocupacion" [value]="ocupa.ID_OCUPACION" [selected]="ocupa.ID_OCUPACION == 511 ? true : null">{{ocupa.NOM_OCUPACION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ETNIA">Etnia</label>
+						        <select class="select2 etnia" data-placeholder="Seleccione..." id="ID_ETNIA" name="ID_ETNIA">
+									<option></option>
+									<option *ngFor="let etn of etnia" [value]="etn.ID_ETNIA" [selected]="etn.ID_ETNIA == 6 ? true : null">{{etn.NOM_ETNIA}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_RELIGION">Religión</label>
+						        <select class="select2 religion" id="ID_RELIGION" name="ID_RELIGION">
+									<option></option>
+									<option *ngFor="let rel of religion" [value]="rel.ID_RELIGION" [selected]="rel.ID_RELIGION == 6 ? true : null">{{rel.NOM_RELIGION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-12">
+							<div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="desplazado" autocomplete="off" value="1"> Desplazado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="pensionado" autocomplete="off" value="2"> Pensionado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="lgbti" autocomplete="off" value="3"> Población LGBTI
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="maltrato" autocomplete="off" value="4"> Víctima maltrato
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="conflicto" autocomplete="off" value="5"> Víctima conflicto armado
+								</label>
+							</div>
+						</div>
+						<div class="col-md-12 form-group">
+							<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('examenes');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="examenes" role="tabpanel">
+	        		<ul class="list list--star">
+						<li>HEMATOLOGIA</li>
+					</ul>
+					<hr>
+					<div class="row col-md-12 mb-4 mt-4">						
+						<div class="col-md-4 mb-4">
+							<div class="row col-md-12">
+								<label class="col-md-12">HEMATOCRITO</label>
+								<div class="col-md-6">
+									<label>RESULTADO mg/dl</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="HEMATOCRITOR" name="HEMATOCRITOR" value="0"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>VAL REFERENCIA</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="HEMATOCRITOV" name="HEMATOCRITOV" value="0" />
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4">
+							<div class="row col-md-12">
+								<label class="col-md-12">HEMOGLOBINA</label>
+								<div class="col-md-6">
+									<label>RESULTADO mg/dl</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="HEMOGLOBINAR" name="HEMOGLOBINAR" value="0"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>VAL REFERENCIA</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="HEMOGLOBINAV" name="HEMOGLOBINAV" value="0" />
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4">
+							<div class="row col-md-12">
+								<label class="col-md-12">LEUCOCITOS</label>
+								<div class="col-md-6">
+									<label>RESULTADO mg/dl</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="LEUCOCITOSR" name="LEUCOCITOSR" value="0"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>VAL REFERENCIA</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="LEUCOCITOSV" name="LEUCOCITOSV" value="0" />
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4">
+							<div class="row col-md-12">
+								<label class="col-md-12">NEUTROFILOS</label>
+								<div class="col-md-6">
+									<label>RESULTADO mg/dl</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="NEUTROFILOSR" name="NEUTROFILOSR" value="0"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>VAL REFERENCIA</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="NEUTROFILOSV" name="NEUTROFILOSV" value="0" />
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4">
+							<div class="row col-md-12">
+								<label class="col-md-12">LINFOCITOS</label>
+								<div class="col-md-6">
+									<label>RESULTADO mg/dl</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="LINFOCITOSR" name="LINFOCITOSR" value="0"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>VAL REFERENCIA</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="LINFOCITOSV" name="LINFOCITOSV" value="0" />
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<ul class="list list--star">
+						<li>QUIMICA</li>
+					</ul>
+					<hr>
+					<div class="row col-md-12 mb-4 mt-4">						
+						<div class="col-md-6 mb-4">
+							<div class="row col-md-12">
+								<label class="col-md-12">CREATININA</label>
+								<div class="col-md-6">
+									<label>RESULTADO mg/dl</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="CREATININAR" name="CREATININAR" value="0"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>VAL REFERENCIA</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="CREATININAV" name="CREATININAV" value="0" />
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4">
+							<div class="row col-md-12">
+								<label class="col-md-12">NITROGENO UREICO</label>
+								<div class="col-md-6">
+									<label>RESULTADO mg/dl</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="NITROGENOUR" name="NITROGENOUR" value="0"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>VAL REFERENCIA</label>
+							        <div class="input-group">
+										<input type="text" class="form-control" id="NITROGENOUV" name="NITROGENOUV" value="0" />
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<ul class="list list--star">
+						<li>PARCIAL DE ORINA</li>
+					</ul>
+					<div class="col-md-12">EXAMEN FISICO QUIMICO:</div>
+					<hr>
+					<div class="row col-md-12 mb-4 mt-4">						
+						<div class="col-md-3 mb-4">
+							<label>COLOR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="COLOR" name="COLOR" value="NORMAL"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>ASPECTO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ASPECTO" name="ASPECTO" value="NORMAL"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>PH</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PH" name="PH" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>DENSIDAD</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="DENSIDAD" name="DENSIDAD" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>PROTEINAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PROTEINAS" name="PROTEINAS" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>SANGRE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SANGRE" name="SANGRE" value="+"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>NITRITOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="NITRITOS" name="NITRITOS" value="POSITIVO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>UROBILINOGENO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="UROBILINOGENO" name="UROBILINOGENO" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>LEUCOCITOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LEUCOCITOS" name="LEUCOCITOS" value="++"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">EXAMEN MICROSCOPICO:</div>
+					<hr>
+					<div class="row col-md-12 mb-4 mt-4">						
+						<div class="col-md-3 mb-4">
+							<label>CELULAS EPITELIALES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CELULASEPITELIALES" name="CELULASEPITELIALES" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>BACTERIAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="BACTERIAS" name="BACTERIAS" value="+++"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>LEUCOCITOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LEUCOCITOSE" name="LEUCOCITOSE" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>HEMATIES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="HEMATIES" name="HEMATIES" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>CELULAS RENALES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CELULASRENALES" name="CELULASRENALES" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>OBSERVACIONES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OBSERVACIONES" name="OBSERVACIONES" value="NORMAL"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+			</div>
+
+	    </div>
+	    <div class="row form-group">
+			<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Guardar();"><i class="zmdi zmdi-floppy"></i> Guardar Registro</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+	</form>
+</div>    
+<div id="print" *ngIf="print" class="row"  style="font-weight: bolder; color: #000000;"></div>

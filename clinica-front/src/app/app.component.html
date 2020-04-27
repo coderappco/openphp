@@ -1,0 +1,14 @@
+<main *ngIf="globals.isLogued; else login" class="main">
+    <app-header></app-header>
+    <ng2-slim-loading-bar color="firebrick" height="4px"></ng2-slim-loading-bar>
+    <app-sidebar></app-sidebar>
+    <section class="content">
+        <div class="content__inner" [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+            <router-outlet #o="outlet"></router-outlet>
+            <app-footer></app-footer>
+        </div>
+    </section>
+</main>
+<ng-template #login>
+    <router-outlet></router-outlet>
+</ng-template>

@@ -1,0 +1,162 @@
+<header class="content__title" id="foco">
+    <h1>Agenda Médica</h1>
+	<small>Podra observar las citas registradas, para usted en el sistema!</small>
+	<div class="actions">
+        <button type="button" class="btn btn-primary btn-sm btn--icon-text" (click)="ShowCitas()"><i class="zmdi zmdi-square-right"></i>Trasladar Citas</button>
+    </div>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Detalle cita médica
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="citaForm">
+	                		<input type="hidden" class="edit-event__id">
+	                		<input type="hidden" class="fecha" />
+						    <input type="hidden" class="hora" />
+						    <input type="hidden" class="start" />
+						    <input type="hidden" class="end" />
+	                		<div class="card profile mb-4">
+		                		<div class="profile__img">
+		                            <img src="assets/img/users2.png" alt="">
+
+		                            <a href="" class="zmdi zmdi-camera profile__img__edit"></a>
+		                        </div>
+
+		                        <div class="profile__info row col-md-12">
+		                            <div class="col-md-4">
+			                            <ul class="icon-list">
+			                                <li><i title="No. Identificación" data-toggle="tooltip" class="zmdi zmdi-card-membership"></i> {{identificacion}}</li>
+			                                <li><i title="Paciente" data-toggle="tooltip" class="zmdi zmdi-face"></i> {{nombre}} {{apellido}}</li>
+			                                <li><i title="Edad" data-toggle="tooltip" class="zmdi zmdi-cake"></i> {{edad}}</li>
+			                                <li><i title="Género" data-toggle="tooltip" class="zmdi zmdi-male-female"></i> {{genero}}</li>
+			                                <li><i title="Celular" data-toggle="tooltip" class="zmdi zmdi-smartphone-android"></i> {{celular}}</li>
+			                            </ul>
+			                        </div>
+			                        <div class="col-md-4">
+			                            <ul class="icon-list">
+			                                <li><i title="Dirección" data-toggle="tooltip" class="zmdi zmdi-pin"></i> {{direccion}}</li>
+			                                <li><i title="Estado Civil" data-toggle="tooltip" class="zmdi zmdi-layers"></i> {{estado_civil}}</li>
+			                                <li><i title="Administradora" data-toggle="tooltip" class="zmdi zmdi-shield-security"></i> {{administradora}}</li>
+			                                <li><i title="Contrato" data-toggle="tooltip" class="zmdi zmdi-case-check"></i> {{contrato}}</li>
+			                            </ul>
+			                        </div>
+			                        <div *ngIf="ensala" class="col-md-4">
+				                        <label>Actualizar estado cita</label>
+				                        <div class="form-group">
+				                            <button class="btn btn--icon-text btn-sm btn-ensala" (click)="Ensala()" style="background-color: #03A9F4;"><i class="zmdi zmdi-floppy"></i> En sala</button>
+				                        </div>
+			                        </div>
+			                        <div *ngIf="registro" class="col-md-4">
+				                        <div class="form-group">
+				                            <button class="btn btn--icon-text btn-sm btn-ensala" (click)="CrearRegistro()" style="background-color: #03A9F4;"><i class="zmdi zmdi-floppy"></i> Crear registro clínico</button>
+				                        </div>
+			                        </div>
+		                        </div>
+		                    </div>
+						</form>
+	                </div>
+	            </div>
+	            <div class="col-md-12 row justify-content-center mb-4">
+	            	<div>Estados de la Cita</div>
+		        </div>
+		        <div class="col-md-12 row justify-content-center">
+			        <div class="col-sm-2">
+		                <div class="color-demo color-demo--light color-demo--white" style="background-color: #FFFFFF;">
+		                    <div>Disponible</div>
+		                </div>
+		            </div>
+		            <div class="col-sm-2">
+		                <div class="color-demo" style="background-color: #39bbb0;">
+		                    <div>Asignada</div>
+		                </div>
+		            </div>
+		            <div class="col-sm-2">
+		                <div class="color-demo" style="background-color: #03A9F4;">
+		                    <div>En sala</div>
+		                </div>
+		            </div>
+		            <div class="col-sm-2">
+		                <div class="color-demo" style="background-color: #ffc721;">
+		                    <div>Atendido</div>
+		                </div>
+		            </div>
+		            <div class="col-sm-2">
+		                <div class="color-demo" style="background-color: #ff6b68;">
+		                    <div>No Atendida</div>
+		                </div>
+		            </div>
+		        </div>
+	            <div class="content__inner">
+					<header class="content__title content__title--calendar">
+						<h1>Calendar</h1>
+
+						<div class="actions actions--calendar">
+							<a href="" class="actions__item actions__calender-prev"><i class="zmdi zmdi-long-arrow-left"></i></a>
+							<a href="" class="actions__item actions__calender-next"><i class="zmdi zmdi-long-arrow-right"></i></a>
+							<i class="actions__item zmdi zmdi-view-comfy" data-calendar-view="month" title="Mensual" data-toggle="tooltip"></i>
+				            <i class="actions__item actions__item--active zmdi zmdi-view-week" data-calendar-view="agendaWeek" title="Semanal" data-toggle="tooltip"></i>
+				            <i class="actions__item zmdi zmdi-view-day" data-calendar-view="agendaDay" title="Diario" data-toggle="tooltip"></i>
+						</div>
+					</header>
+					<div class="calendar card"></div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+</div>
+<div class="modal fade" id="citas_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body row col-md-12">
+				<div class="col-md-8 mb-3">
+					<label for="fecha">Fecha</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+						</div>
+						<input type="text" id="fecha" class="form-control date-picker" name="fecha" placeholder="Seleccione el día..."/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="todos">Todos</label>
+					<div class="form-group">
+				        <div class="toggle-switch">
+				            <input type="checkbox" class="toggle-switch__checkbox" name="todos" id="todos">
+				            <i class="toggle-switch__helper"></i>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-md-12 mb-3">
+					<div class="form-group">
+						<label>Paciente y Hora de Cita</label>
+					    <select class="select2 pacientes" id="pacientes" name="pacientes">
+					    </select>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-12 mb-3">
+					<div class="form-group">
+						<label>Prestador</label>
+					    <select class="select2 prestador" data-placeholder="Seleccione..." id="prestador" name="prestador">
+							<option></option>
+					    </select>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+            </div>
+			<div class="modal-footer">
+	            <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Trasladar()"><i class="zmdi zmdi-square-right"></i> Trasladar citas</button>
+				<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancel()"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+	        </div>
+	    </div>
+	</div>
+</div>

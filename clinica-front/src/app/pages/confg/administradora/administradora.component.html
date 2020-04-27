@@ -1,0 +1,196 @@
+<header class="content__title" id="foco">
+    <h1>Administradoras</h1>
+	<small>Podra administrar las administradoras en el sistema!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Datos de la administradora a registrar
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="administradoraForm">
+	                		<div class="row col-md-12">
+	                			<div class="col-md-3 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_TIPO_DOCUMENTO">Tipo de Documento <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 IDEN" id="ID_TIPO_DOCUMENTO" formControlName="ID_TIPO_DOCUMENTO">
+											<option *ngFor="let ident of tipoident" [value]="ident.ID_TIPO_IDENTIFICACION" [selected]="ident.COD_TIPO_IDENTIFICACION == 'NIT' ? true : null">{{ident.COD_TIPO_IDENTIFICACION}} - {{ident.NOM_TIPO_IDENTIFICACION}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-3">
+								    <label for="NUM_TRIB">No. Identificación</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+										</div>
+										<input type="text" id="NUM_TRIB" placeholder="No.Identificación" class="form-control" formControlName="NUM_TRIB" [ngClass]="{ 'is-invalid': submitted && f.NUM_TRIB.errors }" />
+										<div *ngIf="submitted && f.NUM_TRIB.errors" class="invalid-feedback">
+								            <div *ngIf="f.NUM_TRIB.errors.required">Por favor, agregue el número tributario.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="COD_ADMINISTRADORA">Código</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-badge-check"></i></span>
+										</div>
+										<input type="text" id="COD_ADMINISTRADORA" placeholder="Código" class="form-control" formControlName="COD_ADMINISTRADORA" [ngClass]="{ 'is-invalid': submitted && f.COD_ADMINISTRADORA.errors }" />
+										<div *ngIf="submitted && f.COD_ADMINISTRADORA.errors" class="invalid-feedback">
+								            <div *ngIf="f.COD_ADMINISTRADORA.errors.required">Por favor, agregue el código.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="NOM_ADMINISTRADORA">Administradora <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-shield-security"></i></span>
+										</div>
+										<input type="text" id="NOM_ADMINISTRADORA" placeholder="Administradora" class="form-control" formControlName="NOM_ADMINISTRADORA" [ngClass]="{ 'is-invalid': submitted && f.NOM_ADMINISTRADORA.errors }" />
+										<div *ngIf="submitted && f.NOM_ADMINISTRADORA.errors" class="invalid-feedback">
+								            <div *ngIf="f.NOM_ADMINISTRADORA.errors.required">Por favor, agregue el nombre de la administradora.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3 mb-3">
+	                                <div class="form-group">
+	                                    <label for="dpto">Departamento</label>
+	                                    <select class="select2 dpto" data-placeholder="Seleccione..." id="dpto" formControlName="dpto">
+											<option></option>
+											<option *ngFor="let dpto of dptos" [value]="dpto.ID_DPTO" [selected]="dpto.COD_DEPARTAMENTO==0 ? true : null">{{dpto.NOM_DEPARTAMENTO}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-3">
+	                                <div class="form-group">
+	                                    <label for="ID_MUNICIPIO">Municipio</label>
+	                                    <select class="select2 muni" data-placeholder="Seleccione..." id="ID_MUNICIPIO" formControlName="ID_MUNICIPIO">
+											<option></option>
+											<option *ngFor="let muni of municipios" [value]="muni.ID_MUNICIPIO" [selected]="muni.COD_MUNICIPIO==0 ? true : null">{{muni.NOM_MUNICIPIO}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-3">
+								    <label for="NUM_IDEN_REP_LEGAL">Identificación Gerente</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-accounts-list-alt"></i></span>
+										</div>
+										<input type="text" id="NUM_IDEN_REP_LEGAL" placeholder="Identificación" class="form-control" formControlName="NUM_IDEN_REP_LEGAL" [ngClass]="{ 'is-invalid': submitted && f.NUM_IDEN_REP_LEGAL.errors }" />
+										<div *ngIf="submitted && f.NUM_IDEN_REP_LEGAL.errors" class="invalid-feedback">
+								            <div *ngIf="f.NUM_IDEN_REP_LEGAL.errors.required">Por favor, agregue la identificación.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="NOM_REP_LEGAL">Gerente</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-account"></i></span>
+										</div>
+										<input type="text" id="NOM_REP_LEGAL" placeholder="Gerente" class="form-control" formControlName="NOM_REP_LEGAL" [ngClass]="{ 'is-invalid': submitted && f.NOM_REP_LEGAL.errors }" />
+										<div *ngIf="submitted && f.NOM_REP_LEGAL.errors" class="invalid-feedback">
+								            <div *ngIf="f.NOM_REP_LEGAL.errors.required">Por favor, agregue gerente.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3 mb-4">
+								    <label for="TELEF">Teléfono</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-phone"></i></span>
+										</div>
+										<input type="text" id="TELEF" placeholder="Teléfono" class="form-control" formControlName="TELEF"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="CORREO">Correo</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-markunread-mailbox"></i></span>
+										</div>
+										<input type="text" id="CORREO" placeholder="Correo" class="form-control" formControlName="CORREO" [ngClass]="{ 'is-invalid': submitted && f.CORREO.errors }" />
+										<div *ngIf="submitted && f.CORREO.errors" class="invalid-feedback">
+								            <div *ngIf="f.CORREO.errors.email">Correo invalido.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="WEBSITE">Website</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-globe-lock"></i></span>
+										</div>
+										<input type="text" id="WEBSITE" placeholder="Sitio Web" class="form-control" formControlName="WEBSITE"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+	                                <div class="form-group">
+	                                    <label for="TIPO_ADMINISTRADORA">Tipo <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 tipo" id="TIPO_ADMINISTRADORA" formControlName="TIPO_ADMINISTRADORA">
+											<option value="EPS" [selected]="true">EPS</option>
+											<option value="ARP">ARP</option>
+											<option value="CDC">CAJA DE COMPENSACION</option>
+											<option value="OTRO">OTRO</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-12 mb-4">
+								    <label for="DIREC_ADMINISTRADORA">Dirección</label>
+								    <div class="input-group mb-3">
+								    	<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+										</div>
+										<input type="text" placeholder="Dirección" id="DIREC_ADMINISTRADORA" class="form-control" formControlName="DIREC_ADMINISTRADORA" />
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+							</div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+								<button *ngIf="administradora_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

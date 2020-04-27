@@ -1,0 +1,46 @@
+<p class="text-center" id="foco">
+<p>
+<hr>
+<div class="tab-container">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#datosg" role="tab">Registros Clínicos</a>
+        </li>
+    </ul>
+
+    <form [formGroup]="epicrisisForm">
+    	<input type="hidden" name="editor" id="editor"/>
+	    <div class="tab-content">
+	        <div class="tab-pane active fade show" id="datosg" role="tabpanel">
+	        	<div class="card">
+	        		<div class="row col-md-12">
+						<div class="col-md-10 mb-4 mt-1">
+							<div class="form-group">
+								<label>Historias</label>
+								<select class="select2 parentesco" id="REGISTROSC" name="REGISTROSC">
+								    <option *ngFor="let hist of historias" [value]="hist.ID_HISTORIA_PACIENTE">{{hist.FEC_DILIGENCIADA | date: 'dd/MM/yyyy'}} {{hist.historia.NOM_HISTORIA}} {{hist.usuario.NOMBRES}} {{hist.usuario.APELLIDOS}}</option>					
+								</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-2 mb-4 mt-1">
+							<label>Todos</label>
+							<div class="form-group">
+	                            <div class="toggle-switch">
+	                              	<input type="checkbox" class="toggle-switch__checkbox" name="todos" id="todos" value="0">
+	                                <i class="toggle-switch__helper"></i>
+	                            </div>
+	                        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row form-group">
+			<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Guardar();"><i class="zmdi zmdi-floppy"></i> Crear Registro</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+	</form>
+</div>
+<div id="print" *ngIf="print" class="row" style="font-weight: bolder; color: #000000;"></div>

@@ -1,0 +1,309 @@
+<header class="content__title" id="foco">
+    <h1>Historias Clínicas</h1>
+	<small>Podra diligenciar las historias clínicas!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<form [formGroup]="historiaForm">
+			<div class="row col-md-12 mostrard">
+				<div class="contacts__item col-md-2">
+			        <div class="contacts__img">
+			            <img src="assets/img/users.png" alt="">
+			        </div>
+			        <button *ngIf="id_pac != 0" class="btn btn-primary btn--icon-text btn-cancelp mb-4" type="button" (click)="ShowHistorico();"><i class="zmdi zmdi-collection-text"></i> Histórico</button>
+			        <button class="btn btn-primary btn--icon-text mb-4" type="button" (click)="PacienteModal();"><i class="zmdi zmdi-account-add"></i> Agregar Paciente</button>
+			        <img src="assets/img/white.png" id="imagenp" name="imagenp"/>
+			    </div>
+			    <div class="row col-md-10">
+			        <div class="col-md-4">
+			            <div class="form-group">
+			                <label for="ID_PACIENTE">Paciente</label>
+			                <select class="select2 paciente" id="PACIENTE" formControlName="PACIENTE">							
+			                </select>
+							<i class="form-group__bar"></i>
+			            </div>
+			        </div>
+			        <div class="col-md-4">
+			            <div class="form-group">
+			                <label>Identificación</label>
+			                <input type="text" class="form-control" id="DOCUMENTO" formControlName="DOCUMENTO" placeholder="Documento" [attr.disabled]="true"/>
+							<i class="form-group__bar"></i>
+			            </div>
+			        </div>
+			            <div class="col-md-2">
+			                <div class="form-group">
+			                    <label>Edad</label>
+			                    <input type="text" class="form-control" id="EDAD" formControlName="EDAD" placeholder="Edad" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-2">
+			                <div class="form-group">
+			                    <label>Género</label>
+			                    <input type="text" class="form-control genero" id="GENERO" formControlName="GENERO" placeholder="Género" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-4">
+			                <div class="form-group">
+			                    <label>Ocupación</label>
+			                    <input type="text" class="form-control genero" id="OCUPACION" formControlName="OCUPACION" placeholder="Ocupación" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-4">
+			                <div class="form-group">
+			                    <label>Dirección</label>
+			                    <input type="text" class="form-control" id="DIRECCION" formControlName="DIRECCION" placeholder="Dirección" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-2">
+			                <div class="form-group">
+			                    <label>Celular</label>
+			                    <input type="text" class="form-control" id="CELULAR" formControlName="CELULAR" placeholder="Celular" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-2">
+			                <div class="form-group">
+			                    <label>Estado Civil</label>
+			                    <input type="text" class="form-control" id="ESTADO_CIVIL" formControlName="ESTADO_CIVIL" placeholder="Estado Civil" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-3">
+			                <div class="form-group">
+			                    <label>Administradora</label>
+			                    <input type="text" class="form-control" id="ID_ADMINISTRADORA" formControlName="ID_ADMINISTRADORA" placeholder="Administradora" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-3">
+			                <div class="form-group">
+			                    <label>Contrato</label>
+			                    <input type="text" class="form-control" id="ID_CONTRATO" formControlName="ID_CONTRATO" placeholder="Contrato" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-6">
+			                <div class="form-group">
+			                    <label>Registros Clínicos</label>
+			                    <select class="select2 historia" id="HISTORIA" formControlName="HISTORIA" data-placeholder="Seleccione...">
+				                    <option></option>					
+				                    <option *ngFor="let historia of historias" [value]="historia.ID_HISTORIA">{{historia.NOM_HISTORIA}}</option>	
+			                    </select>
+								<i class="form-group__bar"></i>
+			                </div>
+			            </div>
+			            <div class="col-md-6 mb-2">
+			            	<div class="form-group">
+			                    <label>Diagnóstico</label>
+								<select class="select2 diagnostico" id="DIAGNOSTICOHIST" name="DIAGNOSTICOHIST">							
+					            </select>
+								<i class="form-group__bar"></i>
+							</div>	
+						</div>
+			            <div *ngIf="roles == 'ADMINISTRADOR'" class="col-md-6 mb-2">
+				            <div class="form-group">
+				                <label for="ID_USUARIO">Prestador</label>
+				                <select class="select2 usuario" id="ID_USUARIO" name="ID_USUARIO">							
+				                </select>
+								<i class="form-group__bar"></i>
+				            </div>
+				        </div>
+			    </div>
+			</div>
+			<div *ngIf="cita_id != 0" class="col-md-12 text-center mb-3">
+				<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="CancelarRegistro();"><i class="zmdi zmdi-close-circle"></i> Cancelar registro clínico de la cita</button>
+			</div>
+			<div *ngIf="id_historia != 0" class="row col-md-12">
+				<div style="width: 100px;"><label>Registro Clínico: </label></div>	
+				<div class="col-md-10" style="font-size: 15px; font-weight: bold;" id="regis"></div>	
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<app-adultomayor *ngIf="id_historia == 1" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-adultomayor>
+					<app-visual *ngIf="id_historia == 2" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-visual>
+					<app-aiepi *ngIf="id_historia == 3" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-aiepi>
+					<app-ayudad *ngIf="id_historia == 4" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-ayudad>
+					<app-concentinf *ngIf="id_historia == 5" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-concentinf>
+					<app-consulta1vez *ngIf="id_historia == 6" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-consulta1vez>
+					<app-consultaex *ngIf="id_historia == 7" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-consultaex>
+					<app-epicrisis *ngIf="id_historia == 10" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-epicrisis>
+					<app-escalaab *ngIf="id_historia == 11" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-escalaab>
+					<app-evolucionmed *ngIf="id_historia == 12" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-evolucionmed>
+					<app-externa *ngIf="id_historia == 13" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-externa>
+					<app-urgencias *ngIf="id_historia == 14" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-urgencias>
+					<app-externa *ngIf="id_historia == 15" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-externa>
+					<app-dermatologica *ngIf="id_historia == 16" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-dermatologica>
+					<app-ingresourgencia *ngIf="id_historia == 17" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-ingresourgencia>
+					<app-jovenpyp *ngIf="id_historia == 18" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-jovenpyp>
+					<app-nenfermeria *ngIf="id_historia == 19" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-nenfermeria>
+					<app-odonto *ngIf="id_historia == 20" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-odonto>
+					<app-uodontologia *ngIf="id_historia == 21" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-uodontologia>
+					<app-ordenesurg *ngIf="id_historia == 22" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id" [exam]="examenes"></app-ordenesurg>
+					<app-ordenesmedicas *ngIf="id_historia == 23" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id" [servi]="servicios"></app-ordenesmedicas>
+					<app-planifam *ngIf="id_historia == 24" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-planifam>
+					<app-referencia *ngIf="id_historia == 25" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-referencia>
+					<app-signosvitales *ngIf="id_historia == 27" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-signosvitales>
+					<app-traige *ngIf="id_historia == 28" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-traige>
+					<app-vih *ngIf="id_historia == 29" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-vih>
+					<app-psicologica *ngIf="id_historia == 30" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id" [fami]="familiares"></app-psicologica>
+					<app-citologia *ngIf="id_historia == 31" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-citologia>
+					<app-materna *ngIf="id_historia == 32" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-materna>
+					<app-formulamedicamento *ngIf="id_historia == 33" (basica)="UpdateH($event)" [id_pac]="idpaciente"></app-formulamedicamento>
+					<app-ordenesmedicas *ngIf="id_historia == 34" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id" [servi]="servicios"></app-ordenesmedicas>
+					<app-adultomayor *ngIf="id_historia == 35" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-adultomayor>
+					<app-jovenpyp *ngIf="id_historia == 36" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-jovenpyp>
+					<app-cydaintegral *ngIf="id_historia == 37" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-cydaintegral>
+					<app-escalaab *ngIf="id_historia == 38" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-escalaab>
+					<app-traige *ngIf="id_historia == 39" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-traige>
+					<app-basica *ngIf="id_historia == 40" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-basica>
+					<app-aiepi2m *ngIf="id_historia == 41" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-aiepi2m>
+					<app-visual *ngIf="id_historia == 42" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-visual>
+					<app-enfermedadesc *ngIf="id_historia == 43" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-enfermedadesc>
+					<app-psiquiatrica *ngIf="id_historia == 44" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-psiquiatrica>
+					<app-npsiquiatrica *ngIf="id_historia == 45" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-npsiquiatrica>
+					<app-recetario *ngIf="id_historia == 46" (tipo_id)="UpdateTipo($event)" (basica)="UpdateH($event)" (updatecita)="UpdateCita($event)" [prin]="prints" [tipo_historia]="id_historia" [id_hist]="historia_id" [id_pac]="idpaciente" [citaid]="cita_id"></app-recetario>
+					<app-pedidoexamen *ngIf="id_historia == 47" (basica)="UpdateH($event)" [id_pac]="idpaciente"></app-pedidoexamen>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal fade" id="modal_historico">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        	<div class="modal-body row col-md-12">
+				<div class="table-responsive">
+					<table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="CancelHistorico()"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+	        </div>
+	    </div>
+	</div>
+</div>
+<div class="modal fade" id="modal_pac">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        	<div class="modal-body row col-md-12">
+        		<div class="col-md-12 mb-3">
+        			<input type="text" class="form-control" id="pac_name" [disabled]="true"/>
+        		</div>
+        		<div class="col-md-12">
+        			<input type="text" class="form-control date-picker" id="fecha_pac" placeholder="Fecha de Nacimiento"/>
+        		</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Actualizar</button>
+				<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="CancelPac()"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+	        </div>
+	    </div>
+	</div>
+</div>
+<form [formGroup]="pacienteForm">
+	<div class="modal fade" id="paciente_modal">
+	    <div class="modal-dialog modal-lg">
+	        <div class="modal-content">
+	            <div class="modal-body">
+	                <div class="row col-md-12 mb-3">
+	                	<div class="col-md-4 mb-3">
+					        <div class="form-group">
+					            <label for="ID_TIPO_DOC">Tipo Identificación <span style="color: #ff6b68;">*</span></label>
+					            <select class="select2 tipodoc" data-placeholder="Seleccione..." id="ID_TIPO_DOC" formControlName="ID_TIPO_DOC">
+									<option></option>
+									<option *ngFor="let ident of tipoident" [value]="ident.ID_TIPO_IDENTIFICACION">{{ident.COD_TIPO_IDENTIFICACION}} - {{ident.NOM_TIPO_IDENTIFICACION}}</option>
+					            </select>
+								<i class="form-group__bar"></i>
+					        </div>
+					    </div>
+						<div class="col-md-4">
+							<label for="NUM_DOC">No. Identificación <span style="color: #ff6b68;">*</span></label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+								</div>
+								<input type="text" id="NUM_DOC" placeholder="No.Identificación" class="form-control" formControlName="NUM_DOC" [ngClass]="{ 'is-invalid': submitted && f.NUM_DOC.errors }" />
+								<div *ngIf="submitted && f.NUM_DOC.errors" class="invalid-feedback">
+									<div *ngIf="f.NUM_DOC.errors.required">Por favor, agregue el número de identificación.</div>
+								</div>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4 mb-5">
+							<label for="PRIMER_NOMBRE">Primer nombre <span style="color: #ff6b68;">*</span></label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+								</div>
+								<input type="text" id="PRIMER_NOMBRE" placeholder="Primer nombre" class="form-control" formControlName="PRIMER_NOMBRE" [ngClass]="{ 'is-invalid': submitted && f.PRIMER_NOMBRE.errors }" />
+								<div *ngIf="submitted && f.PRIMER_NOMBRE.errors" class="invalid-feedback">
+									<div *ngIf="f.PRIMER_NOMBRE.errors.required">Por favor, agregue el primer nombre.</div>
+								</div>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<label for="SEGUNDO_NOMBRE">Segundo nombre</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+								</div>
+								<input type="text" id="SEGUNDO_NOMBRE" placeholder="Segundo nombre" class="form-control" formControlName="SEGUNDO_NOMBRE"/>
+													<i class="form-group__bar"></i>
+							</div>
+						</div>
+
+						<div class="col-md-4 mb-5">
+							<label for="PRIMER_APELLIDO">Primer apellido <span style="color: #ff6b68;">*</span></label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+								</div>
+								<input type="text" id="PRIMER_APELLIDO" placeholder="Primer apellido" class="form-control" formControlName="PRIMER_APELLIDO" [ngClass]="{ 'is-invalid': submitted && f.PRIMER_APELLIDO.errors }" />
+								<div *ngIf="submitted && f.PRIMER_APELLIDO.errors" class="invalid-feedback">
+									<div *ngIf="f.PRIMER_APELLIDO.errors.required">Por favor, agregue el primer apellido.</div>
+								</div>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<label for="SEGUNDO_APELLIDO">Segundo apellido</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+								</div>
+								<input type="text" id="SEGUNDO_APELLIDO" placeholder="Segundo apellido" class="form-control" formControlName="SEGUNDO_APELLIDO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<label for="FECHA_NAC">Fecha nacimiento <span style="color: #ff6b68;">*</span></label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+								</div>
+								<input type="text" id="FECHA_NAC" placeholder="Fecha" class="form-control date-picker fnacimiento" formControlName="FECHA_NAC" [ngClass]="{ 'is-invalid': submitted && f.FECHA_NAC.errors }" />
+								<div *ngIf="submitted && f.FECHA_NAC.errors" class="invalid-feedback">
+									<div *ngIf="f.FECHA_NAC.errors.required">Por favor, agregue la fecha.</div>
+								</div>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+	                </div>									
+	            </div>
+				<div class="modal-footer">
+		            <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="RegistrarP();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+					<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="CancelPaciente();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,2271 @@
+<p id="foco"><p>
+
+<div class="tab-container">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#datosg" role="tab">Datos Generales</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#odontograma" role="tab">Odontograma</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#antecedentes" role="tab">Antecedentes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#examenf" role="tab">Examen Físico</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#factores" role="tab">Factores de Riesgo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#estom" role="tab">Examen Estomatológico</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#descrip" role="tab">Descripciones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#indice" role="tab">Indice O'Leary</a>
+        </li>
+    </ul>
+
+    <form [formGroup]="odontologiaForm">
+	    <div class="tab-content">
+	        <div class="tab-pane active fade show" id="datosg" role="tabpanel">
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-2">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts"></i></span>
+								</div>
+								<input type="text" class="form-control" id="NOMBRE" name="NOMBRE" placeholder="Nombre"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+								</div>
+								<input type="text" class="form-control" id="DIRECCIONP" name="DIRECCIONP" placeholder="Dirección"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+							   	<label>Parentesco</label>
+							    <select class="select2 parentesco" id="PARENTESCO" name="PARENTESCO" data-placeholder="Seleccione...">
+							    	<option></option>
+							    	<option *ngFor="let parent of parentesco" [value]="parent.ID_PARENTESCO" [selected]="parent.ID_PARENTESCO == 23 ? true : null">{{parent.NOM_PARENTESCO}}</option>					
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>Teléfono</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-account-box-phone"></i></span>
+								</div>
+								<input type="text" class="form-control" id="TELEFONO" name="TELEFONO" placeholder="Teléfono"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-male-female"></i></span>
+								</div>
+								<input type="text" class="form-control" id="ACOMPANANTE" name="ACOMPANANTE" placeholder="Acompañante"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ESCOLARIDAD">Nivel Educativo</label>
+							    <select class="select2 escolaridad" id="ID_ESCOLARIDAD" name="ID_ESCOLARIDAD">
+									<option></option>
+									<option *ngFor="let escolar of escolaridad" [value]="escolar.ID_ESCOLARIDAD" [selected]="escolar.ID_ESCOLARIDAD == 1 ? true : null">{{escolar.NOM_ESCOLARIDAD}}</option>
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_DISCAPACIDAD">Discapacidad</label>
+						        <select class="select2 discapacidad" id="ID_DISCAPACIDAD" name="ID_DISCAPACIDAD">
+						            <option></option>
+									<option *ngFor="let disc of discapacidad" [value]="disc.ID_DISCAPACIDAD" [selected]="disc.ID_DISCAPACIDAD == 5 ? true : null">{{disc.NOM_DISCAPACIDAD}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="GESTACION">Gestación</label>
+						        <select class="select2 gestacion" id="GESTACION" name="GESTACION">
+									<option value="1">SI</option>
+									<option value="2" [selected]="true">NO</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_OCUPACION">Ocupación</label>
+						        <select class="select2 ocupacion" id="ID_OCUPACION" name="ID_OCUPACION">
+									<option></option>
+									<option *ngFor="let ocupa of ocupacion" [value]="ocupa.ID_OCUPACION" [selected]="ocupa.ID_OCUPACION == 511 ? true : null">{{ocupa.NOM_OCUPACION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ETNIA">Etnia</label>
+						        <select class="select2 etnia" data-placeholder="Seleccione..." id="ID_ETNIA" name="ID_ETNIA">
+									<option></option>
+									<option *ngFor="let etn of etnia" [value]="etn.ID_ETNIA" [selected]="etn.ID_ETNIA == 6 ? true : null">{{etn.NOM_ETNIA}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_RELIGION">Religión</label>
+						        <select class="select2 religion" id="ID_RELIGION" name="ID_RELIGION">
+									<option></option>
+									<option *ngFor="let rel of religion" [value]="rel.ID_RELIGION" [selected]="rel.ID_RELIGION == 6 ? true : null">{{rel.NOM_RELIGION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-9"></div>
+						<div class="col-md-6 mb-4">
+							<label>Motivo Consulta</label>
+							<div class="input-group">
+								<textarea class="form-control textarea-autosize" rows="5" id="MOTIVO" name="MOTIVO" placeholder="Motivo"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6 mb-4">
+							<label>Enfermedad Actual</label>
+							<div class="input-group">
+								<textarea class="form-control textarea-autosize" rows="5" id="ENFERMEDAD_ACTUAL" name="ENFERMEDAD_ACTUAL" placeholder="Actual"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="desplazado" autocomplete="off" value="1"> Desplazado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="pensionado" autocomplete="off" value="2"> Pensionado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="lgbti" autocomplete="off" value="3"> Población LGBTI
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="maltrato" autocomplete="off" value="4"> Víctima maltrato
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="conflicto" autocomplete="off" value="5"> Víctima conflicto armado
+								</label>
+							</div>
+						</div>
+						<div class="col-md-12 form-group">
+							<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('odontograma');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="odontograma" role="tabpanel">
+	        	<div class="card">
+					<div class="row">
+						<div class="col-md-6">
+							<div id="dienteindex18" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="text-center badge badge-pill badge-primary">18</span>
+								<div id="tindex18" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex18" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex18" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex18" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex18" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex17" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">17</span>
+								<div id="tindex17" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex17" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex17" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex17" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex17" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex16" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">16</span>
+								<div id="tindex16" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex16" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex16" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex16" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex16" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex15" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">15</span>
+								<div id="tindex15" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex15" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex15" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex15" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex15" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex14" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">14</span>
+								<div id="tindex14" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex14" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex14" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex14" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex14" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex13" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">17</span>
+								<div id="tindex13" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex13" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex13" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex13" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex13" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex12" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">12</span>
+								<div id="tindex12" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex12" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex12" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex12" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex12" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex11" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">11</span>
+								<div id="tindex11" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex11" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex11" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex11" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex11" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex21" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">21</span>
+								<div id="tindex21" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex21" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex21" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex21" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex21" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex22" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">22</span>
+								<div id="tindex22" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex22" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex22" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex22" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex22" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex23" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">23</span>
+								<div id="tindex23" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex23" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex23" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex23" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex23" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex24" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">24</span>
+								<div id="tindex24" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex24" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex24" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex24" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex24" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex25" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">25</span>
+								<div id="tindex25" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex25" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex25" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex25" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex25" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex26" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">26</span>
+								<div id="tindex26" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex26" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex26" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex26" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex26" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex27" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">27</span>
+								<div id="tindex27" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex27" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex27" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex27" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex27" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex28" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">28</span>
+								<div id="tindex28" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex28" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex28" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex28" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex28" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="diente">
+								
+							</div>
+							<div class="diente">
+								
+							</div>
+							<div class="diente">
+								
+							</div>
+							<div id="dienteindex55" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">55</span>
+								<div id="tindex55" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex55" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex55" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex55" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex55" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex54" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">54</span>
+								<div id="tindex54" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex54" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex54" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex54" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex54" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex53" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">57</span>
+								<div id="tindex53" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex53" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex53" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex53" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex53" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex52" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">52</span>
+								<div id="tindex52" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex52" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex52" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex52" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex52" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex51" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">51</span>
+								<div id="tindex51" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex51" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex51" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex51" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex51" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex61" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">61</span>
+								<div id="tindex61" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex61" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex61" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex61" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex61" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex62" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">62</span>
+								<div id="tindex62" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex62" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex62" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex62" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex62" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex63" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">63</span>
+								<div id="tindex63" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex63" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex63" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex63" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex63" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex64" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">64</span>
+								<div id="tindex64" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex64" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex64" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex64" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex64" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex65" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">65</span>
+								<div id="tindex65" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex65" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex65" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex65" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex65" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div class="diente">
+							</div>
+							<div class="diente">
+							</div>
+							<div class="diente">
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="diente">
+							</div>
+							<div class="diente">
+							</div>
+							<div class="diente">
+							</div>
+							<div class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">85</span>
+								<div id="tindex85" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex85" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex85" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex85" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex85" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex84" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">84</span>
+								<div id="tindex84" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex84" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex84" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex84" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex84" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex83" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">87</span>
+								<div id="tindex83" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex83" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex83" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex83" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex83" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex82" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">82</span>
+								<div id="tindex82" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex82" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex82" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex82" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex82" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex81" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">81</span>
+								<div id="tindex81" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex81" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex81" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex81" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex81" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex71" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">71</span>
+								<div id="tindex71" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex71" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex71" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex71" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex71" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex72" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">72</span>
+								<div id="tindex72" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex72" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex72" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex72" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex72" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex73" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">73</span>
+								<div id="tindex73" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex73" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex73" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex73" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex73" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex74" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">74</span>
+								<div id="tindex74" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex74" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex74" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex74" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex74" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex75" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">75</span>
+								<div id="tindex75" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex75" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex75" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex75" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex75" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex26" class="diente">
+							</div>
+							<div id="dienteindex27" class="diente">
+							</div>
+							<div id="dienteindex28" class="diente">
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex48" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">48</span>
+								<div id="tindex48" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex48" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex48" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex48" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex48" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex47" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">47</span>
+								<div id="tindex47" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex47" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex47" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex47" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex47" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex46" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">46</span>
+								<div id="tindex46" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex46" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex46" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex46" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex46" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex45" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">45</span>
+								<div id="tindex45" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex45" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex45" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex45" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex45" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex44" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">44</span>
+								<div id="tindex44" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex44" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex44" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex44" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex44" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex43" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">47</span>
+								<div id="tindex43" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex43" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex43" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex43" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex43" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex42" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">42</span>
+								<div id="tindex42" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex42" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex42" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex42" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex42" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex41" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">41</span>
+								<div id="tindex41" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex41" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex41" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex41" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex41" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex31" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">31</span>
+								<div id="tindex31" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex31" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex31" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex31" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex31" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex32" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">32</span>
+								<div id="tindex32" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex32" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex32" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex32" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex32" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex33" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">33</span>
+								<div id="tindex33" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex33" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex33" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex33" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex33" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex34" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">34</span>
+								<div id="tindex34" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex34" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex34" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex34" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex34" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex35" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">35</span>
+								<div id="tindex35" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex35" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex35" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex35" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex35" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex36" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">36</span>
+								<div id="tindex36" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex36" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex36" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex36" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex36" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex37" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">37</span>
+								<div id="tindex37" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex37" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex37" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex37" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex37" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+							<div id="dienteindex38" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">38</span>
+								<div id="tindex38" class="cuadro up click text-center"><img src="" width="15"/></div>
+								<div id="lindex38" class="cuadro izquierdo click text-center"><img src="" width="15"/></div>
+								<div id="bindex38" class="cuadro debajo click text-center"><img src="" width="15"/></div>
+								<div id="rindex38" class="cuadro derecha click text-center"><img src="" width="15"/></div>
+								<div id="cindex38" class="centro click text-center"><img src="assets/img/check.png"/></div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="color" id="color">
+						<div class="row text-center">
+							<div class="col-md-2">
+								<div id="limpiar" class="convencion" pos="1">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/white.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 1 ? '#2196F3' : '' }" style="margin-left: -22px; display: inline-block;">LIMPIAR</span>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="2">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">										
+										<img src="assets/img/check.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 2 ? '#2196F3' : '' }" style="margin-left: -20px; display: inline-block;">SANO</span>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div id="protinfe" class="convencion" pos="3">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/pti.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 3 ? '#2196F3' : '' }" style="margin-left: -22px; display: inline-block;">PROTESIS TOTAL INFERIOR</span>
+								</div>
+							</div>
+							<div class="col-md-2">	
+								<div id="protsup" class="convencion" pos="4">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/pts.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 4 ? '#2196F3' : '' }" style="margin-left: -22px; display: inline-block;">PROTESIS TOTAL SUPERIOR</span>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="5">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/pr.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 5 ? '#2196F3' : '' }" style="margin-left: -22px; display: inline-block;">PROTESIS REMOVIBLE</span>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="6">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/ex.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 6 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">EXODONCIA</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="7">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/ort.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 7 ? '#2196F3' : '' }" style="margin-left: -28px; display: inline-block !important;">ORTODONCIA</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="8">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/imp.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 8 ? '#2196F3' : '' }" style="margin-left: -20px; display: inline-block !important;">IMPLANTE</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="9">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/rd.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 9 ? '#2196F3' : '' }" style="margin-left: -32px; display: inline-block !important;">RESINA DESADAPTADA</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="10">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/tc.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 10 ? '#2196F3' : '' }" style="margin-left: -31px; display: inline-block !important;">TRATAMIENTO CONDUCTOS</span>
+								</div>
+							</div>
+							<div class="col-md-2">	
+								<div id="sano" class="convencion" pos="11">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/sarro.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 11 ? '#2196F3' : '' }" style="margin-left: -20px; display: inline-block !important;">SARRO O CALCULO DENTAL</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="12">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/ct.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 12 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">CORONA TOTAL</span>
+								</div>
+							</div>
+							<div class="col-md-2">	
+								<div id="sano" class="convencion" pos="13">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/da.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 13 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">DIENTE AUSENTE</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="14">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/c34.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 14 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">CORONA 3/4</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="15">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/pf.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 15 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">PROTESIS FIJA</span>
+								</div>
+							</div>
+							<div class="col-md-2">	
+								<div id="sano" class="convencion" pos="16">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/fr.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 16 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">FRACTURA</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="17">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/re.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 17 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">RESINA</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="18">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/ca.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 18 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">CARIES</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="19">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/cc.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 19 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">CORONA COMPLETA</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="20">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/ls.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 20 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">LESION CERVICAL</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="21">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/am.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 21 ? '#2196F3' : '' }" style="margin-left: -25px; display: inline-block !important;">AMALGAMA</span>
+								</div>
+							</div>	
+							<div class="col-md-2">
+								<div id="sano" class="convencion" pos="22">
+									<div class="cuadro up"></div>
+									<div class="cuadro izquierdo"></div>
+									<div class="cuadro debajo"></div>
+									<div class="cuadro derecha"></div>
+									<div class="centro text-center" style="margin-bottom: -35px;">
+										<img src="assets/img/ad.png"/>
+									</div>
+									<span [ngStyle]="{'color': convension == 22 ? '#2196F3' : '' }" style="margin-left: -32px; display: inline-block !important;">AMALGAMA DESADAPTADA</span>
+								</div>
+							</div>	
+						</div> 
+					</div>
+					<div class="col-md-12 form-group">
+						<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('antecedentes');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="antecedentes" role="tabpanel">
+				<ul class="list list--star">
+					<li>Familiares</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-2">
+							<label>GENERALES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GENERALES" name="GENERALES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>PATOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PATOLOGICOS" name="PATOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>TOXICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TOXICOSF" name="TOXICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>FARMACOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOSF" name="FARMACOLOGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>ALERGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ALERGICOSF" name="ALERGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Personales</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-3">
+							<label>Odontológicos</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="ODONTOLOGICOS" name="ODONTOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>Generales</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="GENERALESP" name="GENERALESP" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>GRUPO SANGINEO</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="GRUPOSANGINEO" name="GRUPOSANGINEO" value="O+" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>PATOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="PATOLOGICOS" name="PATOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>TRAUMATICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TRAUMATICOS" name="TRAUMATICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>INF. TRANSMISIÓN SEXUAL</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TSEXUAL" name="TSEXUAL" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>INMUNOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="INMUNOLOGICOS" name="INMUNOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>ALERGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="ALERGICOS" name="ALERGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>FARMACOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOS" name="FARMACOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>OTROS ANTECEDENTES</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="OANTECEDENTES" name="OANTECEDENTES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>Observaciones</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="OBSERVACIONES" name="OBSERVACIONES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('examenf');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="examenf" role="tabpanel">
+				<ul class="list list--star">
+					<li>Examen Físico</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-3">
+							<label>ASPECTO GENERAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ASPECTOG" name="ASPECTOG" placeholder="Aspecto" value="NORMAL"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>PESO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PESO" name="PESO" placeholder="Peso" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TALLA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TALLA" name="TALLA" placeholder="Talla" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>IMC</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="IMC" name="IMC" placeholder="imc" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>SINTOMATICO DE PIEL</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="SINTOMATICOPIEL" name="SINTOMATICOPIEL" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SINTOMATICO RESPIRATORIO</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="SINTOMATICORE" name="SINTOMATICORE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SINDROME FEBRIL</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="SINDROMEFEBRIL" name="SINDROMEFEBRIL" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>CABEZA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CABEZAE" name="CABEZAE" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>BOCA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="BOCA" name="BOCA" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>OBSERVACIONES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OBSERVACIONESEX" name="OBSERVACIONESEX" value="NORMAL"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('factores');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="factores" role="tabpanel">
+				<ul class="list list--star">
+					<li>Signos vitales</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-2">
+							<label>FRECUENCIA CARDIACA</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="FRECUENCIAC" name="FRECUENCIAC" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>FRECUENCIA RESPIRATORIA</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="FRECUENCIAR" name="FRECUENCIAR" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TEMPERATURA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="TEMPERATURA" name="TEMPERATURA" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TENSION ARTERIAL</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="TENSIONARTERIAL" name="TENSIONARTERIAL" value="0/0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-3">
+							<label>OBSERVACIONES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OBSERVACIONESSV" name="OBSERVACIONESSV" value="NORMAL"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>									
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Examen Mental</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+							<div class="col-md-3 mb-2">
+								<label>APARIENCIA GENERAL</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="APARIENCIA" name="APARIENCIA" value="No" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ATENCION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ATENCION" name="ATENCION" value="No" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>MEMORIA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="MEMORIA" name="MEMORIA" value="No" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ALTERACION DEL SUEÑO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ALTERACION" name="ALTERACION" value="No" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>APETITO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="APETITO" name="APETITO" value="No" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3 mb-2">
+								<label>PENSAMIENTO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="PENSAMIENTO" name="PENSAMIENTO" value="No" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3 mb-2">
+								<label>SOMATIZACIONES</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="SOMATIZACIONES" name="SOMATIZACIONES" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>INTROSPECCION Y PROSPECCION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="INTROSPECCION" name="INTROSPECCION" value="No" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>AFECTO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="AFECTO" name="AFECTO" value="No" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('estom');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="estom" role="tabpanel">
+				<ul class="list list--star">
+					<li>Tejidos Blandos</li>
+				</ul>
+				<hr>
+			    <div class="card">
+			        <div class="row col-md-12" style="padding: 0; margin: 0;">
+			        	<div class="col-md-3 mb-3">
+							<label>LABIO SUPERIOR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LABIOSUPERIOR" name="LABIOSUPERIOR" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>LABIO INFERIOR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LABIOINFERIOR" name="LABIOINFERIOR" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>COMISURAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="COMISURAS" name="COMISURAS" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>MUCOSA ORAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="MUCOSAORAL" name="MUCOSAORAL" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>SURCOS YUGALES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SURCOSYUGALES" name="SURCOSYUGALES" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>FRENILLO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FRENILLO" name="FRENILLO" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>PALADAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PALADAR" name="PALADAR" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>OROFARINGE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OROFARINGE" name="OROFARINGE" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>LENGUA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LENGUA" name="LENGUA" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>PISO DE BOCA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PISODEBOCA" name="PISODEBOCA" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>REBORDES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="REBORDES" name="REBORDES" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>G SALIVARES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GSALIVARES" name="GSALIVARES" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>OTROS HALLAZGOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="HALLAZGOS" name="HALLAZGOS" value="Normal" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+			        </div>
+				</div>
+				<ul class="list list--star">
+					<li>ATM Oclusión</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-2">
+							<label>DOLOR MUSCULAR</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="DOLORMUSCULAR" name="DOLORMUSCULAR" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>DOLOR ARTICULAR</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="DOLORARTICULAR" name="DOLORARTICULAR" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>RUIDO ARTICULAR</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="RUIDO" name="RUIDO" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>ALTERAC. MOVIMIENTO</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="MOVIMIENTO" name="MOVIMIENTO" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>MALOCLUSIONES</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="MALOCLUSIONES" name="MALOCLUSIONES" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-3">
+							<label>C Y D</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="CYD" name="CYD" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>OTROS HALLAZGOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="HALLAZGOSA" name="HALLAZGOSA" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>									
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Tejidos Dentales</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-2">
+							<label>CAMBIO FORMA</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="CAMBIOFORMA" name="CAMBIOFORMA" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CAMBIO TAMAÑO</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="CAMBIOTAMANO" name="CAMBIOTAMANO" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CAMBIO NUMERO</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="CAMBIONUMERO" name="CAMBIONUMERO" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CAMBIO COLOR</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="CAMBIOCOLOR" name="CAMBIOCOLOR" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CAMBIO POSICION</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="CAMBIOPOSICION" name="CAMBIOPOSICION" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-3">
+							<label>IMPACTADOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="IMPACTADOS" name="IMPACTADOS" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>OTROS HALLAZGOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="HALLAZGOST" name="HALLAZGOST" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>									
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Periodontal</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-2">
+							<label>SANGRADO</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="SANGRADO" name="SANGRADO" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>MOVILIDAD</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="MOVILIDAD" name="MOVILIDAD" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>RESECCIONES</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="RESECCIONES" name="RESECCIONES" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>BOLSA PERIODONTAL</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="PERIODONTAL" name="PERIODONTAL" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CALCULOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="CALCULOS" name="CALCULOS" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-3">
+							<label>ABSCESOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="ABSCESOS" name="ABSCESOS" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>PLACA BACTERIANA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="HALLAZGOST" name="HALLAZGOST" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-3">
+							<label>ENCIAS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="ENCIAS" name="ENCIAS" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>OTROS HALLAZGOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="HALLAZGOSPE" name="HALLAZGOSPE" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>								
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Pulpar</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-2">
+							<label>ALTERAC. VITALIDAD</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="VITALIDAD" name="VITALIDAD" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>DOLOR PERCUSION</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="PERCUSION" name="PERCUSION" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>MOVILIDAD DENTAL</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="MOVILIDADDENTAL" name="MOVILIDADDENTAL" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SENSIBILIDAD</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="SENSIBILIDAD" name="SENSIBILIDAD" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>FISTULA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="FISTULA" name="FISTULA" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-3">
+							<label>DIENTES TRATADOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="TRATADOS" name="TRATADOS" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>OTROS HALLAZGOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="HALLAZGOSPU" name="HALLAZGOSPU" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>								
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('descrip');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="descrip" role="tabpanel">
+				<ul class="list list--star">
+					<li>Historia clínica acción preventiva</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-4 mb-2">
+							<label>A RECIBIDO CHARLAS DE HIGIENE ORAL</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="CHARLAS" name="CHARLAS" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>PRACTICA CEPILLADO DIARIO</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="CEPILLADO" name="CEPILLADO" value="1" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>USA SEDA DENTAL</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="SEDA" name="SEDA" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label>USA ENJUAGUE BUCAL</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="ENJUAGUE" name="ENJUAGUE" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>LE HAN APLICADO FLUOR</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="FLUOR" name="FLUOR" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-4 mb-3">
+							<label>LE HAN APLICADO SELLANTES</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="SELLANTES" name="SELLANTES" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>OBSERVACIONES</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="OBSERVACIONESPR" name="OBSERVACIONESPR" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>								
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>DIAGNOSTICO INGRESO</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICO" name="DIAGNOSTICO">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label>TIPO DE DIAGNOSTICO</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="SELLANTES" name="SELLANTES" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>OBSERVACIONES</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="OBSERVACIONESDI" name="OBSERVACIONESDI" value="No" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>COP - ceo</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-3">
+							<label>CARIADOS</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="CARIADOS" name="CARIADOS" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>OBTURADOS</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="OBTURADOS" name="OBTURADOS" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>PERDIDOS</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="PERDIDOS" name="PERDIDOS" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SANOS</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="SANOS" name="SANOS" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>								
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>TRATAMIENTO REALIZADO</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<div class="input-group">
+								<textarea class="form-control" id="TRATAMIENTO" name="TRATAMIENTO"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>PRONOSTICO</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<div class="input-group">
+								<textarea class="form-control" id="PRONOSTICO" name="PRONOSTICO"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>PLAN DE TRATAMIENTO</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<div class="input-group">
+								<textarea class="form-control" id="PLANTRATAMIENTO" name="PLANTRATAMIENTO"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('indice');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="indice" role="tabpanel">
+	        	<div class="card">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="diente">
+								
+							</div>
+							<div class="diente">
+								
+							</div>
+							<div class="diente">
+								
+							</div>
+							<div id="dienteindex55" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">55</span>
+								<div id="t55" class="cuadro up clicks text-center"></div>
+								<div id="l55" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b55" class="cuadro debajo clicks text-center"></div>
+								<div id="r55" class="cuadro derecha clicks text-center"></div>
+								<div id="c55" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex54" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">54</span>
+								<div id="t54" class="cuadro up clicks text-center"></div>
+								<div id="l54" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b54" class="cuadro debajo clicks text-center"></div>
+								<div id="r54" class="cuadro derecha clicks text-center"></div>
+								<div id="c54" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex53" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">57</span>
+								<div id="t53" class="cuadro up clicks text-center"></div>
+								<div id="l53" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b53" class="cuadro debajo clicks text-center"></div>
+								<div id="r53" class="cuadro derecha clicks text-center"></div>
+								<div id="c53" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex52" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">52</span>
+								<div id="t52" class="cuadro up clicks text-center"></div>
+								<div id="l52" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b52" class="cuadro debajo clicks text-center"></div>
+								<div id="r52" class="cuadro derecha clicks text-center"></div>
+								<div id="c52" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex51" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">51</span>
+								<div id="t51" class="cuadro up clicks text-center"></div>
+								<div id="l51" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b51" class="cuadro debajo clicks text-center"></div>
+								<div id="r51" class="cuadro derecha clicks text-center"></div>
+								<div id="c51" class="centro clicks text-center"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex61" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">61</span>
+								<div id="t61" class="cuadro up clicks text-center"></div>
+								<div id="l61" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b61" class="cuadro debajo clicks text-center"></div>
+								<div id="r61" class="cuadro derecha clicks text-center"></div>
+								<div id="c61" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex62" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">62</span>
+								<div id="t62" class="cuadro up clicks text-center"></div>
+								<div id="l62" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b62" class="cuadro debajo clicks text-center"></div>
+								<div id="r62" class="cuadro derecha clicks text-center"></div>
+								<div id="c62" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex63" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">63</span>
+								<div id="t63" class="cuadro up clicks text-center"></div>
+								<div id="l63" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b63" class="cuadro debajo clicks text-center"></div>
+								<div id="r63" class="cuadro derecha clicks text-center"></div>
+								<div id="c63" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex64" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">64</span>
+								<div id="t64" class="cuadro up clicks text-center"></div>
+								<div id="l64" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b64" class="cuadro debajo clicks text-center"></div>
+								<div id="r64" class="cuadro derecha clicks text-center"></div>
+								<div id="c64" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex65" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">65</span>
+								<div id="t65" class="cuadro up clicks text-center"></div>
+								<div id="l65" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b65" class="cuadro debajo clicks text-center"></div>
+								<div id="r65" class="cuadro derecha clicks text-center"></div>
+								<div id="c65" class="centro clicks text-center"></div>
+							</div>
+							<div class="diente">
+							</div>
+							<div class="diente">
+							</div>
+							<div class="diente">
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="index18" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="text-center badge badge-pill badge-primary">18</span>
+								<div id="t18" class="cuadro up clicks text-center"></div>
+								<div id="l18" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b18" class="cuadro debajo clicks text-center"></div>
+								<div id="r18" class="cuadro derecha clicks text-center"></div>
+								<div id="c18" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex17" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">17</span>
+								<div id="t17" class="cuadro up clicks text-center"></div>
+								<div id="l17" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b17" class="cuadro debajo clicks text-center"></div>
+								<div id="r17" class="cuadro derecha clicks text-center"></div>
+								<div id="c17" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex16" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">16</span>
+								<div id="t16" class="cuadro up clicks text-center"></div>
+								<div id="l16" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b16" class="cuadro debajo clicks text-center"></div>
+								<div id="r16" class="cuadro derecha clicks text-center"></div>
+								<div id="c16" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex15" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">15</span>
+								<div id="t15" class="cuadro up clicks text-center"></div>
+								<div id="l15" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b15" class="cuadro debajo clicks text-center"></div>
+								<div id="r15" class="cuadro derecha clicks text-center"></div>
+								<div id="c15" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex14" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">14</span>
+								<div id="t14" class="cuadro up clicks text-center"></div>
+								<div id="l14" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b14" class="cuadro debajo clicks text-center"></div>
+								<div id="r14" class="cuadro derecha clicks text-center"></div>
+								<div id="c14" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex13" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">17</span>
+								<div id="t13" class="cuadro up clicks text-center"></div>
+								<div id="l13" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b13" class="cuadro debajo clicks text-center"></div>
+								<div id="r13" class="cuadro derecha clicks text-center"></div>
+								<div id="c13" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex12" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">12</span>
+								<div id="t12" class="cuadro up clicks text-center"></div>
+								<div id="l12" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b12" class="cuadro debajo clicks text-center"></div>
+								<div id="r12" class="cuadro derecha clicks text-center"></div>
+								<div id="c12" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex11" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">11</span>
+								<div id="t11" class="cuadro up clicks text-center"></div>
+								<div id="l11" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b11" class="cuadro debajo clicks text-center"></div>
+								<div id="r11" class="cuadro derecha clicks text-center"></div>
+								<div id="c11" class="centro clicks text-center"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex21" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">21</span>
+								<div id="t21" class="cuadro up clicks text-center"></div>
+								<div id="l21" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b21" class="cuadro debajo clicks text-center"></div>
+								<div id="r21" class="cuadro derecha clicks text-center"></div>
+								<div id="c21" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex22" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">22</span>
+								<div id="t22" class="cuadro up clicks text-center"></div>
+								<div id="l22" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b22" class="cuadro debajo clicks text-center"></div>
+								<div id="r22" class="cuadro derecha clicks text-center"></div>
+								<div id="c22" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex23" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">23</span>
+								<div id="t23" class="cuadro up clicks text-center"></div>
+								<div id="l23" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b23" class="cuadro debajo clicks text-center"></div>
+								<div id="r23" class="cuadro derecha clicks text-center"></div>
+								<div id="c23" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex24" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">24</span>
+								<div id="t24" class="cuadro up clicks text-center"></div>
+								<div id="l24" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b24" class="cuadro debajo clicks text-center"></div>
+								<div id="r24" class="cuadro derecha clicks text-center"></div>
+								<div id="c24" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex25" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">25</span>
+								<div id="t25" class="cuadro up clicks text-center"></div>
+								<div id="l25" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b25" class="cuadro debajo clicks text-center"></div>
+								<div id="r25" class="cuadro derecha clicks text-center"></div>
+								<div id="c25" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex26" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">26</span>
+								<div id="t26" class="cuadro up clicks text-center"></div>
+								<div id="l26" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b26" class="cuadro debajo clicks text-center"></div>
+								<div id="r26" class="cuadro derecha clicks text-center"></div>
+								<div id="c26" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex27" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">27</span>
+								<div id="t27" class="cuadro up clicks text-center"></div>
+								<div id="l27" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b27" class="cuadro debajo clicks text-center"></div>
+								<div id="r27" class="cuadro derecha clicks text-center"></div>
+								<div id="c27" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex28" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">28</span>
+								<div id="t28" class="cuadro up clicks text-center"></div>
+								<div id="l28" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b28" class="cuadro debajo clicks text-center"></div>
+								<div id="r28" class="cuadro derecha clicks text-center"></div>
+								<div id="c28" class="centro clicks text-center"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex48" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">48</span>
+								<div id="t48" class="cuadro up clicks text-center"></div>
+								<div id="l48" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b48" class="cuadro debajo clicks text-center"></div>
+								<div id="r48" class="cuadro derecha clicks text-center"></div>
+								<div id="c48" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex47" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">47</span>
+								<div id="t47" class="cuadro up clicks text-center"></div>
+								<div id="l47" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b47" class="cuadro debajo clicks text-center"></div>
+								<div id="r47" class="cuadro derecha clicks text-center"></div>
+								<div id="c47" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex46" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">46</span>
+								<div id="t46" class="cuadro up clicks text-center"></div>
+								<div id="l46" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b46" class="cuadro debajo clicks text-center"></div>
+								<div id="r46" class="cuadro derecha clicks text-center"></div>
+								<div id="c46" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex45" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">45</span>
+								<div id="t45" class="cuadro up clicks text-center"></div>
+								<div id="l45" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b45" class="cuadro debajo clicks text-center"></div>
+								<div id="r45" class="cuadro derecha clicks text-center"></div>
+								<div id="c45" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex44" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">44</span>
+								<div id="t44" class="cuadro up clicks text-center"></div>
+								<div id="l44" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b44" class="cuadro debajo clicks text-center"></div>
+								<div id="r44" class="cuadro derecha clicks text-center"></div>
+								<div id="c44" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex43" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">47</span>
+								<div id="t43" class="cuadro up clicks text-center"></div>
+								<div id="l43" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b43" class="cuadro debajo clicks text-center"></div>
+								<div id="r43" class="cuadro derecha clicks text-center"></div>
+								<div id="c43" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex42" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">42</span>
+								<div id="t42" class="cuadro up clicks text-center"></div>
+								<div id="l42" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b42" class="cuadro debajo clicks text-center"></div>
+								<div id="r42" class="cuadro derecha clicks text-center"></div>
+								<div id="c42" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex41" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">41</span>
+								<div id="t41" class="cuadro up clicks text-center"></div>
+								<div id="l41" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b41" class="cuadro debajo clicks text-center"></div>
+								<div id="r41" class="cuadro derecha clicks text-center"></div>
+								<div id="c41" class="centro clicks text-center"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex31" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">31</span>
+								<div id="t31" class="cuadro up clicks text-center"></div>
+								<div id="l31" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b31" class="cuadro debajo clicks text-center"></div>
+								<div id="r31" class="cuadro derecha clicks text-center"></div>
+								<div id="c31" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex32" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">32</span>
+								<div id="t32" class="cuadro up clicks text-center"></div>
+								<div id="l32" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b32" class="cuadro debajo clicks text-center"></div>
+								<div id="r32" class="cuadro derecha clicks text-center"></div>
+								<div id="c32" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex33" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">33</span>
+								<div id="t33" class="cuadro up clicks text-center"></div>
+								<div id="l33" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b33" class="cuadro debajo clicks text-center"></div>
+								<div id="r33" class="cuadro derecha clicks text-center"></div>
+								<div id="c33" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex34" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">34</span>
+								<div id="t34" class="cuadro up clicks text-center"></div>
+								<div id="l34" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b34" class="cuadro debajo clicks text-center"></div>
+								<div id="r34" class="cuadro derecha clicks text-center"></div>
+								<div id="c34" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex35" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">35</span>
+								<div id="t35" class="cuadro up clicks text-center"></div>
+								<div id="l35" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b35" class="cuadro debajo clicks text-center"></div>
+								<div id="r35" class="cuadro derecha clicks text-center"></div>
+								<div id="c35" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex36" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">36</span>
+								<div id="t36" class="cuadro up clicks text-center"></div>
+								<div id="l36" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b36" class="cuadro debajo clicks text-center"></div>
+								<div id="r36" class="cuadro derecha clicks text-center"></div>
+								<div id="c36" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex37" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">37</span>
+								<div id="t37" class="cuadro up clicks text-center"></div>
+								<div id="l37" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b37" class="cuadro debajo clicks text-center"></div>
+								<div id="r37" class="cuadro derecha clicks text-center"></div>
+								<div id="c37" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex38" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">38</span>
+								<div id="t38" class="cuadro up clicks text-center"></div>
+								<div id="l38" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b38" class="cuadro debajo clicks text-center"></div>
+								<div id="r38" class="cuadro derecha clicks text-center"></div>
+								<div id="c38" class="centro clicks text-center"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="diente">
+							</div>
+							<div class="diente">
+							</div>
+							<div class="diente">
+							</div>
+							<div class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">85</span>
+								<div id="t85" class="cuadro up clicks text-center"></div>
+								<div id="l85" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b85" class="cuadro debajo clicks text-center"></div>
+								<div id="r85" class="cuadro derecha clicks text-center"></div>
+								<div id="c85" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex84" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">84</span>
+								<div id="t84" class="cuadro up clicks text-center"></div>
+								<div id="l84" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b84" class="cuadro debajo clicks text-center"></div>
+								<div id="r84" class="cuadro derecha clicks text-center"></div>
+								<div id="c84" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex83" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">87</span>
+								<div id="t83" class="cuadro up clicks text-center"></div>
+								<div id="l83" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b83" class="cuadro debajo clicks text-center"></div>
+								<div id="r83" class="cuadro derecha clicks text-center"></div>
+								<div id="c83" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex82" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">82</span>
+								<div id="t82" class="cuadro up clicks text-center"></div>
+								<div id="l82" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b82" class="cuadro debajo clicks text-center"></div>
+								<div id="r82" class="cuadro derecha clicks text-center"></div>
+								<div id="c82" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex81" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">81</span>
+								<div id="t81" class="cuadro up clicks text-center"></div>
+								<div id="l81" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b81" class="cuadro debajo clicks text-center"></div>
+								<div id="r81" class="cuadro derecha clicks text-center"></div>
+								<div id="c81" class="centro clicks text-center"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div id="dienteindex71" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">71</span>
+								<div id="t71" class="cuadro up clicks text-center"></div>
+								<div id="l71" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b71" class="cuadro debajo clicks text-center"></div>
+								<div id="r71" class="cuadro derecha clicks text-center"></div>
+								<div id="c71" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex72" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">72</span>
+								<div id="t72" class="cuadro up clicks text-center"></div>
+								<div id="l72" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b72" class="cuadro debajo clicks text-center"></div>
+								<div id="r72" class="cuadro derecha clicks text-center"></div>
+								<div id="c72" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex73" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">73</span>
+								<div id="t73" class="cuadro up clicks text-center"></div>
+								<div id="l73" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b73" class="cuadro debajo clicks text-center"></div>
+								<div id="r73" class="cuadro derecha clicks text-center"></div>
+								<div id="c73" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex74" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">74</span>
+								<div id="t74" class="cuadro up clicks text-center"></div>
+								<div id="l74" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b74" class="cuadro debajo clicks text-center"></div>
+								<div id="r74" class="cuadro derecha clicks text-center"></div>
+								<div id="c74" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex75" class="diente">
+								<span style="margin-left: -5px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="badge badge-pill badge-primary">75</span>
+								<div id="t75" class="cuadro up clicks text-center"></div>
+								<div id="l75" class="cuadro izquierdo clicks text-center"></div>
+								<div id="b75" class="cuadro debajo clicks text-center"></div>
+								<div id="r75" class="cuadro derecha clicks text-center"></div>
+								<div id="c75" class="centro clicks text-center"></div>
+							</div>
+							<div id="dienteindex26" class="diente">
+							</div>
+							<div id="dienteindex27" class="diente">
+							</div>
+							<div id="dienteindex28" class="diente">
+							</div>
+						</div>
+						<div class="col-md-3"><label style="font-weight: bold;">PLACA BACTERIANA: </label> {{placab}} %</div>
+						<div class="col-md-3"><label style="font-weight: bold;">ENCIAS: </label> {{placab}} %</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="row form-group">
+			<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Guardar();"><i class="zmdi zmdi-floppy"></i> Guardar Registro</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+	</form>
+</div>
+<div id="print" *ngIf="print" class="row" style="font-weight: bolder; color: #000000;"></div>

@@ -1,0 +1,168 @@
+<header class="content__title" id="foco">
+    <h1>Empresas</h1>
+	<small>Podra administrar las empresas existentes en el sistema!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Datos de la empresa a registrar
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="empresaForm">
+	                		<div class="row col-md-12">
+
+								<div class="col-md-3">
+								    <label for="NUM_TRIBUTARIO"># Tributario <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-badge-check"></i></span>
+										</div>
+										<input type="text" id="NUM_TRIBUTARIO" placeholder="Identificador Tributario" class="form-control" formControlName="NUM_TRIBUTARIO" [ngClass]="{ 'is-invalid': submitted && f.NUM_TRIBUTARIO.errors }" />
+										<div *ngIf="submitted && f.NUM_TRIBUTARIO.errors" class="invalid-feedback">
+								            <div *ngIf="f.NUM_TRIBUTARIO.errors.required">Por favor, agregue el número tributario.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="NOM_EMPRESA">Empresa <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-balance"></i></span>
+										</div>
+										<input type="text" id="NOM_EMPRESA" placeholder="Empresa" class="form-control" formControlName="NOM_EMPRESA" [ngClass]="{ 'is-invalid': submitted && f.NOM_EMPRESA.errors }" />
+										<div *ngIf="submitted && f.NOM_EMPRESA.errors" class="invalid-feedback">
+								            <div *ngIf="f.NOM_EMPRESA.errors.required">Por favor, agregue el nombre de la empresa.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+						    	<div class="col-md-3 mb-3">
+	                                <div class="form-group">
+	                                    <label for="dpto">Departamento</label>
+	                                    <select class="select2 dpto" data-placeholder="Seleccione..." id="dpto" formControlName="dpto">
+											<option></option>
+											<option *ngFor="let dpto of dptos" [value]="dpto.ID_DPTO">{{dpto.NOM_DEPARTAMENTO}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-3 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_MUNICIPIO">Municipio <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 muni" data-placeholder="Seleccione..." id="ID_MUNICIPIO" formControlName="ID_MUNICIPIO">
+											<option></option>
+											<option *ngFor="let muni of municipios" [value]="muni.ID_MUNICIPIO">{{muni.NOM_MUNICIPIO}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+								<div class="col-md-3 mb-4">
+								    <label for="NUM_DOC_REP_LEGAL">Identificación Rep. Legal</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-accounts-list-alt"></i></span>
+										</div>
+										<input type="text" id="NUM_DOC_REP_LEGAL" placeholder="Número de Identificación" class="form-control" formControlName="NUM_DOC_REP_LEGAL" [ngClass]="{ 'is-invalid': submitted && f.NUM_DOC_REP_LEGAL.errors }" />
+										<div *ngIf="submitted && f.NUM_DOC_REP_LEGAL.errors" class="invalid-feedback">
+								            <div *ngIf="f.NUM_DOC_REP_LEGAL.errors.required">Por favor, agregue la identificación.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="NOM_REP_LEGAL">Representante Legal</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-acount"></i></span>
+										</div>
+										<input type="text" id="NOM_REP_LEGAL" placeholder="Nombre del representante" class="form-control" formControlName="NOM_REP_LEGAL" [ngClass]="{ 'is-invalid': submitted && f.NOM_REP_LEGAL.errors }" />
+										<div *ngIf="submitted && f.NOM_REP_LEGAL.errors" class="invalid-feedback">
+								            <div *ngIf="f.NOM_REP_LEGAL.errors.required">Por favor, agregue el representante legal.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="TELEF">Teléfono</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-phone"></i></span>
+										</div>
+										<input type="text" id="TELEF" placeholder="Teléfono" class="form-control" formControlName="TELEF"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="CORREO">Correo</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-markunread-mailbox"></i></span>
+										</div>
+										<input type="text" id="CORREO" placeholder="Correo" class="form-control" formControlName="CORREO" [ngClass]="{ 'is-invalid': submitted && f.CORREO.errors }" />
+										<div *ngIf="submitted && f.CORREO.errors" class="invalid-feedback">
+								            <div *ngIf="f.CORREO.errors.required">Por favor, agregue el correo.</div>
+								        </div>
+										<div *ngIf="submitted && f.CORREO.errors" class="invalid-feedback">
+								            <div *ngIf="f.CORREO.errors.email">Correo invalido.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-6 mb-4">
+								    <label for="WEBSITE">Website</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-globe-lock"></i></span>
+										</div>
+										<input type="text" id="WEBSITE" placeholder="Sitio Web" class="form-control" formControlName="WEBSITE"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+								    <label for="DIREC_EMP">Dirección</label>
+								    <div class="input-group mb-3">
+								    	<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+										</div>
+										<input type="text" id="DIREC_EMP" placeholder="Dirección" class="form-control" formControlName="DIREC_EMP"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 mb-4">
+								<label for="logo">Logo de la Empresa</label>
+								<div class="dropzone" id="logo">
+									<div class="dz-message" id="message" data-dz-message><span>Arrastre el logo aqui</span></div>
+								</div>
+							</div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+								<button *ngIf="empresa_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

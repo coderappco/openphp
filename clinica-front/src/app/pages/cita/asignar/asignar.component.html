@@ -1,0 +1,507 @@
+<header class="content__title" id="foco">
+    <h1>Citas</h1>
+	<small>Podra asignar, modificar y eliminar las citas a los pacientes!</small>
+</header>
+<form [formGroup]="citaForm">
+<div class="card">
+	<div class="card-body">
+		<div class="row col-md-12">
+			<div class="col-md-2">
+	            <div class="form-group">
+	                <label for="ID_EMPRESA">Empresa</label>
+	                <select class="select2 empresa" id="ID_EMPRESA" formControlName="ID_EMPRESA" data-placeholder="Seleccione...">
+	                	<option></option>
+	                	<option *ngFor="let empresa of empresas" [value]="empresa.ID_EMPRESA">{{empresa.NUM_TRIBUTARIO}} - {{empresa.NOM_EMPRESA}}</option>
+	               	</select>
+					<i class="form-group__bar"></i>
+	            </div>
+	        </div>
+	        <div class="col-md-3">
+	            <div class="form-group">
+	                <label for="ID_SEDE">Sede <span style="color: #ff6b68;">*</span></label>
+	                <select class="select2 seder" id="ID_SEDE" formControlName="ID_SEDE" data-placeholder="Seleccione...">
+	                	<option></option>
+	                	<option *ngFor="let sede of sedes" [value]="sede.ID_SEDE">{{sede.COD_SEDE}} - {{sede.NOM_SEDE}}</option>
+	               	</select>
+					<i class="form-group__bar"></i>
+	            </div>
+	        </div>
+	        <div class="col-md-1">
+	            <div class="form-group">
+	                <label for="DURACION">Duración</label>
+	                <input class="form-control duracion" id="DURACION" formControlName="DURACION"/>
+					<i class="form-group__bar"></i>
+	            </div>
+	        </div>
+			<div class="col-md-2">
+	            <div class="form-group">
+	                <label for="prestador_id">Prestador <span style="color: #ff6b68;">*</span></label>
+	                <select class="select2 prestador" id="prestador_id" formControlName="prestador_id" data-placeholder="Seleccione...">
+	                	<option></option>
+	                	<option *ngFor="let prestador of prestadores" [value]="prestador.ID_USUARIO">{{prestador.identificacion.COD_TIPO_IDENTIFICACION}} - {{prestador.NO_IDENTIFICACION}} - {{prestador.NOMBRES}} {{prestador.APELLIDOS}}</option>
+	               	</select>
+					<i class="form-group__bar"></i>
+	            </div>
+	        </div>
+	        <div class="col-md-2">
+	            <div class="form-group">
+	                <label for="ID_GRUPO">Grupo Horario</label>
+	                <select class="select2 grupo" id="ID_GRUPO" formControlName="ID_GRUPO" data-placeholder="Seleccione...">
+	                	<option></option>
+	                	<option *ngFor="let grupo of grupos" [value]="grupo.ID_GRUPO">{{grupo.NOM_GRUPO}}</option>
+	               	</select>
+					<i class="form-group__bar"></i>
+	            </div>
+	        </div>
+	        <div class="col-md-2">
+	        	<i class="zmdi zmdi-eye zmdi-hc-3x mt-4 actions__item--active" style="margin-right: 3px; cursor: pointer;" title="Mostrar Horario" data-toggle="tooltip" (click)="MostrarM()"></i>
+	        	<i class="zmdi zmdi-time-interval zmdi-hc-3x mt-4 actions__item--active" style="cursor: pointer;" title="Crear Horario" data-toggle="tooltip" (click)="CrearGrupo()"></i>
+	        </div>
+	        <div class="col-md-12 row justify-content-center mb-4">
+	            <div>Estados de la Cita</div>
+	        </div>
+	        <div class="col-md-12 row justify-content-center">
+		        <div class="col-sm-2">
+	                <div class="color-demo color-demo--light color-demo--white" style="background-color: #FFFFFF;">
+	                    <div style="cursor: pointer;" (click)="TodasCitas()">Disponible</div>
+	                </div>
+	            </div>
+	            <div class="col-sm-2">
+	                <div class="color-demo" style="background-color: #39bbb0;">
+	                    <div style="cursor: pointer;" (click)="filterStatus(1)">Asignada</div>
+	                </div>
+	            </div>
+	            <div class="col-sm-2">
+	                <div class="color-demo" style="background-color: #03A9F4;">
+	                    <div style="cursor: pointer;" (click)="filterStatus(2)">En sala</div>
+	                </div>
+	            </div>
+	            <div class="col-sm-2">
+	                <div class="color-demo" style="background-color: #ffc721;">
+	                    <div style="cursor: pointer;" (click)="filterStatus(3)">Atendido</div>
+	                </div>
+	            </div>
+	            <div class="col-sm-2">
+	                <div class="color-demo" style="background-color: #ff6b68;">
+	                    <div style="cursor: pointer;" (click)="filterStatus(4)">No Atendida</div>
+	                </div>
+	            </div>
+	        </div>
+			<div class="content__inner">
+				<header class="content__title content__title--calendar">
+					<h1>Calendar</h1>
+
+					<div class="actions actions--calendar">
+
+						<a href="" class="actions__item actions__calender-prev"><i class="zmdi zmdi-long-arrow-left"></i></a>
+						<a href="" class="actions__item actions__calender-next"><i class="zmdi zmdi-long-arrow-right"></i></a>
+						<i class="actions__item zmdi zmdi-view-comfy" data-calendar-view="month" title="Mensual" data-toggle="tooltip"></i>
+                        <i class="actions__item actions__item--active zmdi zmdi-view-week" data-calendar-view="agendaWeek" title="Semanal" data-toggle="tooltip"></i>
+                        <i class="actions__item zmdi zmdi-view-day" data-calendar-view="agendaDay" title="Diario" data-toggle="tooltip"></i>
+					</div>
+				</header>
+				<div class="calendar card"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="cita">
+	<input type="hidden" class="fecha" />
+    <input type="hidden" class="hora" />
+    <input type="hidden" class="start" />
+    <input type="hidden" class="end" />
+    <input type="hidden" id="ID_AUTORIZACION" formControlName="ID_AUTORIZACION"/>
+    <input type="hidden" class="edit-event__id">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body row col-md-12">
+                <div class="col-md-4">
+	                <div class="form-group">
+	                    <label for="ID_PACIENTE">Paciente <span style="color: #ff6b68;">*</span></label>
+	                    <select class="select2 paciente" id="ID_PACIENTE" formControlName="ID_PACIENTE">							
+	                    </select>
+						<i class="form-group__bar"></i>
+	                </div>
+	            </div>
+	            <div class="col-md-2">
+	                <button class="btn btn-primary btn--icon-text mt-2" (click)="PacienteModal()"><i class="zmdi zmdi-floppy"></i> Crear Paciente</button>
+	            </div>
+	            <div class="col-md-6">
+		            <div class="form-group">
+		                <label for="ID_CONSULTORIO">Consultorio <span style="color: #ff6b68;">*</span></label>
+		                <select class="select2 consult" id="ID_CONSULTORIO" formControlName="ID_CONSULTORIO" data-placeholder="Seleccione...">
+		                	<option></option>
+		                	<option *ngFor="let consultorio of consultorios" [value]="consultorio.ID_CONSULTORIO">{{consultorio.COD_CONSULTORIO}} - {{consultorio.NOM_CONSULTORIO}}</option>
+		               	</select>
+						<i class="form-group__bar"></i>
+		            </div>
+		        </div>
+	            <div class="col-md-6">
+	                <div class="form-group">
+	                    <label for="SERVICIO">Servicio <span style="color: #ff6b68;">*</span></label>
+	                    <select class="select2 servicio" id="SERVICIO" formControlName="SERVICIO" data-placeholder="Seleccione...">
+	                    	<option></option>
+							<option *ngFor="let servi of servicios" [attr.pos]="servi.POS" [value]="servi.ID_ITEM">{{servi.NOM_ITEM}}</option>
+	                    </select>
+						<i class="form-group__bar"></i>
+	                </div>
+	            </div>
+	            <div class="col-md-4">
+	                <div class="form-group">
+	                    <label for="AUTORIZACION">Autorización</label>
+	                    <input type="text" class="form-control" id="AUTORIZACION" formControlName="AUTORIZACION" placeholder="Número" [attr.disabled]="true"/>
+						<i class="form-group__bar"></i>
+	                </div>
+	            </div>
+	            <div class="col-md-2">
+	                <button class="btn btn-primary btn--icon-text mt-2" (click)="AutoModal()" [disabled]="tiene"><i class="zmdi zmdi-floppy"></i> Crear Autorización</button>
+	            </div>
+                <div class="col-md-6">
+	                <div class="form-group">
+	                    <label for="ID_MOTIVO_CONSULTA">Motivo Consulta <span style="color: #ff6b68;">*</span></label>
+	                    <select class="select2 motivoc" id="ID_MOTIVO_CONSULTA" formControlName="ID_MOTIVO_CONSULTA">
+							<option *ngFor="let motivo of motivoc" [value]="motivo.ID_MOTIVO_CONSULTA">{{motivo.NOM_MOTIVO_CONSULTA}}</option>
+	                    </select>
+						<i class="form-group__bar"></i>
+	                </div>
+	            </div>
+	            <div class="col-md-6">
+		            <div class="form-group">
+		                <label for="TIPO_CITA">Tipo de cita <span style="color: #ff6b68;">*</span></label>
+		                <select class="select2 consult" id="TIPO_CITA" formControlName="TIPO_CITA" data-placeholder="Seleccione...">
+		                	<option></option>
+		                	<option *ngFor="let tipo of tipocita" [value]="tipo.ID_TIPO_CITA">{{tipo.NOM_TIPO_CITA}}</option>
+		               	</select>
+						<i class="form-group__bar"></i>
+		            </div>
+		        </div>
+		        <div *ngIf="estado_c == 1" class="col-md-12">
+					<label>Estado en Sala</label>
+					<div class="form-group">
+				        <div class="toggle-switch">
+				            <input type="checkbox" class="toggle-switch__checkbox" name="cita_estado" id="cita_estado">
+				            <i class="toggle-switch__helper"></i>
+				        </div>
+				    </div>
+				</div>
+				<div *ngIf="estado_c == 2" class="col-md-12 mb-2">
+					<button class="btn btn-primary btn--icon-text btn-registroc" (click)="RegistroClinico()"><i class="zmdi zmdi-collection-text"></i> Asignar Registro Clínico</button>
+				</div>
+	            <div *ngIf="concurrencia == 1" class="col-md-12 form-group mb-4">
+					<label>Envio de Notificaciones</label>
+					<div class="btn-group btn-group-toggle col-md-12" data-toggle="buttons">
+						<label class="btn active">
+							<input type="radio" name="datos1" id="correo" autocomplete="off" value="1" checked> Correo
+						</label>
+						<label class="btn">
+							<input type="radio" name="datos1" id="sms" autocomplete="off" value="2"> SMS
+						</label>
+						<label class="btn">
+							<input type="radio" name="datos1" id="llamada" autocomplete="off" value="3"> Llamada
+						</label>
+						<label class="btn">
+							<input type="radio" name="datos1" id="whatsap" autocomplete="off" value="4"> Whatsap
+						</label>
+					</div>
+				</div>
+            </div>
+			<div class="modal-footer">
+	            <button class="btn btn-primary btn--icon-text btn-asignar" (click)="Asignar()"><i class="zmdi zmdi-floppy"></i> Asignar</button>
+	            <button *ngIf="evento_id != 0" class="btn btn-link btn-delete" data-calendar="delete" (click)="CancelarCita()">Cancelar Cita</button>
+	            <button class="btn btn-link" (click)="DismissR()">Cancelar</button>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+<div class="modal fade" id="auto_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body row col-md-12">
+                <div class="col-md-12 mb-3">
+									<label for="NUM_AUTORIZACION">Autorización <span style="color: #ff6b68;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="NUM_AUTORIZACION" placeholder="Número" class="form-control" formControlName="NUM_AUTORIZACION"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-12 mb-1">
+						            <div class="form-group">
+						                <label for="ID_PACIENTES">Paciente <span style="color: #ff6b68;">*</span></label>
+						                <input class="form-control" id="ID_PACIENTES" formControlName="ID_PACIENTES" [attr.disabled]="true"/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-12 mb-3">
+									<label for="FEC_AUTORIZACION">Fecha autorización</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+										</div>
+										<input type="text" id="FEC_AUTORIZACION" placeholder="Fecha" class="form-control date-picker fauto" formControlName="FEC_AUTORIZACION"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-12 mb-1">
+									<div class="form-group">
+						                <label for="ID_ITEM">Servicio <span style="color: #ff6b68;">*</span></label>
+						                <input class="form-control" id="ID_ITEM" formControlName="ID_ITEM"/>
+										<i class="form-group__bar"></i>
+						            </div>
+								</div>
+								<div class="col-md-9 mb-3">
+									<label for="NUM_SESION_AUT">Cantidad <span style="color: #ff6b68;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="NUM_SESION_AUT" placeholder="Cantidad" class="form-control" formControlName="NUM_SESION_AUT"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+            </div>
+			<div class="modal-footer">
+	            <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+				<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="CancelAuto();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+<div class="modal fade" id="grupo_horario">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+            	<div class="row col-md-12">
+             		<div class="col-md-12 mb-3">
+						<label for="NOM_GRUPO">Nombre <span style="color: #ff6b68;">*</span></label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+							</div>
+							<input type="text" id="NOM_GRUPO" placeholder="Grupo horario" class="form-control" formControlName="NOM_GRUPO"/>
+							<i class="form-group__bar"></i>
+						</div>
+					</div>
+					<div class="col-md-12 mb-3">
+						<label>Días</label>
+						<div class="btn-group btn-group-toggle form-group input-group" data-toggle="buttons">
+						    <label class="btn">
+						        <input type="checkbox" name="datos" id="lunes" autocomplete="off" value="Lunes"> Lunes
+						    </label>
+						    <label class="btn">
+						        <input type="checkbox" name="datos" id="martes" autocomplete="off" value="Martes"> Martes
+						    </label>
+						    <label class="btn">
+						        <input type="checkbox" name="datos" id="miercoles" autocomplete="off" value="Miércoles"> Miercoles
+						    </label>
+						    <label class="btn">
+						        <input type="checkbox" name="datos" id="jueves" autocomplete="off" value="Jueves"> Jueves
+						    </label>
+						    <label class="btn">
+						        <input type="checkbox" name="datos" id="viernes" autocomplete="off" value="Viernes"> Viernes
+						    </label>
+						    <label class="btn">
+						        <input type="checkbox" name="datos" id="sabado" autocomplete="off" value="Sábado"> Sábado
+						    </label>
+						    <label class="btn">
+						        <input type="checkbox" name="datos" id="domingo" autocomplete="off" value="Domingo"> Domingo
+						    </label>
+						</div>
+					</div>
+
+					<div class="col-md-5 mb-3">
+						<label for="horai">Hora inicial</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+							</div>
+							<input type="text" id="horai" placeholder="Inicial" class="form-control time-picker horai"/>
+							<i class="form-group__bar"></i>
+						</div>
+					</div>
+
+					<div class="col-md-5">
+						<label for="horaf">Hora final</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+							</div>
+							<input type="text" id="horaf" placeholder="Final" class="form-control time-picker horaf"/>
+							<i class="form-group__bar"></i>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<button class="btn btn-primary btn--icon mt-3" type="button" (click)="Asignar1();" title="Asignar horario" data-toggle="tooltip"><i class="zmdi zmdi-assignment-returned"></i></button>
+					</div>
+
+					<div class="col-md-12">
+						<div class="card">
+							<div class="row col-md-12">
+								<div class="col-md-4">
+									Día
+								</div>
+								<div class="col-md-3 text-center">
+									Hora I
+								</div>
+								<div class="col-md-3 text-center">
+									Hora F
+								</div>
+								<div class="col-md-2"></div>
+								<div class="row col-md-12" id="addhora"></div>
+							</div>
+						</div>
+					</div> 
+				</div>
+            </div>
+			<div class="modal-footer">
+	            <button class="btn btn-primary btn--icon-text btn-addp1 mr-2" type="button" (click)="Registrar1();"><i class="zmdi zmdi-floppy"></i> Actualizar</button>
+				<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="CancelGrupo();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+<div class="modal fade" id="cancel_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body row col-md-12">
+				<div class="col-md-12 mb-4">
+					<label for="PACIENTE_C">Paciente</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="zmdi zmdi-account-box"></i></span>
+						</div>
+						<input type="text" id="PACIENTE_C" class="form-control" formControlName="PACIENTE_C"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<label for="OBSERVACION">Observación</label>
+					<div class="input-group">
+						<textarea id="OBSERVACION" class="form-control" formControlName="OBSERVACION"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+            </div>
+			<div class="modal-footer">
+	            <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="deleteEvent()"><i class="zmdi zmdi-delete"></i> Cancelar cita</button>
+				<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelcancel()"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+</form>
+<form [formGroup]="pacienteForm">
+	<div class="modal fade" id="paciente_modal">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-body">
+	                <div class="row col-md-12 mb-3">
+	                	<div class="col-md-6 mb-3">
+					        <div class="form-group">
+					            <label for="ID_TIPO_DOC">Tipo Identificación <span style="color: #ff6b68;">*</span></label>
+					            <select class="select2 tipodoc" data-placeholder="Seleccione..." id="ID_TIPO_DOC" formControlName="ID_TIPO_DOC">
+									<option></option>
+									<option *ngFor="let ident of tipoident" [value]="ident.ID_TIPO_IDENTIFICACION">{{ident.COD_TIPO_IDENTIFICACION}} - {{ident.NOM_TIPO_IDENTIFICACION}}</option>
+					            </select>
+								<i class="form-group__bar"></i>
+					        </div>
+					    </div>
+						<div class="col-md-6">
+							<label for="NUM_DOC">No. Identificación <span style="color: #ff6b68;">*</span></label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+								</div>
+								<input type="text" id="NUM_DOC" placeholder="No.Identificación" class="form-control" formControlName="NUM_DOC" [ngClass]="{ 'is-invalid': submitted && f.NUM_DOC.errors }" />
+								<div *ngIf="submitted && f.NUM_DOC.errors" class="invalid-feedback">
+									<div *ngIf="f.NUM_DOC.errors.required">Por favor, agregue el número de identificación.</div>
+								</div>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6 mb-5">
+							<label for="PRIMER_NOMBRE">Primer nombre <span style="color: #ff6b68;">*</span></label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+								</div>
+								<input type="text" id="PRIMER_NOMBRE" placeholder="Primer nombre" class="form-control" formControlName="PRIMER_NOMBRE" [ngClass]="{ 'is-invalid': submitted && f.PRIMER_NOMBRE.errors }" />
+								<div *ngIf="submitted && f.PRIMER_NOMBRE.errors" class="invalid-feedback">
+									<div *ngIf="f.PRIMER_NOMBRE.errors.required">Por favor, agregue el primer nombre.</div>
+								</div>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<label for="SEGUNDO_NOMBRE">Segundo nombre</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+								</div>
+								<input type="text" id="SEGUNDO_NOMBRE" placeholder="Segundo nombre" class="form-control" formControlName="SEGUNDO_NOMBRE"/>
+													<i class="form-group__bar"></i>
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-5">
+							<label for="PRIMER_APELLIDO">Primer apellido <span style="color: #ff6b68;">*</span></label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+								</div>
+								<input type="text" id="PRIMER_APELLIDO" placeholder="Primer apellido" class="form-control" formControlName="PRIMER_APELLIDO" [ngClass]="{ 'is-invalid': submitted && f.PRIMER_APELLIDO.errors }" />
+								<div *ngIf="submitted && f.PRIMER_APELLIDO.errors" class="invalid-feedback">
+									<div *ngIf="f.PRIMER_APELLIDO.errors.required">Por favor, agregue el primer apellido.</div>
+								</div>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<label for="SEGUNDO_APELLIDO">Segundo apellido</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+								</div>
+								<input type="text" id="SEGUNDO_APELLIDO" placeholder="Segundo apellido" class="form-control" formControlName="SEGUNDO_APELLIDO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6 mb-3">
+				            <div class="form-group">
+					            <label for="dpto">Departamento</label>
+					            <select class="select2 dpto" data-placeholder="Seleccione..." id="dpto" formControlName="dpto">
+									<option></option>
+									<option *ngFor="let dpto of dptos" [value]="dpto.ID_DPTO" [selected]="dpto.COD_DEPARTAMENTO==0 ? true : null">{{dpto.NOM_DEPARTAMENTO}}</option>
+					            </select>
+								<i class="form-group__bar"></i>
+				            </div>
+				        </div>
+						<div class="col-md-6">
+				            <div class="form-group">
+				                <label for="ID_MUNICIPIO">Municipio</label>
+				                <select class="select2 muni" data-placeholder="Seleccione..." id="ID_MUNICIPIO" formControlName="ID_MUNICIPIO">
+									<option></option>
+									<option *ngFor="let muni of municipios" [value]="muni.ID_MUNICIPIO" [selected]="muni.COD_MUNICIPIO==0 ? true : null">{{muni.NOM_MUNICIPIO}}</option>
+				                </select>
+								<i class="form-group__bar"></i>
+				            </div>
+				       	</div>
+	                </div>									
+	            </div>
+				<div class="modal-footer">
+		            <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="RegistrarP();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+					<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="CancelPaciente();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</form>

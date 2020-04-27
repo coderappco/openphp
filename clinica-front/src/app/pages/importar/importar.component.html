@@ -1,0 +1,82 @@
+<header class="content__title" id="foco">
+    <h1>Importar</h1>
+	<small>Podra importar los pacientes al sistema!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<form [formGroup]="importForm">
+			<p class="text-center">
+				<ul class="list list--star">
+                    <li>Nota: Si son pacientes de administradoras debe escoger una.</li>
+                </ul>
+            <p>
+            <hr>
+            <br>
+			<div class="row col-md-12 mb-5">
+				<div class="row col-md-4">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="ID_ADMINISTRADORA">Administradora</label>
+							<select class="select2 admin" data-placeholder="Seleccione..." id="ID_ADMINISTRADORA" formControlName="ID_ADMINISTRADORA">
+								<option></option>
+								<option *ngFor="let admin of administradoras" [value]="admin.ID_ADMINISTRADORA">{{admin.NOM_ADMINISTRADORA}}</option>
+							</select>
+							<i class="form-group__bar"></i>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="CONTRATO">Contrato</label>
+							<select class="select2 contrat" data-placeholder="Seleccione..." id="CONTRATO" formControlName="CONTRATO">
+								<option></option>
+							</select>
+							<i class="form-group__bar"></i>
+						</div>
+					</div>
+				</div>
+				<div class="row col-md-4">
+					<div class="col-md-12 ">
+						<label for="foto">Archivo de datos</label>
+						<div class="dropzone" id="archivo">
+							<div class="dz-message" id="message" data-dz-message><span>Arrastre el archivo aqui</span></div>
+						</div>
+					</div>
+				</div>
+				<div class="row col-md-4">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="SEPARADOR">Separador</label>
+							<select class="select2 separador" id="SEPARADOR" formControlName="SEPARADOR">
+								<option value="1" [selected]="true">,</option>
+								<option value="2">;</option>
+							</select>
+							<i class="form-group__bar"></i>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<label for="HEADER">Descripción de Columna</label>
+						<div class="form-group">
+                            <div class="toggle-switch">
+                                <input type="checkbox" class="toggle-switch__checkbox" name="HEADER" id="HEADER" value="1">
+                                <i class="toggle-switch__helper"></i>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 mb-3">
+				<label>Orden de los Datos (Arrastre los campos hasta la posicion que deben tener)</label>
+			</div>
+			<div class="col-md-12 row mb-5" [sortablejs]="draggableItems" [sortablejsOptions]="draggableOptions" id="drag">
+				<div class="col-sm-2 mb-3" *ngFor="let item of draggableItems">
+		            <div class="color-demo color-demo--light color-demo--white" style="background-color: #FFFFFF;">
+		                <div style="cursor: pointer;font-weight: 500;">{{ item.text }}</div>
+		            </div>
+		        </div>
+			</div>
+			<div class="row form-group">
+				<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Importar();"><i class="zmdi zmdi-inbox"></i> Importar Pacientes</button>		
+			</div>
+		</form>
+	</div>
+</div>	

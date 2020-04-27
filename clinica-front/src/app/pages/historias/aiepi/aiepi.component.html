@@ -1,0 +1,1853 @@
+<p class="text-center" id="foco">
+<p>
+<hr>
+<div class="tab-container">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#datosg" role="tab">Datos Generales</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#antecedentes" role="tab">Antecedentes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#otrosd" role="tab">Otros Datos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#examenf" role="tab">Examen Físico</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#factores" role="tab">Factores de Riesgo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#tiene" role="tab">Tiene</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#verificar" role="tab">Verificar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#evaluar" role="tab">Evaluar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#descrip" role="tab">Descripciones</a>
+        </li>
+    </ul>
+
+    <form [formGroup]="aiepiForm">
+    	<input type="hidden" name="editor" id="editor"/>
+	    <div class="tab-content">
+	        <div class="tab-pane active fade show" id="datosg" role="tabpanel">
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-3">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts"></i></span>
+								</div>
+								<input type="text" class="form-control" id="NOMBRE" name="NOMBRE" placeholder="Nombre"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+								</div>
+								<input type="text" class="form-control" id="DIRECCIONP" name="DIRECCIONP" placeholder="Dirección"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+							   	<label>Parentesco</label>
+							    <select class="select2 parentesco" id="PARENTESCO" name="PARENTESCO" data-placeholder="Seleccione...">
+							    	<option></option>
+							    	<option *ngFor="let parent of parentesco" [value]="parent.ID_PARENTESCO" [selected]="parent.ID_PARENTESCO == 23 ? true : null">{{parent.NOM_PARENTESCO}}</option>					
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Teléfono</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-account-box-phone"></i></span>
+								</div>
+								<input type="text" class="form-control" id="TELEFONO" name="TELEFONO" placeholder="Teléfono"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-male-female"></i></span>
+								</div>
+								<input type="text" class="form-control" id="ACOMPANANTE" name="ACOMPANANTE" placeholder="Acompañante"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ESCOLARIDAD">Nivel Educativo</label>
+							    <select class="select2 escolaridad" id="ID_ESCOLARIDAD" name="ID_ESCOLARIDAD">
+									<option></option>
+									<option *ngFor="let escolar of escolaridad" [value]="escolar.ID_ESCOLARIDAD" [selected]="escolar.ID_ESCOLARIDAD == 1 ? true : null">{{escolar.NOM_ESCOLARIDAD}}</option>
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_DISCAPACIDAD">Discapacidad</label>
+						        <select class="select2 discapacidad" id="ID_DISCAPACIDAD" name="ID_DISCAPACIDAD">
+						            <option></option>
+									<option *ngFor="let disc of discapacidad" [value]="disc.ID_DISCAPACIDAD" [selected]="disc.ID_DISCAPACIDAD == 5 ? true : null">{{disc.NOM_DISCAPACIDAD}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="GESTACION">Gestación</label>
+						        <select class="select2 gestacion" id="GESTACION" name="GESTACION">
+									<option value="1">SI</option>
+									<option value="2" [selected]="true">NO</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_OCUPACION">Ocupación</label>
+						        <select class="select2 ocupacion" id="ID_OCUPACION" name="ID_OCUPACION">
+									<option></option>
+									<option *ngFor="let ocupa of ocupacion" [value]="ocupa.ID_OCUPACION" [selected]="ocupa.ID_OCUPACION == 511 ? true : null">{{ocupa.NOM_OCUPACION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ETNIA">Etnia</label>
+						        <select class="select2 etnia" data-placeholder="Seleccione..." id="ID_ETNIA" name="ID_ETNIA">
+									<option></option>
+									<option *ngFor="let etn of etnia" [value]="etn.ID_ETNIA" [selected]="etn.ID_ETNIA == 6 ? true : null">{{etn.NOM_ETNIA}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_RELIGION">Religión</label>
+						        <select class="select2 religion" id="ID_RELIGION" name="ID_RELIGION">
+									<option></option>
+									<option *ngFor="let rel of religion" [value]="rel.ID_RELIGION" [selected]="rel.ID_RELIGION == 6 ? true : null">{{rel.NOM_RELIGION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-9 mb-2"></div>
+						<div class="col-md-12 mb-3">
+							<label>Motivo Consulta</label>
+							<div class="input-group">
+								<textarea class="form-control textarea-autosize" rows="5" id="MOTIVO" name="MOTIVO" placeholder="Motivo"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="desplazado" autocomplete="off" value="1"> Desplazado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="pensionado" autocomplete="off" value="2"> Pensionado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="lgbti" autocomplete="off" value="3"> Población LGBTI
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="maltrato" autocomplete="off" value="4"> Víctima maltrato
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="conflicto" autocomplete="off" value="5"> Víctima conflicto armado
+								</label>
+							</div>
+						</div>
+						<div class="col-md-12 form-group">
+							<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('antecedentes');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="antecedentes" role="tabpanel">
+				<ul class="list list--star">
+					<li>ANTECEDENTES PATOLOGICO IMPORTANTES</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3">
+							<label>COMO FUE EL EMBARAZO/DURAC</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="EMBARAZODURAC" name="EMBARAZODURAC" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>COMO FUE EL PARTO</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="PARTO" name="PARTO" value="NORMAL" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>CUANTO PESO AL NACER</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="PESOALNACER" name="PESOALNACERL" value="0" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>CUANTO MISION AL NACER</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="MISIONALNACER" name="MISIONALNACER" value="0" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>PROBLEMAS DESPUES DEL NAC</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="PROBLEMASNAC" name="PROBLEMASNAC" value="NO" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>QUE ENFERMEDADES HA TENIDO</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="ENFERMEDADEST" name="ENFERMEDADEST" value="NO" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>TRAUMATICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TRAUMATICOS" name="TRAUMATICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>QUIRURGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="QUIRURGICOS" name="QUIRURGICOS" value="No Reiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>INMUNOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="INMUNOLOGICOS" name="INMUNOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>ALERGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="ALERGICOS" name="ALERGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>FARMACOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOSP" name="FARMACOLOGICOSP" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>TOXICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TOXICOSP" name="TOXICOSP" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>OTROS ANTECEDENTES</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="OANTECEDENTES" name="OANTECEDENTES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Familiares</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-2">
+							<label>GENERALES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GENERALES" name="GENERALES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>PATOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PATOLOGICOS" name="PATOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>TOXICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TOXICOSF" name="TOXICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>FARMACOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOSF" name="FARMACOLOGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>ALERGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ALERGICOSF" name="ALERGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>OBSTETRICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OBSTETRICOS" name="OBSTETRICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>GINECOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GINECOLOGICOS" name="GINECOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Perinatales</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-2">
+							<label>PARTO INSTITUCIONAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PARTOI" name="PARTOI" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>MODALIDAD DEL PARTO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="MODALIDAD" name="MODALIDAD" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>PRESENTACION CEFALICA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PRESENTACION" name="PRESENTACION" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>PRODUCTO UNICO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PRODUCTOU" name="PRODUCTOU" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>ESTUVO EN ENCUBADORA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ENCUBADORA" name="ENCUBADORA" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>RECIBIO FOTOTERAPIA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FOTOTERAPIA" name="FOTOTERAPIA" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>LAC. MATERNA 1A HORA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LACMATERNA" name="LACMATERNA" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>PESO AL NACER: GRAMOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PESOA" name="PESOA" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>TALLA AL NACER</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TALLAA" name="TALLAA" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('otrosd');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="otrosd" role="tabpanel">
+				<ul class="list list--star">
+					<li>Revisión por Sistemas</li>
+				</ul>
+				<hr>
+			    <div class="card">
+			        <div class="row col-md-12" style="padding: 0; margin: 0;">
+			        	<div class="col-md-3 mb-3">
+							<label>GENERAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GENERAL" name="GENERAL" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>CABEZA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CABEZA" name="CABEZA" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>OJOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OJOS" name="OJOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>NARIZ</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="NARIZ" name="NARIZ" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>OIDOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OIDOS" name="OIDOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>OROFAFINGE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OROFAFINGE" name="OROFAFINGE" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>CUELLO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CUELLO" name="CUELLO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>RESPIRATORIO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="RESPIRATORIO" name="RESPIRATORIO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>NEUROLOGICO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="NEUROLOGICO" name="NEUROLOGICO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>ENDOCRINO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ENDOCRINO" name="ENDOCRINO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>MUSCULO(ESQUELETICO)</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="MUSCULO" name="MUSCULO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>HEMATOPOYETICO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="HEMATOPOYETICO" name="HEMATOPOYETICO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>LINFORRETICULAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LINFORRETICULAR" name="LINFORRETICULAR" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>PSIQUIATRICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PSIQUIATRICOS" name="PSIQUIATRICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>PIEL Y FANERAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PIELFANERAS" name="PIELFANERAS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>ARTICULAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ARTICULAR" name="ARTICULAR" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>CARDIOVASCULAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CARDIOVASCULAR" name="CARDIOVASCULAR" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>GASTRO - INTESTINAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GASTRO" name="GASTRO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>GINECOLOGICO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GINECOLOGICO" name="GINECOLOGICO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>UROLOGICO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="UROLOGICO" name="UROLOGICO" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>OTROS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OTROS" name="OTROS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+			        </div>
+				</div>
+				<ul class="list list--star">
+					<li>Signos vitales</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3">
+							<label>FRECUENCIA CARDIACA</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="FRECUENCIAC" name="FRECUENCIAC" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>FRECUENCIA RESPIRATORIA</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="FRECUENCIAR" name="FRECUENCIAR" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TEMPERATURA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="TEMPERATURA" name="TEMPERATURA" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>PULSO</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="PULSO" name="PULSO" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SATURACION DE OXIGENO</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="SATURACION" name="SATURACION" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>										
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('examenf');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="examenf" role="tabpanel">
+				<ul class="list list--star">
+					<li>Examen Físico</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-4">
+							<label>ASPECTO GENERAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ASPECTOG" name="ASPECTOG" placeholder="Aspecto" value="NORMAL"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<label>PESO (KG)</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PESO" name="PESO" placeholder="0" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<label>TALLA (CM)</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TALLA" name="TALLA" placeholder="0" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<label>IMC</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="IMC" name="IMC" placeholder="imc" value="0" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>SINTOMATICO DE PIEL</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="SINTOMATICOPIEL" name="SINTOMATICOPIEL" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SINTOMATICO RESPIRATORIO</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="SINTOMATICORE" name="SINTOMATICORE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SINDROME FEBRIL</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="SINDROMEFEBRIL" name="SINDROMEFEBRIL" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SINTOMATICO NERVIOSO PERIFERICO</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="SINTOMATICONP" name="SINTOMATICONP" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>CABEZA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CABEZAE" name="CABEZAE" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>OJOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OJOSE" name="OJOSE" value="Sin alteraciones" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+						<div class="col-md-3 mb-4">
+							<label>OIDOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OIDOSE" name="OIDOSE" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>NARIZ</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="NARIZE" name="NARIZE" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>BOCA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="BOCA" name="BOCA" placeholder="Boca" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>GENITOURINARIO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GENITOURINARIO" name="GENITOURINARIO" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CUELLO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CUELLOE" name="CUELLOE" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>TORAX</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TORAX" name="TORAX" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>PULMONAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PULMONAR" name="PULMONAR" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CARDIOVASCULAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CARDIOVASCULARE" name="CARDIOVASCULARE" value="rscsrs,no soplos"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>ABDOMEN</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ABDOMEN" name="ABDOMEN" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>EXTREMIDADES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="EXTREMIDADES" name="EXTREMIDADES" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>COLUMNA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="COLUMNA" name="COLUMNA" value="NORMAL"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>SISTEMA MUSCULOESQUELETICO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="MUSCULOESQUELETICO" name="MUSCULOESQUELETICO" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>PIEL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PIEL" name="PIEL" value="Sin alteraciones"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('factores');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="factores" role="tabpanel">
+				<ul class="list list--star">
+					<li>Salud Mental</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+							<div class="col-md-4">
+								<label>SOSPECHA DE MALTRATO FISICO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="MALTRATOF" name="MALTRATOF" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>SOSPECHA DE VIOLENCIA SEXUAL</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="VIOLENCIASE" name="VIOLENCIASE" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>SOSPECHA DE VIOLENCIA INTRAFAMILIAR</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="VIOLENCIAIN" name="VIOLENCIAIN" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>CONDUCTA AGRESIVA O VIOLENTA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="CONDUCTAAV" name="CONDUCTAAV" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>SINTOMATOLOGIA DEPRESIVA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="SINTOMATOLOGIAD" name="SINTOMATOLOGIAD" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>SINTOMATOLOGIA DE ANSIEDAD</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="SINTOMATOLOGIAA" name="SINTOMATOLOGIAA" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>IDEAS O INTENTO DE SUICIDA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="IDEAS" name="IDEAS" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>CONSUMO DE ALCOHOL SUSTANCIAS PSICOACTIVAS</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="CONSUMO" name="CONSUMO" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>PENSAMIENTOS O IDEAS INCOHERENTES</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="PENSAMIENTOS" name="PENSAMIENTOS" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label>VICTIMA DE DESPLAZAMIENTO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="VICTIMAD" name="VICTIMAD" value="No Refiere" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Examen Mental</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+							<div class="col-md-3">
+								<label>APARIENCIA GENERAL</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="APARIENCIA" name="APARIENCIA" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ACTITUD</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ACTITUD" name="ACTITUD" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ATENCION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ATENCION" name="ATENCION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>CONCIENCIA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="CONCIENCIA" name="CONCIENCIA" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ORIENTACION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ORIENTACION" name="ORIENTACION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>LENGUAJE</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="LENGUAJE" name="LENGUAJE" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>AFECTO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="AFECTO" name="AFECTO" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>MEMORIA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="MEMORIA" name="MEMORIA" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>PENSAMIENTO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="PENSAMIENTO" name="PENSAMIENTO" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>HABITO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="HABITO" name="HABITO" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>SUEÑO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="SUEÑO" name="SUEÑO" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ALIMENTACION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ALIMENTACION" name="ALIMENTACION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>INTELIGENCIA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="INTELIGENCIA" name="INTELIGENCIA" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>RETARDO MENTAL</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="RETARDOM" name="RETARDOM" value="NO" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>INTROSPECCION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="INTROSPECCION" name="INTROSPECCION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>PROSPECCION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="PROSPECCION" name="PROSPECCION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>SOMATIZACIONES</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="SOMATIZACIONES" name="SOMATIZACIONES" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>OBSERVACIONES</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="OBSERVACIONES" name="OBSERVACIONES" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Signos de peligro en general</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3">
+							<label>Puede beber o tomar de pecho</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="PUEDE" name="PUEDE" value="SI" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Letargico o Inconsciente</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="LETARGICO" name="LETARGICO" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Vomita Todo</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="VOMITA" name="VOMITA" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Convulciones</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="CONVULCIONES" name="CONVULCIONES" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('tiene');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="tiene" role="tabpanel">
+				<ul class="list list--star">
+					<li>Tos o difucultad para respirar</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICO" name="DIAGNOSTICO">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>PRIMER EPISODIO SIBILANCIA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PRIMERES" name="PRIMERES" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SIBILANCIAS RECURRENTES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SIBILANCIASR" name="SIBILANCIASR" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CUADRO GRIPAL PREVIO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CUADRO" name="CUADRO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>ANTECEDENTES PREMATUREZ</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ANTECEDENTES" name="ANTECEDENTES" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TIRAJE SUBCOSTAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TIRAJE" name="TIRAJE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>ESTRIDOR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ESTRIDOR" name="ESTRIDOR" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>APNEA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="APNEA" name="APNEA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>RESPIRACCION RAPIDA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="RESPIRACCION" name="RESPIRACCION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SA02<92%(90% ALTURA >2500MSNM)</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SA02" name="SA02" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SIBILANCIAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SIBILANCIAS" name="SIBILANCIAS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Diarrea</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOD" name="DIAGNOSTICOD">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>HAY SANGRE EN LAS HECES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SANGRE" name="SANGRE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TIENE VOMITO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="VOMITO" name="VOMITO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>LETARGICO O COMATOSO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LETARGICO" name="LETARGICO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>OJOS HUNDIDOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OJOSHUNDIDOS" name="OJOSHUNDIDOS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>BEBE MAL O NO PUEDE BEBER</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="BEBE" name="BEBE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>PLIEGUE CUTÀNEO MUY LENTO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PLIEGUE" name="PLIEGUE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>INTRANQUILO IRRITABLE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="INTRANQUILO" name="INTRANQUILO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>LENTO (2 SEG. O MENOR)</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LENTO" name="LENTO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Fiebre</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOF" name="DIAGNOSTICOF">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>FIEBRE +5 DIAS TODOS LOS DIAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FIEBRE5" name="FIEBRE5" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>FIEBRE MAS DE 39 C</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FIEBRE39" name="FIEBRE39" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>VIVE/VISITO LOS ULT 15 DIAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="VIVE" name="VIVE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>RIGIDEZ DE NUCA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="RIGIDEZ" name="RIGIDEZ" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>APARIENCIA ENFERMO GRAVE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="APARIENCIAEG" name="APARIENCIAEG" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>RESPUESTA SOCIAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="RESPUESTAS" name="RESPUESTAS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>ERUPCION CUTANEA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ERUPCION" name="ERUPCION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>POSTRACION</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="POSTRACION" name="POSTRACION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>ASPECTO TOXICO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ASPECTOTOXICO" name="ASPECTOTOXICO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>MANIFESTACION CON SANGRADO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SANGRADO" name="SANGRADO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Problema de oido</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOO" name="DIAGNOSTICOO">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TIENE DOLOR DE OIDO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="DOLOR" name="DOLOR" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TIENE SUPURACION DESDE HACE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SUPURACIOND" name="SUPURACIOND" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>NUMERO DE EPISODIOS PREVIOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="EPISODIOS" name="EPISODIOS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>SUPURACION DE OIDO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SUPURACION" name="SUPURACION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>TUMEFACCION DOLOROSA AL TACTO, DETRAS DE LA OREJA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TUMEFACCION" name="TUMEFACCION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Problema de garganta</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-4 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOG" name="DIAGNOSTICOG">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>Tiene dolor de Garganta</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="DOLORG" name="DOLORG" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>Ganglios del cuerpo crecidos y dolorosos</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GANGLIOS" name="GANGLIOS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>Exudado Blanco - Eritema</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="EXUDADO" name="EXUDADO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('verificar');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="verificar" role="tabpanel">
+				<ul class="list list--star">
+					<li>Salud bucal</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOSB" name="DIAGNOSTICOSB">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TIENE DOLOR EN ALGUN DIENTE?</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="DIENTE" name="DIENTE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TIENE DOLOR EN LA BOCA?</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="DOLORBOCA" name="DOLORBOCA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TRAUMA EN LA CARA O BOCA?</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TRAUMABOCA" name="TRAUMABOCA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>TIENE PADRES O HERMANOS CON CARIES</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="CARIES" name="CARIES" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>UTILIZA SEDA DENTAL</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="DENTAL" name="DENTAL" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>INFLAMACION DOLOROSA DEL LABIO EXUDADO PURULENTO EN ENCIA</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="INFLAMACION" name="INFLAMACION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label>ENROJESIMIENTO INFLAMACION LOCALIZADA/DEFORMIDAD EN ENCIA</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="ENROJESIMIENTO" name="ENROJESIMIENTO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CARIES CAVITACIONALES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CAVITACIONALES" name="CAVITACIONALES" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>VESICULAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="VESICULAS" name="VESICULAS" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+						<div class="col-md-3 mb-3">
+							<label>ULCERAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ULCERAS" name="ULCERAS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>MANCHAS BLANCAS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="MANCHASBLANCAS" name="MANCHASBLANCAS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>MANCHAS CAFES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="MANCHASCAFES" name="MANCHASCAFES" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TRAUMA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TRAUMA" name="TRAUMA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>FRACTURA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FRACTURA" name="FRACTURA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CONTUSION</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CONTUSION" name="CONTUSION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SUBLUXACION</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SUBLUXACION" name="SUBLUXACION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>LUXACION</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LUXACION" name="LUXACION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>EDEMA Y ERITEMA ENCIA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="EDEMAYERITEMA" name="EDEMAYERITEMA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>AVULSON DIENTE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="AVULSON" name="AVULSON" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TEMPORAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TEMPORAL" name="TEMPORAL" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>USA BIBERON</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="BIBERON" name="BIBERON" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Desnutrición</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-4 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICODI" name="DIAGNOSTICODI">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>SIGNOS DE EMACIACION VISIBLE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SIGNOS" name="SIGNOS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>EDEMA EN AMBOS PIES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="EDEMAPIES" name="EDEMAPIES" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Anemia</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-4 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOAN" name="DIAGNOSTICOAN">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>A RECIBIDO HIERRO EN LOS ULITMOS SEIS MESES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="HIERRO" name="HIERRO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>CUANDO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CUANDO" name="CUANDO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label>CUANTO TIEMPO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CUANTO" name="CUANTO" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>PALIDEZ PARLMAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PALIDEZPARLMAR" name="PALIDEZPARLMAR" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>PALIDEZ CONJUNTIVAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PALIDEZCONJUNTIVAL" name="PALIDEZCONJUNTIVAL" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Maltrato</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOMA" name="DIAGNOSTICOMA">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>VIVE EN SITUACION DE CALLE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="VIVECALLE" name="VIVECALLE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('evaluar');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="evaluar" role="tabpanel">
+				<ul class="list list--star">
+					<li>Desarrollo</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-3">
+							<label>DIAGNOSTICO</label>
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOEV" name="DIAGNOSTICOEV">							
+			            		</select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>TIENE ALGUN ANTECEDENTE IMPORTANTE PARA EL DESARROLLO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ANTECEDENTED" name="ANTECEDENTED" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label>AUSENCIA DE 1 2 3 4 CONDICIONES PARA LA EDAD?</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CONDICIONES" name="CONDICIONES" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>PERIMETRO CEFALICO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PERIMETROCEFALICO" name="PERIMETROCEFALICO" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>TIENE ALGUN FACTOR DE RIESGO</label>
+					        <div class="input-group">
+								<input type="text" class="form-control" id="FACTORRIESGO" name="FACTORRIESGO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Alimentación de niños</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-4 mb-3">
+							<label>PROBLEMA DE ALIMENTACION DETECTADO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PALIMENTACION" name="PALIMENTACION" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>RECIBE LECHE MATERNA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LECHEMATERNA" name="LECHEMATERNA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>RECIBE PECHO EN LA NOCHE</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PECHONOCHE" name="PECHONOCHE" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Epilestia Infantil</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<label>EPILESTIA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="EPILESTIA" name="EPILESTIA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>TUBERCULOSIS</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<label>TUBERCULOSIS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TUBERCULOSIS" name="TUBERCULOSIS" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Cancer Infantil</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<label>CANCER</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="CANCER" name="CANCER" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('descrip');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="descrip" role="tabpanel">
+				<ul class="list list--star">
+					<li>Recomendaciones y Orientación</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-4 mb-3">
+							<label>RECIBIO VITAMINA EN LOS ULTIMOS 6 MESES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="RVITAMINA" name="RVITAMINA" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>RECIBIO ALBENDAZOL EN LOS ULTIMOS 6 MESES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="RALBENDAZOL" name="RALBENDAZOL" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>RECIBIO HIERRO EN LOS ULTIMOS 6 MESES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="RHIERRO" name="RHIERRO" value="NO"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Intervención de medicina familiar</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<div class="input-group">
+								<textarea class="form-control" id="MEDICINAFAMILIAR" name="MEDICINAFAMILIAR"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>DIAGNOSTICO</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOFI" name="DIAGNOSTICOFI">							
+			            		</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row form-group">
+			<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Guardar();"><i class="zmdi zmdi-floppy"></i> Guardar Registro</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+	</form>
+</div>
+<div id="print" *ngIf="print" class="row"  style="font-weight: bolder; color: #000000;"></div>

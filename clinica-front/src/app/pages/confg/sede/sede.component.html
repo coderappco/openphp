@@ -1,0 +1,116 @@
+<header class="content__title" id="foco">
+    <h1>Sedes</h1>
+	<small>Podra asignar las sedes a las empresas!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Datos de la sede a registrar
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="sedeForm">
+	                		<div class="row col-md-12">
+	                			<div class="col-md-4 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_EMPRESA">Empresa <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 empresa" data-placeholder="Seleccione..." id="ID_EMPRESA" formControlName="ID_EMPRESA">
+											<option></option>
+											<option *ngFor="let empresa of empresas" [value]="empresa.ID_EMPRESA">{{empresa.NOM_EMPRESA}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-4">
+								    <label for="COD_SEDE">Código <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="COD_SEDE" placeholder="Código" class="form-control" formControlName="COD_SEDE" [ngClass]="{ 'is-invalid': submitted && f.COD_SEDE.errors }" />
+										<div *ngIf="submitted && f.COD_SEDE.errors" class="invalid-feedback">
+								            <div *ngIf="f.COD_SEDE.errors.required">Por favor, agregue el código de la sede.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+	                            <div class="col-md-4 mb-4">
+								    <label for="NOM_SEDE">Sede <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-balance"></i></span>
+										</div>
+										<input type="text" id="NOM_SEDE" placeholder="Sede" class="form-control" formControlName="NOM_SEDE" [ngClass]="{ 'is-invalid': submitted && f.NOM_SEDE.errors }" />
+										<div *ngIf="submitted && f.NOM_SEDE.errors" class="invalid-feedback">
+								            <div *ngIf="f.NOM_SEDE.errors.required">Por favor, agregue el nombre de la sede.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+	                			<div class="col-md-4 mb-3">
+	                                <div class="form-group">
+	                                    <label for="dpto">Departamento</label>
+	                                    <select class="select2 dpto" data-placeholder="Seleccione..." id="dpto" formControlName="dpto">
+											<option></option>
+											<option *ngFor="let dpto of dptos" [value]="dpto.ID_DPTO">{{dpto.NOM_DEPARTAMENTO}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-4 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_MUNICIPIO">Municipio <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 muni" data-placeholder="Seleccione..." id="ID_MUNICIPIO" formControlName="ID_MUNICIPIO">
+											<option></option>
+											<option *ngFor="let muni of municipios" [value]="muni.ID_MUNICIPIO">{{muni.NOM_MUNICIPIO}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+								<div class="col-md-4">
+								    <label for="TELEF">Teléfono</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-phone"></i></span>
+										</div>
+										<input type="text" id="TELEF" placeholder="Teléfono" class="form-control" formControlName="TELEF"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+								    <label for="DIREC_SEDE">Dirección</label>
+								    <div class="input-group mb-3">
+								    	<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+										</div>
+										<input type="text" placeholder="Dirección" id="DIREC_SEDE" class="form-control" formControlName="DIREC_SEDE"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+								<button *ngIf="sede_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

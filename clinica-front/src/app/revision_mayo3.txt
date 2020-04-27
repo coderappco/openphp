@@ -1,0 +1,9 @@
+REVISION
+1. Cuando estaba creando consultorios me salen todas las sedes existentes y no se sabria que sede es de que empresa.Esto como super administrador, como administrador u otro usuario, ya se sabria a que empresa quedaria asociado
+2. Te pido el favor que se subar los pacientes quiero ver el comportamiento con volumen de data.
+3. Desde citas debemos tener la opcion de crear el paciente mediante una modal donde se registren los datos del paciente y una vez se grabe se continuo con el proceso de la cita. Recuerde usabilidad 
+4. No pude crear pacientes desde el formulario de paciente y no pude hacer prueba de citas.
+5. INFORMES. Si es informes la etiqueta del formulario debe decir INFORMES no REPORTE.
+6. INFORMES. Habia solicitado y reitero, se deben cargar en el formulario un dataset con los criterios que halla escogido el usuario y luego debe decidir si genera pdf o excel.
+7. Probe generar EXCEL y no funciono, los campos que deben aparecer estan en el power point por favor son TODOS
+8. No pude continuar probando mas

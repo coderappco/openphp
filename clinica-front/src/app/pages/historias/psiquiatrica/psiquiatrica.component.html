@@ -1,0 +1,424 @@
+<p class="text-center" id="foco"><p>
+
+<div class="tab-container">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#datosg" role="tab">Datos Generales</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#otrosd" role="tab">Otros Datos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#antecedentes" role="tab">Antecedentes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#descrip" role="tab">Descripciones</a>
+        </li>
+    </ul>
+
+    <form [formGroup]="psiquiatricaForm">
+	    <div class="tab-content">
+	        <div class="tab-pane active fade show" id="datosg" role="tabpanel">
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-2">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts"></i></span>
+								</div>
+								<input type="text" class="form-control" id="NOMBRE" name="NOMBRE" placeholder="Nombre"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+								</div>
+								<input type="text" class="form-control" id="DIRECCIONP" name="DIRECCIONP" placeholder="Dirección"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+							   	<label>Parentesco</label>
+							    <select class="select2 parentesco" id="PARENTESCO" name="PARENTESCO" data-placeholder="Seleccione...">
+							    	<option></option>
+							    	<option *ngFor="let parent of parentesco" [value]="parent.ID_PARENTESCO" [selected]="parent.ID_PARENTESCO == 23 ? true : null">{{parent.NOM_PARENTESCO}}</option>					
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>Teléfono</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-account-box-phone"></i></span>
+								</div>
+								<input type="text" class="form-control" id="TELEFONO" name="TELEFONO" placeholder="Teléfono"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-male-female"></i></span>
+								</div>
+								<input type="text" class="form-control" id="ACOMPANANTE" name="ACOMPANANTE" placeholder="Acompañante"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ESCOLARIDAD">Nivel Educativo</label>
+							    <select class="select2 escolaridad" id="ID_ESCOLARIDAD" name="ID_ESCOLARIDAD">
+									<option></option>
+									<option *ngFor="let escolar of escolaridad" [value]="escolar.ID_ESCOLARIDAD" [selected]="escolar.ID_ESCOLARIDAD == 1 ? true : null">{{escolar.NOM_ESCOLARIDAD}}</option>
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_DISCAPACIDAD">Discapacidad</label>
+						        <select class="select2 discapacidad" id="ID_DISCAPACIDAD" name="ID_DISCAPACIDAD">
+						            <option></option>
+									<option *ngFor="let disc of discapacidad" [value]="disc.ID_DISCAPACIDAD" [selected]="disc.ID_DISCAPACIDAD == 5 ? true : null">{{disc.NOM_DISCAPACIDAD}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="GESTACION">Gestación</label>
+						        <select class="select2 gestacion" id="GESTACION" name="GESTACION">
+									<option value="1">SI</option>
+									<option value="2" [selected]="true">NO</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_OCUPACION">Ocupación</label>
+						        <select class="select2 ocupacion" id="ID_OCUPACION" name="ID_OCUPACION">
+									<option></option>
+									<option *ngFor="let ocupa of ocupacion" [value]="ocupa.ID_OCUPACION" [selected]="ocupa.ID_OCUPACION == 511 ? true : null">{{ocupa.NOM_OCUPACION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ETNIA">Etnia</label>
+						        <select class="select2 etnia" data-placeholder="Seleccione..." id="ID_ETNIA" name="ID_ETNIA">
+									<option></option>
+									<option *ngFor="let etn of etnia" [value]="etn.ID_ETNIA" [selected]="etn.ID_ETNIA == 6 ? true : null">{{etn.NOM_ETNIA}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_RELIGION">Religión</label>
+						        <select class="select2 religion" id="ID_RELIGION" name="ID_RELIGION">
+									<option></option>
+									<option *ngFor="let rel of religion" [value]="rel.ID_RELIGION" [selected]="rel.ID_RELIGION == 6 ? true : null">{{rel.NOM_RELIGION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-9"></div>
+						<div class="col-md-6 mb-4">
+							<label>Motivo Consulta</label>
+							<div class="input-group">
+								<textarea class="form-control textarea-autosize" rows="5" id="MOTIVO" name="MOTIVO" placeholder="Motivo"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6 mb-4">
+							<label>Enfermedad Actual</label>
+							<div class="input-group">
+								<textarea class="form-control textarea-autosize" rows="5" id="ENFERMEDAD_ACTUAL" name="ENFERMEDAD_ACTUAL" placeholder="Actual"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="desplazado" autocomplete="off" value="1"> Desplazado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="pensionado" autocomplete="off" value="2"> Pensionado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="lgbti" autocomplete="off" value="3"> Población LGBTI
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="maltrato" autocomplete="off" value="4"> Víctima maltrato
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="conflicto" autocomplete="off" value="5"> Víctima conflicto armado
+								</label>
+							</div>
+						</div>
+						<div class="col-md-12 form-group">
+							<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('otrosd');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="otrosd" role="tabpanel">
+				<ul class="list list--star">
+					<li>Historia y antecedentes familiares</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="HISTORIA" name="HISTORIA"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Desarrollo prenatal</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="DESARROLLO" name="DESARROLLO"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Desarrollo postnatal</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-6 mb-2">
+							<label>MOTOR</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="MOTOR" name="MOTOR" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>LENGUAGE</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="LENGUAGE" name="LENGUAGE" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>										
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Escolaridad</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-4 mb-2">
+							<label>INICIO Y ADAPTACION</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="ADAPTACION" name="ADAPTACION" value="No refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>SITUACION ESCOLAR ACTUAL</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="SITUACION" name="SITUACION" value="No refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-4">
+							<label>CONDUCTA SOCIAL Y EMOCIONAL</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="CONDUCTA" name="CONDUCTA" value="No refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>									
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('antecedentes');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="antecedentes" role="tabpanel">
+				<ul class="list list--star">
+					<li>Antecedentes</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-4 mb-3">
+							<label>MEDICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="MEDICOS" name="MEDICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4">
+							<label>QUIRURGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="QUIRURGICOS" name="QUIRURGICOS" value="No refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4">
+							<label>TRANSFUNCIONALE</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TRANSFUNCIONALE" name="TRANSFUNCIONALE" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label>INMUNOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="INMUNOLOGICOS" name="INMUNOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4">
+							<label>ALERGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="ALERGICOS" name="ALERGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4">
+							<label>TRAUMATICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TRAUMATICOS" name="TRAUMATICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label>PSICOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="PSICOLOGICOS" name="PSICOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4">
+							<label>FARMACOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOS" name="FARMACOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4">
+							<label>FAMILIARES</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="FAMILIARES" name="FAMILIARES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label>TOXICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TOXICOS" name="TOXICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4">
+							<label>OTROS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="OTROS" name="OTROS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Revisión por sistemas</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="SISTEMA" name="SISTEMA" value="No refiere"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('descrip');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="descrip" role="tabpanel">
+				<ul class="list list--star">
+					<li>Analisis</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1">
+						<textarea class="form-control" id="ANALISIS" name="ANALISIS"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Impresión Diagnóstica</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-3">
+							<label>DIAGNOSTICO PPAL</label>
+				            <div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOPPAL" name="DIAGNOSTICOPPAL">							
+			            		</select>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-6">
+							<label>DIAGNOSTICO RELACIONADO 1</label>
+				            <div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOR1" name="DIAGNOSTICOR1">							
+			            		</select>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label>DIAGNOSTICO RELACIONADO 2</label>
+				            <div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOR2" name="DIAGNOSTICOR2">							
+			            		</select>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-6">
+							<label>DIAGNOSTICO RELACIONADO 3</label>
+				            <div class="input-group">
+								<select class="select2 diagnostico" id="DIAGNOSTICOR3" name="DIAGNOSTICOR3">							
+			            		</select>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Plan de Tratamiento</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="TRATAMIENTO" name="TRATAMIENTO"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row form-group">
+			<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Guardar();"><i class="zmdi zmdi-floppy"></i> Guardar Registro</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+	</form>
+</div>
+
+<div id="print" *ngIf="print" class="row" style="font-weight: bolder; color: #000000;"></div>

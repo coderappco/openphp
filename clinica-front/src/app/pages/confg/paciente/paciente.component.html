@@ -1,0 +1,488 @@
+<header class="content__title" id="foco">
+    <h1>Pacientes</h1>
+	<small>Podra registrar los paientes al sistema!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Datos del paciente a registrar
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="pacienteForm">
+	                		<div class="tab-container">
+                                <ul class="nav nav-tabs nav-fill" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#datosb" role="tab">Datos Básicos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#infog" role="tab">Información General</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#contratos" role="tab">Contrato</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active fade show" id="datosb" role="tabpanel">
+                                    	<div class="row col-md-12">
+		                					<div class="col-md-3 mb-3">
+				                                <div class="form-group">
+				                                    <label for="ID_TIPO_DOC">Tipo Identificación <span style="color: #ff6b68;">*</span></label>
+				                                    <select class="select2 tipodoc" data-placeholder="Seleccione..." id="ID_TIPO_DOC" formControlName="ID_TIPO_DOC">
+														<option></option>
+														<option *ngFor="let ident of tipoident" [value]="ident.ID_TIPO_IDENTIFICACION">{{ident.COD_TIPO_IDENTIFICACION}} - {{ident.NOM_TIPO_IDENTIFICACION}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+											    <label for="NUM_DOC">No. Identificación <span style="color: #ff6b68;">*</span></label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+													</div>
+													<input type="text" id="NUM_DOC" placeholder="No.Identificación" class="form-control" formControlName="NUM_DOC" [ngClass]="{ 'is-invalid': submitted && f.NUM_DOC.errors }" />
+													<div *ngIf="submitted && f.NUM_DOC.errors" class="invalid-feedback">
+											            <div *ngIf="f.NUM_DOC.errors.required">Por favor, agregue el número de identificación.</div>
+											        </div>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+											    <label for="FECHA_NAC">Fecha nacimiento</label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+													</div>
+													<input type="text" id="FECHA_NAC" placeholder="Fecha" class="form-control date-picker fnacimiento" formControlName="FECHA_NAC" [ngClass]="{ 'is-invalid': submitted && f.FECHA_NAC.errors }" />
+													<div *ngIf="submitted && f.FECHA_NAC.errors" class="invalid-feedback">
+										                <div *ngIf="f.FECHA_NAC.errors.required">Por favor, agregue la fecha.</div>
+										            </div>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="GENEROS">Género</label>
+				                                    <select class="select2 generos" data-placeholder="Seleccione..." id="GENEROS" formControlName="GENEROS">
+														<option></option>
+														<option value="1">Masculino</option>
+														<option value="2">Femenino</option>
+														<option value="3">Indeterminado</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3 mb-5">
+											    <label for="PRIMER_NOMBRE">Primer nombre <span style="color: #ff6b68;">*</span></label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+													</div>
+													<input type="text" id="PRIMER_NOMBRE" placeholder="Primer nombre" class="form-control" formControlName="PRIMER_NOMBRE" [ngClass]="{ 'is-invalid': submitted && f.PRIMER_NOMBRE.errors }" />
+													<div *ngIf="submitted && f.PRIMER_NOMBRE.errors" class="invalid-feedback">
+											            <div *ngIf="f.PRIMER_NOMBRE.errors.required">Por favor, agregue el primer nombre.</div>
+											        </div>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+											    <label for="SEGUNDO_NOMBRE">Segundo nombre</label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+													</div>
+													<input type="text" id="SEGUNDO_NOMBRE" placeholder="Segundo nombre" class="form-control" formControlName="SEGUNDO_NOMBRE"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+											    <label for="PRIMER_APELLIDO">Primer apellido <span style="color: #ff6b68;">*</span></label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+													</div>
+													<input type="text" id="PRIMER_APELLIDO" placeholder="Primer apellido" class="form-control" formControlName="PRIMER_APELLIDO" [ngClass]="{ 'is-invalid': submitted && f.PRIMER_APELLIDO.errors }" />
+													<div *ngIf="submitted && f.PRIMER_APELLIDO.errors" class="invalid-feedback">
+											            <div *ngIf="f.PRIMER_APELLIDO.errors.required">Por favor, agregue el primer apellido.</div>
+											        </div>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+											    <label for="SEGUNDO_APELLIDO">Segundo apellido</label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-accounts-list"></i></span>
+													</div>
+													<input type="text" id="SEGUNDO_APELLIDO" placeholder="Segundo apellido" class="form-control" formControlName="SEGUNDO_APELLIDO"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3 mb-3">
+				                                <div class="form-group">
+				                                    <label for="dpto">Departamento</label>
+				                                    <select class="select2 dpto" data-placeholder="Seleccione..." id="dpto" formControlName="dpto">
+														<option></option>
+														<option *ngFor="let dpto of dptos" [value]="dpto.ID_DPTO" [selected]="dpto.COD_DEPARTAMENTO==0 ? true : null">{{dpto.NOM_DEPARTAMENTO}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_MUNICIPIO">Municipio</label>
+				                                    <select class="select2 muni" data-placeholder="Seleccione..." id="ID_MUNICIPIO" formControlName="ID_MUNICIPIO">
+														<option></option>
+														<option *ngFor="let muni of municipios" [value]="muni.ID_MUNICIPIO" [selected]="muni.COD_MUNICIPIO==0 ? true : null">{{muni.NOM_MUNICIPIO}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ZONA">Zona</label>
+				                                    <select class="select2 zona" id="ID_TIPO_IDEN" formControlName="ZONA">
+														<option value="1" [selected]="true">Zona Urbana</option>
+														<option value="2">Zona Rural</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+											    <label for="BARRIO">Barrio</label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+													</div>
+													<input type="text" id="BARRIO" placeholder="Barrio" class="form-control" formControlName="BARRIO"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3 mb-4">
+											    <label for="TELEF">Teléfono</label>
+											    <div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-account-box-phone"></i></span>
+													</div>
+													<input type="text" id="TELEF" placeholder="Teléfono" class="form-control" formControlName="TELEF"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+											    <label for="MOVIL">Celular</label>
+											    <div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-smartphone-android"></i></span>
+													</div>
+													<input type="text" id="MOVIL" placeholder="Celular" class="form-control" formControlName="MOVIL"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+											    <label for="CORREO">Correo</label>
+											    <div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-account-box-mail"></i></span>
+													</div>
+													<input type="text" id="CORREO" placeholder="Correo" class="form-control" formControlName="CORREO" [ngClass]="{ 'is-invalid': submitted && f.CORREO.errors }" />
+													<div *ngIf="submitted && f.CORREO.errors" class="invalid-feedback">
+											            <div *ngIf="f.CORREO.errors.email">Correo invalido.</div>
+											        </div>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-12">
+												<label for="DIREC_PACIENTE">Dirección</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+													</div>
+													<input type="text" placeholder="Dirección" id="DIREC_PACIENTE" class="form-control" formControlName="DIREC_PACIENTE"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-12 mb-4">
+												<label for="photo">Foto</label>
+												<div class="dropzone" id="photo">
+													<div class="dz-message" id="message" data-dz-message><span>Arrastre la foto aqui</span></div>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<label for="activo">Activo</label>
+											   	<div class="form-group">
+				                                    <div class="toggle-switch">
+				                                        <input type="checkbox" class="toggle-switch__checkbox" name="activo" id="activo" checked>
+				                                        <i class="toggle-switch__helper"></i>
+				                                    </div>
+				                                </div>
+											</div>
+		                				</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="infog" role="tabpanel">
+                                    	<div class="row col-md-12">
+		                					<div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_ESTADO_CIVIL">Estado Civil</label>
+				                                    <select class="select2 civil" data-placeholder="Seleccione..." id="ID_ESTADO_CIVIL" formControlName="ID_ESTADO_CIVIL">
+														<option></option>
+														<option *ngFor="let estado of estadocivil" [value]="estado.ID_ESTADO_CIVIL" [selected]="estado.ID_ESTADO_CIVIL == 6 ? true : null">{{estado.NOM_ESTADO_CIVIL}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_GRP_SANG">Grupo Sanguineo</label>
+				                                    <select class="select2 grup" data-placeholder="Seleccione..." id="ID_GRP_SANG" formControlName="ID_GRP_SANG">
+														<option></option>
+														<option *ngFor="let grupo of gruposanguineo" [value]="grupo.ID_GRP_SANG" [selected]="grupo.ID_GRP_SANG == 1 ? true : null">{{grupo.NOM_GRP_SANG}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_ESCOLARIDAD">Escolaridad</label>
+				                                    <select class="select2 escolaridad" data-placeholder="Seleccione..." id="ID_ESCOLARIDAD" formControlName="ID_ESCOLARIDAD">
+														<option></option>
+														<option *ngFor="let escolar of escolaridad" [value]="escolar.ID_ESCOLARIDAD" [selected]="escolar.ID_ESCOLARIDAD == 1 ? true : null">{{escolar.NOM_ESCOLARIDAD}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_ETNIA">Etnia</label>
+				                                    <select class="select2 etnia" data-placeholder="Seleccione..." id="ID_ETNIA" formControlName="ID_ETNIA">
+														<option></option>
+														<option *ngFor="let etn of etnia" [value]="etn.ID_ETNIA" [selected]="etn.ID_ETNIA == 6 ? true : null">{{etn.NOM_ETNIA}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3 mb-4">
+				                                <div class="form-group">
+				                                    <label for="ID_OCUPACION">Ocupación</label>
+				                                    <select class="select2 ocupacion" data-placeholder="Seleccione..." id="ID_OCUPACION" formControlName="ID_OCUPACION">
+														<option></option>
+														<option *ngFor="let ocupa of ocupacion" [value]="ocupa.ID_OCUPACION" [selected]="ocupa.ID_OCUPACION == 511 ? true : null">{{ocupa.NOM_OCUPACION}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_DISCAPACIDAD">Discapacidad</label>
+				                                    <select class="select2 discapacidad" data-placeholder="Seleccione..." id="ID_DISCAPACIDAD" formControlName="ID_DISCAPACIDAD">
+				                                    	<option></option>
+														<option *ngFor="let disc of discapacidad" [value]="disc.ID_DISCAPACIDAD" [selected]="disc.ID_DISCAPACIDAD == 5 ? true : null">{{disc.NOM_DISCAPACIDAD}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_RELIGION">Religión</label>
+				                                    <select class="select2 religion" id="ID_RELIGION" formControlName="ID_RELIGION">
+														<option></option>
+														<option *ngFor="let rel of religion" [value]="rel.ID_RELIGION" [selected]="rel.ID_RELIGION == 6 ? true : null">{{rel.NOM_RELIGION}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="GESTACION">Gestación</label>
+				                                    <select class="select2 gestacion" data-placeholder="Seleccione..." id="GESTACION" formControlName="GESTACION">
+														<option value="1">SI</option>
+														<option value="2" [selected]="true">NO</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-6">
+												<label>Código aportante</label>
+												<div class="input-group mb-3">
+													<input type="text" placeholder="Código" id="COD_APORTANTE" class="form-control" formControlName="COD_APORTANTE"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<label>Nombre aportante</label>
+												<div class="input-group mb-3">
+													<input type="text" placeholder="Aportante" id="NOM_APORTANTE" class="form-control" formControlName="NOM_APORTANTE"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+				                            <div class="col-md-12">
+												<div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+						                            <label class="btn">
+						                                <input type="checkbox" name="datos" id="desplazado" autocomplete="off" value="1"> Desplazado
+						                            </label>
+						                            <label class="btn">
+						                                <input type="checkbox" name="datos" id="pensionado" autocomplete="off" value="2"> Pensionado
+						                            </label>
+						                            <label class="btn">
+						                                <input type="checkbox" name="datos" id="lgbti" autocomplete="off" value="3"> Población LGBTI
+						                            </label>
+						                            <label class="btn">
+						                                <input type="checkbox" name="datos" id="maltrato" autocomplete="off" value="4"> Víctima maltrato
+						                            </label>
+						                            <label class="btn">
+						                                <input type="checkbox" name="datos" id="conflicto" autocomplete="off" value="5"> Víctima conflicto armado
+						                            </label>
+						                       	</div>
+					                       	</div>
+
+					                       	<div class="col-md-12 form-group mb-4">
+					                       		<label>Envio de Notificaciones</label>
+												<div class="btn-group btn-group-toggle col-md-12" data-toggle="buttons">
+						                            <label class="btn active">
+						                                <input type="radio" name="datos1" id="correo" autocomplete="off" value="1" checked> Correo
+						                            </label>
+						                            <label class="btn">
+						                                <input type="radio" name="datos1" id="sms" autocomplete="off" value="2"> SMS
+						                            </label>
+						                            <label class="btn">
+						                                <input type="radio" name="datos1" id="llamada" autocomplete="off" value="3"> Llamada
+						                            </label>
+						                            <label class="btn">
+						                                <input type="radio" name="datos1" id="whatsap" autocomplete="off" value="4"> Whatsap
+						                            </label>
+					                           	</div>
+					                        </div>
+		                				</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="contratos" role="tabpanel">
+                                    	<div class="row col-md-12">
+		                					<div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_TIPO_AFIL">Tipo afiliado</label>
+				                                    <select class="select2 afiliado" data-placeholder="Seleccione..." id="ID_TIPO_AFIL" formControlName="ID_TIPO_AFIL">
+														<option></option>
+														<option *ngFor="let afil of afiliado" [value]="afil.ID_TIPO_AFIL">{{afil.NOM_TIPO_AFIL}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+											    <label for="FECHA_AFIL">Fecha afiliación</label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+													</div>
+													<input type="text" id="FECHA_AFIL" placeholder="Fecha" class="form-control date-picker" formControlName="FECHA_AFIL" [ngClass]="{ 'is-invalid': submitted && f.FECHA_AFIL.errors }" />
+													<div *ngIf="submitted && f.FECHA_AFIL.errors" class="invalid-feedback">
+											            <div *ngIf="f.FECHA_AFIL.errors.required">Por favor, agregue la fecha de afiliación.</div>
+											        </div>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+											    <label for="NUM_SISBEN">Número sisbén</label>
+											    <div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-account-box-mail"></i></span>
+													</div>
+													<input type="text" id="NUM_SISBEN" placeholder="sisben" class="form-control" formControlName="NUM_SISBEN"/>
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+											    <label for="FECHA_SISBEN">Fecha sisbén</label>
+											    <div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+													</div>
+													<input type="text" id="FECHA_SISBEN" placeholder="Fecha sisben" class="form-control date-picker" formControlName="FECHA_SISBEN" />
+													<i class="form-group__bar"></i>
+												</div>
+											</div>
+
+											<div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_REGIMEN">Régimen</label>
+				                                    <select class="select2 regimen" data-placeholder="Seleccione..." id="ID_REGIMEN" formControlName="ID_REGIMEN">
+														<option></option>
+														<option *ngFor="let regi of regimen" [value]="regi.ID_REGIMEN">{{regi.NOM_REGIMEN}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="ID_ADMINISTRADORA">Administradora</label>
+				                                    <select class="select2 admin" data-placeholder="Seleccione..." id="ID_ADMINISTRADORA" formControlName="ID_ADMINISTRADORA">
+														<option></option>
+														<option *ngFor="let admin of administradoras" [value]="admin.ID_ADMINISTRADORA">{{admin.NOM_ADMINISTRADORA}}</option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+				                            <div class="col-md-3">
+				                                <div class="form-group">
+				                                    <label for="CONTRATO">Contrato</label>
+				                                    <select class="select2 contrat" data-placeholder="Seleccione..." id="CONTRATO" formControlName="CONTRATO">
+														<option></option>
+				                                    </select>
+													<i class="form-group__bar"></i>
+				                                </div>
+				                            </div>
+
+		                				</div>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+								<button *ngIf="paciente_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

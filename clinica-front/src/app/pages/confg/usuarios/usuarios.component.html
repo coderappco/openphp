@@ -1,0 +1,237 @@
+<header class="content__title" id="foco">
+    <h1>Usuarios</h1>
+	<small>Podra administrar los usuarios del sistema, con su rol especifico!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Datos del usuario a registrar
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="userForm">
+	                		<div class="row col-md-12">
+						    	<div class="col-md-3 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_TIPO_IDEN">Tipo Identificación <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 IDEN" data-placeholder="Seleccione..." id="ID_TIPO_IDEN" formControlName="ID_TIPO_IDEN">
+											<option></option>
+											<option *ngFor="let ident of tipoident" [value]="ident.ID_TIPO_IDENTIFICACION">{{ident.COD_TIPO_IDENTIFICACION}} - {{ident.NOM_TIPO_IDENTIFICACION}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-3">
+								    <label for="NO_IDENTIFICACION">No. Identificación <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+										</div>
+										<input type="text" id="NO_IDENTIFICACION" placeholder="No.Identificación" class="form-control" formControlName="NO_IDENTIFICACION" [ngClass]="{ 'is-invalid': submitted && f.NO_IDENTIFICACION.errors }" />
+										<div *ngIf="submitted && f.NO_IDENTIFICACION.errors" class="invalid-feedback">
+								            <div *ngIf="f.NO_IDENTIFICACION.errors.required">Por favor, agregue el número de Identificación.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="NOMBRES">Nombres <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-account-box"></i></span>
+										</div>
+										<input type="text" id="NOMBRES" placeholder="Nombres" class="form-control" formControlName="NOMBRES" [ngClass]="{ 'is-invalid': submitted && f.NOMBRES.errors }" />
+										<div *ngIf="submitted && f.NOMBRES.errors" class="invalid-feedback">
+								            <div *ngIf="f.NOMBRES.errors.required">Por favor, agregue el nombre.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3 mb-3">
+								    <label for="APELLIDOS">Apellidos <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-account-box"></i></span>
+										</div>
+										<input type="text" id="APELLIDOS" placeholder="Apellidos" class="form-control" formControlName="APELLIDOS" [ngClass]="{ 'is-invalid': submitted && f.APELLIDOS.errors }" />
+										<div *ngIf="submitted && f.APELLIDOS.errors" class="invalid-feedback">
+								            <div *ngIf="f.APELLIDOS.errors.required">Por favor, agregue los Apellidos.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3 mb-3">
+								    <label for="USUARIO">Usuario <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-account"></i></span>
+										</div>
+										<input type="text" id="USUARIO" placeholder="Usuario" class="form-control" formControlName="USUARIO" [ngClass]="{ 'is-invalid': submitted && f.USUARIO.errors }" />
+										<div *ngIf="submitted && f.USUARIO.errors" class="invalid-feedback">
+								            <div *ngIf="f.USUARIO.errors.required">Por favor, agregue el usuario.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="CONTRASENA">Contraseña <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-lock-open"></i></span>
+										</div>
+										<input type="password" id="CONTRASENA" placeholder="Contraseña" class="form-control" formControlName="CONTRASENA" [ngClass]="{ 'is-invalid': submitted && f.CONTRASENA.errors }" />
+										<div *ngIf="submitted && f.CONTRASENA.errors" class="invalid-feedback">
+								            <div *ngIf="f.CONTRASENA.errors.required">Por favor, agregue la contraseña.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-3">
+								    <label for="RCONTRASENA">Confirmar Contraseña <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-lock-open"></i></span>
+										</div>
+										<input type="password" id="RCONTRASENA" placeholder="Confirmar Contraseña" class="form-control" formControlName="RCONTRASENA" [ngClass]="{ 'is-invalid': submitted && f.RCONTRASENA.errors }" />
+										<div *ngIf="submitted && f.RCONTRASENA.errors" class="invalid-feedback">
+								            <div *ngIf="f.RCONTRASENA.errors.required">Por favor, confirme la contraseña.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3 mb-4">
+	                                <div class="form-group">
+	                                    <label for="rol">Rol <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 rol" data-placeholder="Seleccione..." id="rol" formControlName="rol" multiple>
+											<option></option>
+											<option value="ADMIN">ADMINISTRADOR</option>
+											<option value="PRESTADOR">PRESTADOR</option>
+											<option value="ENFERMERA">ENFERMERA</option>
+											<option value="CITAS">CITAS</option>
+											<option value="FACTURACION">FACTURACION</option>
+											<option value="INVENTARIO">INVENTARIO</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+								<div class="col-md-3 mb-4">
+								    <label for="CORREO">Correo</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-account-box-mail"></i></span>
+										</div>
+										<input type="text" id="CORREO" placeholder="Correo" class="form-control" formControlName="CORREO" [ngClass]="{ 'is-invalid': submitted && f.CORREO.errors }" />
+										<div *ngIf="submitted && f.CORREO.errors" class="invalid-feedback">
+											<div *ngIf="f.CORREO.errors.required">Por favor, agregue el correo.</div>
+								            <div *ngIf="f.CORREO.errors.email">Correo invalido.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_ESPECIALIDAD">Especialidad</label>
+	                                    <select class="select2 espec" data-placeholder="Seleccione..." id="ID_ESPECIALIDAD" formControlName="ID_ESPECIALIDAD">
+											<option></option>
+											<option *ngFor="let especialidad of especialidades" [value]="especialidad.ID_ESPECIALIDAD">{{especialidad.ESPECIALIDAD}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-3">
+								    <label for="TARJETA">Tarj. Profesional</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+										</div>
+										<input type="text" id="TARJETA" placeholder="Tarjeta" class="form-control" formControlName="TARJETA"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-3 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_EMPRESA">Empresa <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 espec" data-placeholder="Seleccione..." id="ID_EMPRESA" formControlName="ID_EMPRESA">
+											<option></option>
+											<option *ngFor="let empresa of empresas" [value]="empresa.ID_EMPRESA">{{empresa.NOM_EMPRESA}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+								<div class="col-md-2">
+									<label for="activo">Activo</label>
+							    	<div class="form-group">
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" class="toggle-switch__checkbox" name="activo" id="activo" checked>
+                                            <i class="toggle-switch__helper"></i>
+                                        </div>
+                                    </div>
+								</div>
+
+								<div class="col-md-1">
+									<label for="visible">Visible</label>
+							    	<div class="form-group">
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" class="toggle-switch__checkbox" name="visible" id="visible" checked>
+                                            <i class="toggle-switch__helper"></i>
+                                        </div>
+                                    </div>
+								</div>
+
+								<div class="col-md-3">
+								    <label for="CONCURRENCIA">Concurrencia</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+										</div>
+										<input type="text" id="CONCURRENCIA" placeholder="Concurrencia" class="form-control" formControlName="CONCURRENCIA"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-6"></div>
+
+								<div class="col-md-6 mb-4">
+									<label for="foto">Foto</label>
+									<div class="dropzone" id="photo">
+										<div class="dz-message" id="message" data-dz-message><span>Arrastre la imagen aqui</span></div>
+									</div>
+								</div>
+								<div class="col-md-6 mb-4">
+									<label for="firmas">Firma</label>
+									<div class="dropzone" id="firmas">
+										<div class="dz-message" id="messagef" data-dz-message><span>Arrastre la imagen aqui</span></div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+								<button *ngIf="user_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

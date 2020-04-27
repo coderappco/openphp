@@ -1,0 +1,155 @@
+<header class="content__title" id="foco">
+    <h1>Buscar citas</h1>
+	<small>Podra buscar citas por paciente y fecha en el sistema!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Detalle cita médica
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="searchForm">
+	                		<input type="hidden" class="edit-event__id">
+	                		<input type="hidden" class="fecha" />
+						    <input type="hidden" class="hora" />
+						    <input type="hidden" class="start" />
+						    <input type="hidden" class="end" />
+	                		<div class="card profile mb-4">
+		                		<div class="profile__img">
+		                            <img src="assets/img/users2.png" alt="">
+
+		                            <a href="" class="zmdi zmdi-camera profile__img__edit"></a>
+		                        </div>
+
+		                        <div class="profile__info row col-md-12">
+		                            <div class="col-md-4">
+			                            <ul class="icon-list">
+			                                <li><i title="No. Identificación" data-toggle="tooltip" class="zmdi zmdi-card-membership"></i> {{identificacion}}</li>
+			                                <li><i title="Paciente" data-toggle="tooltip" class="zmdi zmdi-face"></i> {{nombre}} {{apellido}}</li>
+			                                <li><i title="Edad" data-toggle="tooltip" class="zmdi zmdi-cake"></i> {{edad}}</li>
+			                                <li><i title="Género" data-toggle="tooltip" class="zmdi zmdi-male-female"></i> {{genero}}</li>
+			                                <li><i title="Celular" data-toggle="tooltip" class="zmdi zmdi-smartphone-android"></i> {{celular}}</li>
+			                            </ul>
+			                        </div>
+			                        <div class="col-md-4">
+			                            <ul class="icon-list">
+			                                <li><i title="Dirección" data-toggle="tooltip" class="zmdi zmdi-pin"></i> {{direccion}}</li>
+			                                <li><i title="Estado Civil" data-toggle="tooltip" class="zmdi zmdi-layers"></i> {{estado_civil}}</li>
+			                                <li><i title="Administradora" data-toggle="tooltip" class="zmdi zmdi-shield-security"></i> {{administradora}}</li>
+			                                <li><i title="Contrato" data-toggle="tooltip" class="zmdi zmdi-case-check"></i> {{contrato}}</li>
+			                            </ul>
+			                        </div>
+		                        </div>
+		                    </div>
+		                    <label><h4>Detalle Cita</h4></label>
+		                    <div class="card row col-md-12">
+		                		<div class="row col-md-12">
+		                            <div class="col-md-3">
+									    <label for="AUTORIZACION">Autorización</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+											</div>
+											<input type="text" id="AUTORIZACION" class="form-control" formControlName="AUTORIZACION" [attr.disabled]="true"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-6">
+									    <label for="MOTIVO_CONSULTA">Motivo Consulta</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-border-color"></i></span>
+											</div>
+											<input type="text" id="MOTIVO_CONSULTA" class="form-control" formControlName="MOTIVO_CONSULTA" [attr.disabled]="true"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-3">
+									    <label for="TIPO_CITA">Tipo Cita</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-view-subtitles"></i></span>
+											</div>
+											<input type="text" id="TIPO_CITA" class="form-control" formControlName="TIPO_CITA" [attr.disabled]="true"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-3">
+									    <label for="SOLICITUD">Vía de Solicitud</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-mail-send"></i></span>
+											</div>
+											<input type="text" id="SOLICITUD" class="form-control" formControlName="SOLICITUD" [attr.disabled]="true"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-6">
+									    <label for="OBSERVACION">Observación</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-developer-board"></i></span>
+											</div>
+											<input type="text" id="OBSERVACION" class="form-control" formControlName="OBSERVACION" [attr.disabled]="true"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-3">
+									    <label for="PYP">PyP</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+											</div>
+											<input type="text" id="PYP" class="form-control" formControlName="PYP" [attr.disabled]="true"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-3">
+									    <label for="SEDE">Sede</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-city"></i></span>
+											</div>
+											<input type="text" id="SEDE" class="form-control" formControlName="SEDE" [attr.disabled]="true"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-6">
+									    <label>Prestador</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-account-circle"></i></span>
+											</div>
+											<input type="text" id="PRESTADOR" class="form-control" name="PRESTADOR" [attr.disabled]="true" [value]="prestador"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-3">
+									    <label for="CONSULTORIO">Consultorio</label>
+									    <div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="zmdi zmdi-hospital-alt"></i></span>
+											</div>
+											<input type="text" id="CONSULTORIO" class="form-control" formControlName="CONSULTORIO" [attr.disabled]="true"/>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

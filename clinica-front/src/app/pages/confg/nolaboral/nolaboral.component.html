@@ -1,0 +1,70 @@
+<header class="content__title" id="foco">
+    <h1>Días no Laborales</h1>
+	<small>Podra registrar los días festivos y feriados al sistema!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Datos del día no laborales
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="nolaboralForm">           		 
+	                		<div class="row col-md-12">
+	                			<div class="col-md-4 mb-3">
+						            <div class="form-group">
+						                <label for="ID_EMPRESA">Empresa</label>
+						                <select class="select2 empresa" id="ID_EMPRESA" formControlName="ID_EMPRESA" data-placeholder="Seleccione...">
+						                	<option></option>
+						                	<option *ngFor="let empresa of empresas" [value]="empresa.ID_EMPRESA">{{empresa.NOM_EMPRESA}}</option>
+						               	</select>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+
+	                			<div class="col-md-4">
+	                                <div class="form-group">
+	                                    <label for="ID_SEDE">Sede <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 sede" id="ID_SEDE" formControlName="ID_SEDE">
+											<option value="todas" [attr.selected]="true">Todas las Sedes</option>
+											<option *ngFor="let sede of sedes" [value]="sede.ID_SEDE">{{sede.NOM_SEDE}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-4">
+									<label for="FEC_NO_LABORAL">Día no laboral <span style="color: #ff6b68;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+										</div>
+										<input type="text" id="FEC_NO_LABORAL" placeholder="Fecha" class="form-control date-picker fecha" formControlName="FEC_NO_LABORAL" [ngClass]="{ 'is-invalid': submitted && f.FEC_NO_LABORAL.errors }" />
+										<div *ngIf="submitted && f.FEC_NO_LABORAL.errors" class="invalid-feedback">
+										    <div *ngIf="f.FEC_NO_LABORAL.errors.required">Por favor, agregue el día.</div>
+										</div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+								<button *ngIf="nolaboral_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>
+

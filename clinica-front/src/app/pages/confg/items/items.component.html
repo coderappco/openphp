@@ -1,0 +1,145 @@
+<header class="content__title" id="foco">
+    <h1>Servicios</h1>
+	<small>Podra registrar los servicios al sistema (Servicios, Medicamentos, Examen de Laboratorio)!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Datos del servicio a registrar
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="itemsForm">
+                            <div class="row col-md-12 mb-4">
+                            	<div class="col-md-3 mb-3">
+									<label for="COD_ITEM">Código <span style="color: #ff6b68;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="COD_ITEM" placeholder="Código" class="form-control" formControlName="COD_ITEM" [ngClass]="{ 'is-invalid': submitted && f.COD_ITEM.errors }" />
+										<div *ngIf="submitted && f.COD_ITEM.errors" class="invalid-feedback">
+											<div *ngIf="f.COD_ITEM.errors.required">Por favor, agregue el código de identificación.</div>
+										</div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<label for="NOM_ITEM">Servicio <span style="color: #ff6b68;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+										</div>
+										<input type="text" id="NOM_ITEM" placeholder="Nombre" class="form-control" formControlName="NOM_ITEM" [ngClass]="{ 'is-invalid': submitted && f.NOM_ITEM.errors }" />
+										<div *ngIf="submitted && f.NOM_ITEM.errors" class="invalid-feedback">
+											<div *ngIf="f.NOM_ITEM.errors.required">Por favor, agregue el nombre de servcicio.</div>
+										</div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<label for="COT_NTFS">NTFS</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="COT_NTFS" placeholder="Código" class="form-control" formControlName="COT_NTFS"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<label for="COD_CUP">CUP</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="COD_CUP" placeholder="Código" class="form-control" formControlName="COD_CUP"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-3 mb-5">
+									<label for="COD_ISS">ISS</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="COD_ISS" placeholder="Código" class="form-control" formControlName="COD_ISS"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<label for="COD_CUM">CUM</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="COD_CUM" placeholder="Código" class="form-control" formControlName="COD_CUM"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<label for="NOM_GENERICO">Genérico</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+										</div>
+										<input type="text" id="NOM_GENERICO" placeholder="Nombre" class="form-control" formControlName="NOM_GENERICO"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<label for="NOM_COMERCIAL">Comercial</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
+										</div>
+										<input type="text" id="NOM_COMERCIAL" placeholder="Nombre" class="form-control" formControlName="NOM_COMERCIAL"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="col-md-12 mb-4">
+									<div class="btn-group btn-group-toggle" data-toggle="buttons">
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="medi" autocomplete="off" value="1"> Medicamento
+		                                </label>
+		                                <label class="btn active">
+		                                    <input type="radio" name="datos" id="servi" autocomplete="off" value="2" checked> Servicio
+		                                </label>
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="exam" autocomplete="off" value="3"> Exámen de laboratorio
+		                                </label>
+		                                <label class="btn">
+		                                    <input type="radio" name="datos" id="insu" autocomplete="off" value="4"> Insumo
+		                                </label>
+	                            	</div>
+	                            </div>
+	                            <div class="col-md-2">
+									<label for="POS">POS</label>
+									<div class="form-group">
+				                        <div class="toggle-switch">
+				                            <input type="checkbox" class="toggle-switch__checkbox" name="POS" id="POS" checked>
+				                            <i class="toggle-switch__helper"></i>
+				                        </div>
+				                    </div>
+								</div>
+                            </div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+								<button *ngIf="items_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

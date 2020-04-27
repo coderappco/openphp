@@ -1,0 +1,14 @@
+<footer class="footer hidden-xs-down">
+	<p>© Sistema OpenMedical. Todos los derechos reservados</p>
+
+	<ul class="nav footer__nav">
+		<a *ngIf="role == 'Admin'" class="nav-link" [routerLink]="['/']">Principal</a>
+        <a *ngIf="role == 'Admin'" class="nav-link" [routerLink]="['/users']">Usuarios</a>
+        <a *ngIf="role == 'Admin'" class="nav-link" [routerLink]="['/secciones']">Secciones</a>
+        <a *ngIf="role == 'Admin' || role == 'Especialista' || role == 'Tecnico'" class="nav-link" [routerLink]="['/alta']">Alta</a>
+        <a *ngIf="role == 'Admin' || role == 'Especialista' || role == 'Tecnico'" class="nav-link" [routerLink]="['/bajas']">Bajas</a>
+        <a *ngIf="role == 'Admin' || role == 'Especialista' || role == 'Tecnico'" class="nav-link" [routerLink]="['/personal']">Pagos</a>
+        <a *ngIf="role == 'Admin' || role == 'Especialista' || role == 'Tecnico'" class="nav-link" [routerLink]="['/vacaciones']">Vacaciones</a>
+        <a *ngIf="role == 'Admin' || role == 'Especialista' || role == 'Tecnico'" class="nav-link" [routerLink]="['/certificado']">Certificado</a>
+   	</ul>
+</footer>

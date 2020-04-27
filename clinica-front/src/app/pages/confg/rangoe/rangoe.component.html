@@ -1,0 +1,78 @@
+<header class="content__title" id="foco">
+    <h1>Rango de Edades</h1>
+	<small>Podra gestionar los rangos de edades existentes en el sistema!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<form [formGroup]="edadesForm">
+			<div class="row col-md-12">
+				<div class="col-md-4 mb-4">
+					<label for="NOM_RANGO">Rango <span style="color: #ff6b68;">*</span></label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="zmdi zmdi-swap"></i></span>
+						</div>
+						<input type="text" id="NOM_RANGO" placeholder="Nombre..." class="form-control" formControlName="NOM_RANGO" [ngClass]="{ 'is-invalid': submitted && f.NOM_RANGO.errors }" />
+						<div *ngIf="submitted && f.NOM_RANGO.errors" class="invalid-feedback">
+							<div *ngIf="f.NOM_RANGO.errors.required">Por favor, agregue el nombre del rango.</div>
+						</div>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-2 mb-4">
+					<label for="EDAD_INICIAL">Edad Inicial <span style="color: #ff6b68;">*</span></label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="zmdi zmdi-spellcheck"></i></span>
+						</div>
+						<input type="text" id="EDAD_INICIAL" placeholder="Edad..." class="form-control" formControlName="EDAD_INICIAL" [ngClass]="{ 'is-invalid': submitted && f.EDAD_INICIAL.errors }" value="0"/>
+						<div *ngIf="submitted && f.EDAD_INICIAL.errors" class="invalid-feedback">
+							<div *ngIf="f.EDAD_INICIAL.errors.required">Por favor, agregue la edad inicial.</div>
+						</div>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<label>En Meses</label>
+					<div class="form-group">
+						<div class="toggle-switch">
+							<input type="checkbox" class="toggle-switch__checkbox" name="edadim" id="edadim">
+							<i class="toggle-switch__helper"></i>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 mb-4">
+					<label for="EDAD_FINAL">Edad Final</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="zmdi zmdi-spellcheck"></i></span>
+						</div>
+						<input type="text" id="EDAD_FINAL" placeholder="Edad..." class="form-control" formControlName="EDAD_FINAL"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<label>En Meses</label>
+					<div class="form-group">
+						<div class="toggle-switch">
+							<input type="checkbox" class="toggle-switch__checkbox" name="edadfm" id="edadfm">
+							<i class="toggle-switch__helper"></i>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+						<button *ngIf="edades_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="table-responsive">
+			            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+			            </table>
+			        </div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

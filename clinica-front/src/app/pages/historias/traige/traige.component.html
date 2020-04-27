@@ -1,0 +1,298 @@
+<p class="text-center" id="foco">
+<p>
+<hr>
+<div class="tab-container">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#antecedentes" role="tab">Antecedentes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#examenf" role="tab">Examen Físico y Signos Vitales</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#descrip" role="tab">Descripciones</a>
+        </li>
+    </ul>
+
+    <form [formGroup]="traigeForm">
+    	<input type="hidden" name="editor" id="editor"/>
+	    <div class="tab-content">
+	    	<div class="tab-pane active fade show" id="antecedentes" role="tabpanel">
+				<ul class="list list--star">
+					<li>Personales</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3">
+							<label>GRUPO SANGINEO</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="GRUPOSANGINEO" name="GRUPOSANGINEO" value="NO ESPECIFICA" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>PATOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="PATOLOGICOS" name="PATOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>TRAUMATICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TRAUMATICOS" name="TRAUMATICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>QUIRURGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="QUIRURGICOS" name="QUIRURGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>INF. TRANSMISIÓN SEXUAL</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TSEXUAL" name="TSEXUAL" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>INMUNOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="INMUNOLOGICOS" name="INMUNOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>ALERGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="ALERGICOS" name="ALERGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>FARMACOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOS" name="FARMACOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>TOXICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TOXICOS" name="TOXICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>NUTRICIONALES</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="NUTRICIONALES" name="NUTRICIONALES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>OTROS ANTECEDENTES</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="OANTECEDENTES" name="OANTECEDENTES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Familiares</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-2">
+							<label>GENERALES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GENERALES" name="GENERALES" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>PATOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PATOLOGICOSF" name="PATOLOGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>TOXICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TOXICOSF" name="TOXICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>FARMACOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOSF" name="FARMACOLOGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>ALERGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ALERGICOSF" name="ALERGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>OBSTETRICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OBSTETRICOS" name="OBSTETRICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>GINECOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GINECOLOGICOS" name="GINECOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('examenf');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="examenf" role="tabpanel">
+				<ul class="list list--star">
+					<li>Signos vitales</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-2">
+							<label>FRECUENCIA CARDIACA</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="FRECUENCIAC" name="FRECUENCIAC" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>FRECUENCIA RESPIRATORIA</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="FRECUENCIAR" name="FRECUENCIAR" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TEMPERATURA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="TEMPERATURA" name="TEMPERATURA" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>SATURACION</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="SATURACION" name="SATURACION" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+							<label>PRESION A SISTOLICA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="SISTOLICA" name="SISTOLICA" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>	
+						<div class="col-md-3 mb-2">
+							<label>PRESION A DIASTOLICA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="DIASTOLICA" name="DIASTOLICA" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>PULSO</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="PULSO" name="PULSO" value="0" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>									
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Examen Físico</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3">
+							<label>PESO (KG)</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PESO" name="PESO" placeholder="0" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>TALLA (CM)</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TALLA" name="TALLA" placeholder="0" value="0"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>IMC</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="IMC" name="IMC" placeholder="imc" value="0" [attr.disabled]="true"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>						
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('descrip');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="descrip" role="tabpanel">
+				<ul class="list list--star">
+					<li>TIPO DE PRIORIDAD</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<div class="input-group">
+								<textarea class="form-control" id="PRIORIDAD" name="PRIORIDAD"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>MOTIVO DE CONSULTA</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-12 mb-3">
+							<div class="input-group">
+								<textarea class="form-control" id="MOTIVO" name="MOTIVO"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	    </div>
+	    <div class="row form-group">
+			<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Guardar();"><i class="zmdi zmdi-floppy"></i> Guardar Registro</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+	</form>
+</div>
+<div id="print" *ngIf="print" class="row" style="font-weight: bolder; color: #000000;"></div>

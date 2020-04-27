@@ -1,0 +1,107 @@
+<p class="text-center" id="foco"><p>
+<form [formGroup]="medicamentoForm">
+		<div class="row col-md-12 mb-2 mt-1">
+			<div class="col-md-5">
+				<div class="form-group">
+					<label>Historia clínica de referencia</label>
+					<select class="select2 hist" id="HISTORIAEX" name="HISTORIAEX" data-placeholder="Seleccione...">
+						<option></option>
+						<option *ngFor="let hist of historias" [value]="hist.ID_HISTORIA_PACIENTE">{{hist.historia.NOM_HISTORIA}}</option>					
+					</select>
+					<i class="form-group__bar"></i>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>Fecha diligenciada</label>
+					<input type="text" class="form-control" name="FECHA" id="FECHA" [disabled]="true"/>
+					<i class="form-group__bar"></i>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label>Prestador</label>
+					<input type="text" class="form-control" name="PRESTADOR" id="PRESTADOR" [disabled]="true"/>
+					<i class="form-group__bar"></i>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="row col-md-12 mb-4 mt-1">
+				<div class="col-md-3 mb-3">
+					<div class="form-group">
+						<label>Medicamento</label>
+						<select class="select2 codigo" id="CODIGO" name="CODIGO" data-placeholder="Seleccione...">
+							<option></option>
+							<option *ngFor="let item of items" [value]="item.ID_ITEM">{{item.COD_ITEM}} {{item.NOM_ITEM}}</option>					
+						</select>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>Presentación</label>
+						<input type="text" class="form-control" name="PRESENTACION" id="PRESENTACION"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-3 mb-3">
+					<div class="form-group">
+						<label>Concentración</label>
+						<input type="text" class="form-control" name="CONCENTRACION" id="CONCENTRACION"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>Vía de administración</label>
+						<input type="text" class="form-control" name="ADMINISTRACION" id="ADMINISTRACION"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>Cantidad</label>
+						<input type="text" class="form-control" name="CANTIDAD" id="CANTIDAD" value="1"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>Dosis</label>
+						<input type="text" class="form-control" name="DOSIS" id="DOSIS"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>Frecuencia</label>
+						<input type="text" class="form-control" name="FRECUENCIA" id="FRECUENCIA"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>Duración de Tratamiento</label>
+						<input type="text" class="form-control" name="DURACION" id="DURACION"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<div class="form-group">
+						<label>Observación</label>
+						<input type="text" class="form-control" name="OBSERVACION" id="OBSERVACION"/>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>			
+			</div>				
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary btn--icon-text mr-2 btn-sol" type="button" (click)="Solicitar()"><i class="zmdi zmdi-hospital-alt"></i> Solicitar medicamento</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+		<div class="table-responsive">
+			<table id="data-table-medicamento" class="table table-hover table-striped table-sm table-bordered">
+			</table>
+		</div>
+</form>

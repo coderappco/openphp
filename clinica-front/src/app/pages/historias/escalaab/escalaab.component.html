@@ -1,0 +1,1636 @@
+<p class="text-center" id="foco">
+<p>
+<hr>
+<div class="tab-container">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#datosg" role="tab">Datos Generales</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#escala1" role="tab">Menor que 1 - Hasta 4 a 6</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#escala2" role="tab">De 7 a 9 - Hasta 13 a 18</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#escala3" role="tab">De 19 a 24 - Hasta 37 a 48</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#escala4" role="tab">De 49 a 60 - Hasta 61 a 72</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#escala5" role="tab">De 73 a 84 - Hasta 85 a 93</a>
+        </li>
+    </ul>
+
+    <form [formGroup]="escalaForm">
+    	<input type="hidden" name="editor" id="editor"/>
+	    <div class="tab-content">
+	        <div class="tab-pane active fade show" id="datosg" role="tabpanel">
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-3">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts"></i></span>
+								</div>
+								<input type="text" class="form-control" id="NOMBRE" name="NOMBRE" placeholder="Nombre"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+								</div>
+								<input type="text" class="form-control" id="DIRECCIONP" name="DIRECCIONP" placeholder="Dirección"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+							   	<label>Parentesco</label>
+							    <select class="select2 parentesco" id="PARENTESCO" name="PARENTESCO" data-placeholder="Seleccione...">
+							    	<option></option>
+							    	<option *ngFor="let parent of parentesco" [value]="parent.ID_PARENTESCO" [selected]="parent.ID_PARENTESCO == 23 ? true : null">{{parent.NOM_PARENTESCO}}</option>					
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Teléfono</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-account-box-phone"></i></span>
+								</div>
+								<input type="text" class="form-control" id="TELEFONO" name="TELEFONO" placeholder="Teléfono"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-male-female"></i></span>
+								</div>
+								<input type="text" class="form-control" id="ACOMPANANTE" name="ACOMPANANTE" placeholder="Acompañante"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ESCOLARIDAD">Nivel Educativo</label>
+							    <select class="select2 escolaridad" id="ID_ESCOLARIDAD" name="ID_ESCOLARIDAD">
+									<option></option>
+									<option *ngFor="let escolar of escolaridad" [value]="escolar.ID_ESCOLARIDAD" [selected]="escolar.ID_ESCOLARIDAD == 1 ? true : null">{{escolar.NOM_ESCOLARIDAD}}</option>
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_DISCAPACIDAD">Discapacidad</label>
+						        <select class="select2 discapacidad" id="ID_DISCAPACIDAD" name="ID_DISCAPACIDAD">
+						            <option></option>
+									<option *ngFor="let disc of discapacidad" [value]="disc.ID_DISCAPACIDAD" [selected]="disc.ID_DISCAPACIDAD == 5 ? true : null">{{disc.NOM_DISCAPACIDAD}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="GESTACION">Gestación</label>
+						        <select class="select2 gestacion" id="GESTACION" name="GESTACION">
+									<option value="1">SI</option>
+									<option value="2" [selected]="true">NO</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_OCUPACION">Ocupación</label>
+						        <select class="select2 ocupacion" id="ID_OCUPACION" name="ID_OCUPACION">
+									<option></option>
+									<option *ngFor="let ocupa of ocupacion" [value]="ocupa.ID_OCUPACION" [selected]="ocupa.ID_OCUPACION == 511 ? true : null">{{ocupa.NOM_OCUPACION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ETNIA">Etnia</label>
+						        <select class="select2 etnia" data-placeholder="Seleccione..." id="ID_ETNIA" name="ID_ETNIA">
+									<option></option>
+									<option *ngFor="let etn of etnia" [value]="etn.ID_ETNIA" [selected]="etn.ID_ETNIA == 6 ? true : null">{{etn.NOM_ETNIA}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_RELIGION">Religión</label>
+						        <select class="select2 religion" id="ID_RELIGION" name="ID_RELIGION">
+									<option></option>
+									<option *ngFor="let rel of religion" [value]="rel.ID_RELIGION" [selected]="rel.ID_RELIGION == 6 ? true : null">{{rel.NOM_RELIGION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-12">
+							<div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="desplazado" autocomplete="off" value="1"> Desplazado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="pensionado" autocomplete="off" value="2"> Pensionado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="lgbti" autocomplete="off" value="3"> Población LGBTI
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="maltrato" autocomplete="off" value="4"> Víctima maltrato
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="conflicto" autocomplete="off" value="5"> Víctima conflicto armado
+								</label>
+							</div>
+						</div>
+						<div class="col-md-12 form-group">
+							<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('escala');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="escala1" role="tabpanel">
+				<ul class="list list--star">
+					<li>ESCALA ABREVIADA DE DESARROLLO</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: Menor que 1</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Patea(vigorosamente)</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU1" name="MOTGRU1" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP1" name="MOTFADAP1" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN1" name="AUDLEN1" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC1" name="PERSOC1" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 1 a 3</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Levanta la cabeza en prona</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU2" name="MOTGRU2" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP2" name="MOTFADAP2" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN2" name="AUDLEN2" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC2" name="PERSOC2" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>	
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 1 a 3</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Levanta cabeza y pecho en prona</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU3" name="MOTGRU3" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP3" name="MOTFADAP3" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN3" name="AUDLEN3" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC3" name="PERSOC3" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div> 	
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 1 a 3</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Sostiene cabeza al levantarlo de los brazos</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU4" name="MOTGRU4" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP4" name="MOTFADAP4" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN4" name="AUDLEN4" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC4" name="PERSOC4" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>	
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 4 a 6</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Control de cabeza sentado</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU5" name="MOTGRU5" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP5" name="MOTFADAP5" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN5" name="AUDLEN5" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC5" name="PERSOC5" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 4 a 6</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se voltea de un lado a otro</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU6" name="MOTGRU6" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP6" name="MOTFADAP6" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN6" name="AUDLEN6" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC6" name="PERSOC6" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>	
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 4 a 6</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Intenta sentarse solo</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU7" name="MOTGRU7" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP7" name="MOTFADAP7" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN7" name="AUDLEN7" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC7" name="PERSOC7" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>	
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="escala2" role="tabpanel">
+				<ul class="list list--star">
+					<li>ESCALA ABREVIADA DE DESARROLLO</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 7 a 9</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se sostiene sentado con ayuda</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU8" name="MOTGRU8" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP8" name="MOTFADAP8" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN8" name="AUDLEN8" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC8" name="PERSOC8" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 7 a 9</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se arrastra en posición prona</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU9" name="MOTGRU9" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP9" name="MOTFADAP9" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN9" name="AUDLEN9" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC9" name="PERSOC9" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 7 a 9</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se sienta por si solo</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU10" name="MOTGRU10" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP10" name="MOTFADAP10" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN10" name="AUDLEN10" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC10" name="PERSOC10" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 10 a 12</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Gatea(bien)</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU11" name="MOTGRU11" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP11" name="MOTFADAP11" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN11" name="AUDLEN11" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC11" name="PERSOC11" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 10 a 12</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se agarra y se sostiene de pie</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU12" name="MOTGRU12" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP12" name="MOTFADAP12" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN12" name="AUDLEN12" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC12" name="PERSOC12" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 10 a 12</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se para solo</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU13" name="MOTGRU13" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP13" name="MOTFADAP13" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN13" name="AUDLEN13" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC13" name="PERSOC13" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 13 a 18</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Da pasitos solo</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU14" name="MOTGRU14" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP14" name="MOTFADAP14" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN14" name="AUDLEN14" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC14" name="PERSOC14" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>			
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 13 a 18</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Camina solo bien</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU15" name="MOTGRU15" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP15" name="MOTFADAP15" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN15" name="AUDLEN15" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC15" name="PERSOC15" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 13 a 18</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Corre</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU16" name="MOTGRU16" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP16" name="MOTFADAP16" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN16" name="AUDLEN16" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC16" name="PERSOC16" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="escala3" role="tabpanel">
+				<ul class="list list--star">
+					<li>ESCALA ABREVIADA DE DESARROLLO</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 19 a 24</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Patea la pelota</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU17" name="MOTGRU17" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP17" name="MOTFADAP17" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN17" name="AUDLEN17" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC17" name="PERSOC17" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 19 a 24</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Lanza la pelota con las manos</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU18" name="MOTGRU18" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP18" name="MOTFADAP18" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN18" name="AUDLEN18" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC18" name="PERSOC18" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 19 a 24</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Salta en los dos pies</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU19" name="MOTGRU19" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP19" name="MOTFADAP19" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN19" name="AUDLEN19" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC19" name="PERSOC19" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 25 a 36</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se empina en ambos pies</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU20" name="MOTGRU20" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP20" name="MOTFADAP20" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN20" name="AUDLEN20" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC20" name="PERSOC20" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 25 a 36</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se levanta sin usar las manos</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU21" name="MOTGRU21" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP21" name="MOTFADAP21" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN21" name="AUDLEN21" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC21" name="PERSOC21" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 25 a 36</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Camina hacia atrás</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU22" name="MOTGRU22" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP22" name="MOTFADAP22" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN22" name="AUDLEN22" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC22" name="PERSOC22" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 37 a 48</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Camina en Punta de Pies</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU23" name="MOTGRU23" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP23" name="MOTFADAP23" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN23" name="AUDLEN23" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC23" name="PERSOC23" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 37 a 48</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Se para en un solo pie</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU24" name="MOTGRU24" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP24" name="MOTFADAP24" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN24" name="AUDLEN24" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC24" name="PERSOC24" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 37 a 48</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Lanza y agarra la pelota</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU25" name="MOTGRU25" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP25" name="MOTFADAP25" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN25" name="AUDLEN25" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC25" name="PERSOC25" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="escala4" role="tabpanel">
+				<ul class="list list--star">
+					<li>ESCALA ABREVIADA DE DESARROLLO</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 49 a 60</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Camina en línea recta</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU26" name="MOTGRU26" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP26" name="MOTFADAP26" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN26" name="AUDLEN26" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC26" name="PERSOC26" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 49 a 60</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Tres o más pasos en pie</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU27" name="MOTGRU27" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP27" name="MOTFADAP27" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN27" name="AUDLEN27" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC27" name="PERSOC27" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 49 a 60</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Hace rebotar y agarra la pelota</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU28" name="MOTGRU28" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP28" name="MOTFADAP28" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN28" name="AUDLEN28" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC28" name="PERSOC29" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 61 a 72</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Salta a pie juntillas cuerda a 25cm</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU29" name="MOTGRU29" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP29" name="MOTFADAP29" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN29" name="AUDLEN29" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC29" name="PERSOC29" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 61 a 72</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Hace caballitos alternando los pies</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU30" name="MOTGRU30" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP30" name="MOTFADAP30" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN30" name="AUDLEN30" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC30" name="PERSOC30" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 61 a 72</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Salta desde 80cm. De altura</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU31" name="MOTGRU31" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP31" name="MOTFADAP31" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN31" name="AUDLEN31" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC31" name="PERSOC31" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="escala5" role="tabpanel">
+				<ul class="list list--star">
+					<li>ESCALA ABREVIADA DE DESARROLLO</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 73 a 84</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Juega mula golosa</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU32" name="MOTGRU32" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP32" name="MOTFADAP32" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN32" name="AUDLEN32" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC32" name="PERSOC32" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 73 a 84</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Hace contruccion rudimentaria</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU33" name="MOTGRU33" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP33" name="MOTFADAP33" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN33" name="AUDLEN33" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC33" name="PERSOC33" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 73 a 84</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Salta alternando pies</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU34" name="MOTGRU34" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP34" name="MOTFADAP34" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN34" name="AUDLEN34" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC34" name="PERSOC34" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 85 a 93</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Abre y ciera las manos alternadamente</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU35" name="MOTGRU35" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP35" name="MOTFADAP35" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN35" name="AUDLEN35" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC35" name="PERSOC35" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 85 a 93</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Marcha sin peder el ritmo</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU36" name="MOTGRU36" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP36" name="MOTFADAP36" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN36" name="AUDLEN36" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC36" name="PERSOC36" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+						<div class="row col-md-12 mb-3">
+							<div class="col-md-4 mb-3">
+								<label>EDAD: 85 a 93</label>
+					        </div>
+					        <div class="col-md-8 mb-3">
+								<label>Salta Cuerda</label>
+					        </div>
+					        <div class="row col-md-12 mb-3">
+					        	<div class="col-md-3 mb-3">
+									<label>MOT.GRU.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTGRU37" name="MOTGRU37" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>MOT.F.ADAP.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="MOTFADAP37" name="MOTFADAP37" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>AUD.LEN.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="AUDLEN37" name="AUDLEN37" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+						        <div class="col-md-3 mb-3">
+									<label>PER.SOC.</label>
+						            <div class="input-group">
+										<input type="text" class="form-control" id="PERSOC37" name="PERSOC37" value="Si" required/>
+										<i class="form-group__bar"></i>
+						            </div>
+						        </div>
+					        </div>    
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row form-group">
+			<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Guardar();"><i class="zmdi zmdi-floppy"></i> Guardar Registro</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+	</form>
+</div>
+<div id="print" *ngIf="print" class="row" style="font-weight: bolder; color: #000000;"></div>

@@ -1,0 +1,43 @@
+ID_TIPO_DOC,1,Codigo de Identificacion
+NUM_DOC,2,Numero de Identificacion
+PRIMER_APELLIDO,3,Primer Apellido
+SEGUNDO_APELLIDO,4,Segundo Apellido
+PRIMER_NOMBRE,5,Primer Nombre
+SEGUNDO_NOMBRE,6,Segundo Nombre
+FECHA_NAC,7,Fecha de Naciemiento
+GENERO,8,Genero
+DEPARTAMENTO,9,Codigo de Departamento
+ID_MUNICIPIO,10,Codigo de Municipio
+MUNICIPIO,11,Municipio
+ZONA,12,Zona
+FECHA_AFIL,13,Fecha de Afiliacion
+GRUPO_P,14,Grupo Poblacional
+GRUPO_P_DESC,15,Desc. Grupo Poblacional
+NIVEL_SISIBEN,16,Nivel de Sisiben
+FICHA_SISIBEN,17,Ficha de Sisiben
+PUNTAJE_SISIBEN,18,Puntaje de Sisiben
+ID_ESTADO_CIVIL,19,Ident. Estado Civil
+DESC_ESTADO_CIVIL,20,Estado Civil
+DISCAPACIDAD,21,Discapacidad
+DESC_DISCAPACIDAD,22,Desc. Discapacidad
+TIPO_DISCAPACIDAD,23,Tipo Discapacidad
+DESC_TIPO_DISCAPACIDAD,24,Desc. Tipo Discapacidad
+ID_ETNIA,25,Cod. Etnia
+DESC_ETNIA,26,Desc. Etnia
+DIREC_PACIENTE,27,Direccion AFIL
+TELEF,28,Telefono AFIL
+CORREO,29,Correo AFIL
+COD_PARENTESCO,30,Codigo Parentesco
+DESC_PARENTESCO,31,Desc. Parentesco
+TIPO_AFILIADO,32,Tipo de Afiliado
+DESC_TIPO_AFILIADO,33,Desc. Tipo Afiliado
+EDAD,34,Edad
+MODALIDAD,35,Modalidad
+TIP_DOC_BDUA,36,Tipo BDUA
+NUM_DOC_BDUA,37,Numero de BDUA
+AFL_ID,38,Identificacion AFIL
+ESTADO,39,Estado
+COD_APORTANTE,40,Código de Aportante
+NOM_APORTANTE,41,Nombre de Aportante
+COD_ADMIN,42,Código Administradora
+AUTO,43,Autonumerico

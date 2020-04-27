@@ -1,0 +1,105 @@
+<header class="content__title" id="foco">
+    <h1>Consultorios</h1>
+	<small>Podra asignar los consultorios a las Sedes de las Empresas!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<div class="accordion" role="tablist">
+			<div class="card">
+	           	<div class="card-header" role="tab" id="headingOne">
+	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                    Datos del consultorio a registrar
+	                </a>
+	            </div>
+
+	            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+	                <div class="card-body">
+	                	<form [formGroup]="consultForm">
+	                		<div class="row col-md-12">
+	                			<div class="col-md-4 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_EMPRESA">Empresa <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 empresa" data-placeholder="Seleccione..." id="ID_EMPRESA" formControlName="ID_EMPRESA">
+											<option></option>
+											<option *ngFor="let empresa of empresas" [value]="empresa.ID_EMPRESA">{{empresa.NOM_EMPRESA}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                			<div class="col-md-4 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_SEDE">Sede <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 sede" data-placeholder="Seleccione..." id="ID_SEDE" formControlName="ID_SEDE">
+											<option></option>
+											<option *ngFor="let sede of sedes" [value]="sede.ID_SEDE">{{sede.NOM_SEDE}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>
+
+	                            <div class="col-md-4">
+								    <label for="COD_CONSULTORIO">Código <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
+										</div>
+										<input type="text" id="COD_CONSULTORIO" placeholder="Código" class="form-control" formControlName="COD_CONSULTORIO" [ngClass]="{ 'is-invalid': submitted && f.COD_CONSULTORIO.errors }" />
+										<div *ngIf="submitted && f.COD_CONSULTORIO.errors" class="invalid-feedback">
+								            <div *ngIf="f.COD_CONSULTORIO.errors.required">Por favor, agregue el código del consultorio.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+								<div class="col-md-4 mb-4">
+								    <label for="NOM_CONSULTORIO">Consultorio <span style="color: #ff6b68;">*</span></label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-balance"></i></span>
+										</div>
+										<input type="text" id="NOM_CONSULTORIO" placeholder="Consultorio" class="form-control" formControlName="NOM_CONSULTORIO" [ngClass]="{ 'is-invalid': submitted && f.NOM_CONSULTORIO.errors }" />
+										<div *ngIf="submitted && f.NOM_CONSULTORIO.errors" class="invalid-feedback">
+								            <div *ngIf="f.NOM_CONSULTORIO.errors.required">Por favor, agregue el nombre del consultorio.</div>
+								        </div>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+
+	                			<div class="col-md-4 mb-3">
+	                                <div class="form-group">
+	                                    <label for="ID_ESPECIALIDAD">Especialidad <span style="color: #ff6b68;">*</span></label>
+	                                    <select class="select2 espec" data-placeholder="Seleccione..." id="ID_ESPECIALIDAD" formControlName="ID_ESPECIALIDAD">
+											<option></option>
+											<option *ngFor="let especialidad of especialidades" [value]="especialidad.ID_ESPECIALIDAD">{{especialidad.ESPECIALIDAD}}</option>
+	                                    </select>
+										<i class="form-group__bar"></i>
+	                                </div>
+	                            </div>								
+
+								<div class="col-md-4">
+								    <label for="PISO_CONSUL">Piso</label>
+								    <div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="zmdi zmdi-city-alt"></i></span>
+										</div>
+										<input type="text" id="PISO_CONSUL" placeholder="Piso" class="form-control" formControlName="PISO_CONSUL" value="1"/>
+										<i class="form-group__bar"></i>
+									</div>
+								</div>
+							</div>
+							<div class="row form-group">
+								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+								<button *ngIf="consultorio_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+							</div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

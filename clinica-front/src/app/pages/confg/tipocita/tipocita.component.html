@@ -1,0 +1,59 @@
+<header class="content__title" id="foco">
+    <h1>Historias Clínicas</h1>
+	<small>Podra diligenciar las historias clínicas!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<form [formGroup]="tipoForm">
+			<div class="row col-md-12">
+				<div class="col-md-2 mb-3">
+			        <div class="form-group">
+			            <label>Nombre</label>
+			            <input type="text" class="form-control" id="NOM_TIPO_CITA" formControlName="NOM_TIPO_CITA" placeholder="Nombre" [ngClass]="{ 'is-invalid': submitted && f.NOM_TIPO_CITA.errors }"/>
+			            <div *ngIf="submitted && f.NOM_TIPO_CITA.errors" class="invalid-feedback">
+							<div *ngIf="f.NOM_TIPO_CITA.errors.required">Por favor, agregue el nombre.</div>
+						</div>
+						<i class="form-group__bar"></i>
+			        </div>
+			    </div>
+			    <div class="col-md-5">
+			        <div class="form-group">
+			            <label>Servicio</label>
+			            <select class="select2 item" id="ID_ITEM" formControlName="ID_ITEM" data-placeholder="Seleccione...">
+				            <option></option>
+							<option *ngFor="let servi of servicios" [attr.pos]="servi.POS" [value]="servi.ID_ITEM">{{servi.NOM_ITEM}}</option>	
+			            </select>
+						<i class="form-group__bar"></i>
+			        </div>
+			    </div>
+			    <div class="col-md-5">
+			        <div class="form-group">
+			            <label>Registros clínicos</label>
+			            <select class="select2 registro" id="ID_HISTORIA" formControlName="ID_HISTORIA" data-placeholder="Seleccione..." multiple>	
+							<option></option>					
+				            <option *ngFor="let historia of historias" [value]="historia.ID_HISTORIA">{{historia.NOM_HISTORIA}}</option>
+			            </select>
+						<i class="form-group__bar"></i>
+			        </div>
+			    </div>
+			    <div class="col-md-1">
+					<label>Activo</label>
+					<div class="form-group">
+                        <div class="toggle-switch">
+                            <input type="checkbox" class="toggle-switch__checkbox" name="activo" id="activo" checked>
+                            <i class="toggle-switch__helper"></i>
+                        </div>
+                    </div>
+				</div>
+			    <div class="row col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
+					<button *ngIf="tipo_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
+				</div>
+			</div>
+		</form>
+		<div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>

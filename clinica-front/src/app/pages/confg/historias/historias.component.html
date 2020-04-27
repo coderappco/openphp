@@ -1,0 +1,123 @@
+<header class="content__title" id="foco">
+    <h1>Historias</h1>
+	<small>Podra administrar los registros clínicos en el sistema!</small>
+</header>
+<div class="card">
+	<div class="card-body">
+		<form [formGroup]="historiaForm">
+			<div class="row col-md-12">
+				<div class="col-md-4">
+					<div class="form-group">
+					<label for="ID_HISTORIA">Historias Clínicas</label>
+                        <select class="select2 historia" id="ID_HISTORIA" formControlName="ID_HISTORIA">
+                            <option value="0" [selected]="true">Todas</option>
+                            <option *ngFor="let historia of historias" [value]="historia.ID_HISTORIA">{{historia.NOM_HISTORIA}}</option>
+                        </select>
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="ID_RANGO">Edad</label>
+                        <select class="select2 edad" id="ID_RANGO" formControlName="ID_RANGO" data-placeholder="Seleccione...">
+                            <option></option>
+                            <option *ngFor="let rango of rangos" [value]="rango.ID_RANGO">{{rango.NOM_RANGO}}</option>
+                        </select>
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <i class="zmdi zmdi-accounts-add zmdi-hc-3x mt-4 actions__item--active" style="cursor: pointer;" title="Crear rango de edad" data-toggle="tooltip" (click)="CrearRango()"></i>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="GENERO">Género</label>
+                        <select class="select2 genero" id="GENERO" formControlName="GENERO" data-placeholder="Seleccione...">
+                            <option></option>
+                            <option value="1">Masculino</option>
+                            <option value="2">Femenino</option>
+                            <option value="3">Ambos</option>
+                        </select>
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="UpdateHistoria()"><i class="zmdi zmdi-floppy"></i> Actualizar historia</button>
+            </div>
+		</form>
+		<div class="table-responsive">
+            <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+            </table>
+        </div>
+	</div>
+</div>
+
+<form [formGroup]="edadesForm">
+    <div class="modal fade" id="rango_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body row col-md-12">
+                    <div class="col-md-12 mb-4">
+                        <label for="NOM_RANGO">Rango <span style="color: #ff6b68;">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="zmdi zmdi-swap"></i></span>
+                            </div>
+                            <input type="text" id="NOM_RANGO" placeholder="Nombre..." class="form-control" formControlName="NOM_RANGO" [ngClass]="{ 'is-invalid': submitted && f.NOM_RANGO.errors }" />
+                            <div *ngIf="submitted && f.NOM_RANGO.errors" class="invalid-feedback">
+                                <div *ngIf="f.NOM_RANGO.errors.required">Por favor, agregue el nombre del rango.</div>
+                            </div>
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <label for="EDAD_INICIAL">Edad Inicial <span style="color: #ff6b68;">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="zmdi zmdi-spellcheck"></i></span>
+                            </div>
+                            <input type="text" id="EDAD_INICIAL" placeholder="Edad..." class="form-control" formControlName="EDAD_INICIAL" [ngClass]="{ 'is-invalid': submitted && f.EDAD_INICIAL.errors }" value="0"/>
+                            <div *ngIf="submitted && f.EDAD_INICIAL.errors" class="invalid-feedback">
+                                <div *ngIf="f.EDAD_INICIAL.errors.required">Por favor, agregue la edad inicial.</div>
+                            </div>
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>En Meses</label>
+                        <div class="form-group">
+                            <div class="toggle-switch">
+                                <input type="checkbox" class="toggle-switch__checkbox" name="edadim" id="edadim">
+                                <i class="toggle-switch__helper"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <label for="EDAD_FINAL">Edad Final</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="zmdi zmdi-spellcheck"></i></span>
+                            </div>
+                            <input type="text" id="EDAD_FINAL" placeholder="Edad..." class="form-control" formControlName="EDAD_FINAL"/>
+                            <i class="form-group__bar"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>En Meses</label>
+                        <div class="form-group">
+                            <div class="toggle-switch">
+                                <input type="checkbox" class="toggle-switch__checkbox" name="edadfm" id="edadfm">
+                                <i class="toggle-switch__helper"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="RegistrarRango()"><i class="zmdi zmdi-floppy"></i> Crear rango</button>
+                    <button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="CancelRango()"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,32 @@
+<form [formGroup]="loginForm">
+	<div class="login">
+	    <div class="login__block active" id="l-login">
+	        <div class="login__block__header">
+	            <i class="zmdi zmdi-account-circle"></i>
+	            OPEN MEDICAL
+				<div class="actions actions--inverse login__block__actions">
+	            </div>
+			</div>
+
+			<div class="login__block__body">
+				<div class="form-group form-group--float">
+					<input type="text" id="usuario" class="form-control" formControlName="usuario" [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }" />
+					<label>Usuario</label>
+					<div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
+	            		<div *ngIf="f.usuario.errors.required">El usuario es requerido</div>
+	        		</div>
+	        		<i class="form-group__bar"></i>
+				</div>
+				<div class="form-group form-group--float">
+					<input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+					<label>Contraseña</label>
+					<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+	            		<div *ngIf="f.password.errors.required">La contraseña es requerida</div>
+	        		</div>
+	        		<i class="form-group__bar"></i>
+				</div>
+				<button [disabled]="loading" (click)="onSubmit()" class="btn btn--icon login__block__btn"><i class="zmdi zmdi-long-arrow-right"></i></button>
+			</div>
+		</div>
+	</div>
+</form>

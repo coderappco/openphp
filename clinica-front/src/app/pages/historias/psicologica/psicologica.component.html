@@ -1,0 +1,780 @@
+<p class="text-center" id="foco"><p>
+
+<div class="tab-container">
+    <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#datosg" role="tab">Datos Generales</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#familia" role="tab">Estructura Familiar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#otrosd" role="tab">Otros Datos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#antecedentes" role="tab">Antecedentes</a>
+        </li>        
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#factores" role="tab">Factores de Riesgo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#descrip" role="tab">Descripciones</a>
+        </li>
+    </ul>
+
+    <form [formGroup]="psicologicaForm">
+	    <div class="tab-content">
+	        <div class="tab-pane active fade show" id="datosg" role="tabpanel">
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-2">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-accounts"></i></span>
+								</div>
+								<input type="text" class="form-control" id="NOMBRE" name="NOMBRE" placeholder="Nombre"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-pin"></i></span>
+								</div>
+								<input type="text" class="form-control" id="DIRECCIONP" name="DIRECCIONP" placeholder="Dirección"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+							   	<label>Parentesco</label>
+							    <select class="select2 parentesco" id="PARENTESCO" name="PARENTESCO" data-placeholder="Seleccione...">
+							    	<option></option>
+							    	<option *ngFor="let parent of parentesco" [value]="parent.ID_PARENTESCO" [selected]="parent.ID_PARENTESCO == 23 ? true : null">{{parent.NOM_PARENTESCO}}</option>					
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label>Teléfono</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-account-box-phone"></i></span>
+								</div>
+								<input type="text" class="form-control" id="TELEFONO" name="TELEFONO" placeholder="Teléfono"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>Acompañante</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="zmdi zmdi-male-female"></i></span>
+								</div>
+								<input type="text" class="form-control" id="ACOMPANANTE" name="ACOMPANANTE" placeholder="Acompañante"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ESCOLARIDAD">Nivel Educativo</label>
+							    <select class="select2 escolaridad" id="ID_ESCOLARIDAD" name="ID_ESCOLARIDAD">
+									<option></option>
+									<option *ngFor="let escolar of escolaridad" [value]="escolar.ID_ESCOLARIDAD" [selected]="escolar.ID_ESCOLARIDAD == 1 ? true : null">{{escolar.NOM_ESCOLARIDAD}}</option>
+							    </select>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_DISCAPACIDAD">Discapacidad</label>
+						        <select class="select2 discapacidad" id="ID_DISCAPACIDAD" name="ID_DISCAPACIDAD">
+						            <option></option>
+									<option *ngFor="let disc of discapacidad" [value]="disc.ID_DISCAPACIDAD" [selected]="disc.ID_DISCAPACIDAD == 5 ? true : null">{{disc.NOM_DISCAPACIDAD}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="GESTACION">Gestación</label>
+						        <select class="select2 gestacion" id="GESTACION" name="GESTACION">
+									<option value="1">SI</option>
+									<option value="2" [selected]="true">NO</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3 mb-2">
+						    <div class="form-group">
+						        <label for="ID_OCUPACION">Ocupación</label>
+						        <select class="select2 ocupacion" id="ID_OCUPACION" name="ID_OCUPACION">
+									<option></option>
+									<option *ngFor="let ocupa of ocupacion" [value]="ocupa.ID_OCUPACION" [selected]="ocupa.ID_OCUPACION == 511 ? true : null">{{ocupa.NOM_OCUPACION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_ETNIA">Etnia</label>
+						        <select class="select2 etnia" data-placeholder="Seleccione..." id="ID_ETNIA" name="ID_ETNIA">
+									<option></option>
+									<option *ngFor="let etn of etnia" [value]="etn.ID_ETNIA" [selected]="etn.ID_ETNIA == 6 ? true : null">{{etn.NOM_ETNIA}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-3">
+						    <div class="form-group">
+						        <label for="ID_RELIGION">Religión</label>
+						        <select class="select2 religion" id="ID_RELIGION" name="ID_RELIGION">
+									<option></option>
+									<option *ngFor="let rel of religion" [value]="rel.ID_RELIGION" [selected]="rel.ID_RELIGION == 6 ? true : null">{{rel.NOM_RELIGION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+						    </div>
+						</div>
+						<div class="col-md-9"></div>
+						<div class="col-md-6 mb-4">
+							<label>Motivo Consulta</label>
+							<div class="input-group">
+								<textarea class="form-control textarea-autosize" rows="5" id="MOTIVO" name="MOTIVO" placeholder="Motivo"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-6 mb-4">
+							<label>Desencadenante del problema</label>
+							<div class="input-group">
+								<textarea class="form-control textarea-autosize" rows="5" id="DESENCADENANTE" name="DESENCADENANTE" placeholder="Problema"></textarea>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="desplazado" autocomplete="off" value="1"> Desplazado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="pensionado" autocomplete="off" value="2"> Pensionado
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="lgbti" autocomplete="off" value="3"> Población LGBTI
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="maltrato" autocomplete="off" value="4"> Víctima maltrato
+								</label>
+								<label class="btn">
+								    <input type="checkbox" name="datos" id="conflicto" autocomplete="off" value="5"> Víctima conflicto armado
+								</label>
+							</div>
+						</div>
+						<div class="col-md-12 form-group">
+							<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('familia');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="familia" role="tabpanel">
+				<ul class="list list--star">
+					<li>Familiares</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-4 mb-3">
+							<label>Nombre y Apellidos</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombre"/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-1">
+							<label>Edad</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="edades" name="edades" placeholder="Edad"/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>Parentesco</label>
+				            <div class="input-group">
+								<select class="select2 parentescos" id="PARENTESCOS" name="PARENTESCOS" data-placeholder="Seleccione...">
+							    	<option></option>
+							    	<option *ngFor="let parent of parentesco" [value]="parent.ID_PARENTESCO" [selected]="parent.ID_PARENTESCO == 23 ? true : null">{{parent.NOM_PARENTESCO}}</option>					
+							    </select>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-4">
+							<label>Ocupación</label>
+							<div class="input-group">
+								<select class="select2 ocupaciones" id="OCUPACIONES" name="OCUPACIONES">
+									<option></option>
+									<option *ngFor="let ocupa of ocupacion" [value]="ocupa.ID_OCUPACION" [selected]="ocupa.ID_OCUPACION == 511 ? true : null">{{ocupa.NOM_OCUPACION}}</option>
+						        </select>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-12 form-group mb-4">
+							<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Asignarf();"><i class="zmdi zmdi-account-add"></i> Agregar Familiar</button>
+						</div>
+						<div class="col-md-12">
+							<div class="card">
+								<div class="row col-md-12">
+									<div class="col-md-4">
+										Nombre y Apellido
+									</div>
+									<div class="col-md-1">
+										Edad
+									</div>
+									<div class="col-md-3">
+										Parentesco
+									</div>
+									<div class="col-md-3">
+										Ocupación
+									</div>
+									<div class="col-md-1"></div>
+									<div class="row col-md-12" id="addperson"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('otrosd');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="otrosd" role="tabpanel">
+				<ul class="list list--star">
+					<li>Mantenedor del problema</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="MANTENEDOR" name="MANTENEDOR"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Entrevista</li>
+				</ul>
+				<hr>
+			    <div class="card">
+			        <div class="row col-md-12" style="padding: 0; margin: 0;">
+			        	<div class="col-md-3 mb-3">
+							<label>AREA ESCOLAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ESCOLAR" name="ESCOLAR" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>AREA FAMILIAR</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FAMILIAR" name="FAMILIAR" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>AREA PAREJA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PAREJA" name="PAREJA" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>AREA SEXUAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SEXUAL" name="SEXUAL" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>AREA SOCIAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="SOCIAL" name="SOCIAL" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>AREA LABORAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="LABORAL" name="LABORAL" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>AREA RELIGION</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="RELIGION" name="RELIGION" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3">
+							<label>AREA PERSONAL</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PERSONAL" name="PERSONAL" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+				        <div class="col-md-3 mb-3">
+							<label>AREA ECONOMICA</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ECONOMICA" name="ECONOMICA" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+				        </div>
+			        </div>
+				</div>
+				<ul class="list list--star">
+					<li>Violencia familiar</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-6 mb-3">
+							<label>Alguna vez ha sido maltratado física y/o emocionalmente por alguien?</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="MALTRATADO" name="MALTRATADO" value="NIEGA" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>Se siente en riesgo en estos momentos?</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="RIESGO" name="RIESGO" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<label>Tipo de violencia</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="TIPO" name="TIPO" value="NINGUNA" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Actitudes ante la vida</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-3">
+							<label>CONDUCTA SUICIDA</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="SUICIDA" name="SUICIDA" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>RED DE APOYO</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="APOYO" name="APOYO" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>REMISION</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="REMISION" name="REMISION" value="NINGUNA" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>CONSUMO DE SPA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="SPA" name="SPA" value="NIEGA" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Información y Educación</li>
+				</ul>
+				<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<hr>
+						<div class="col-md-3 mb-3">
+							<label>ORIENTACION GENERAL</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="ORIENTACION" name="ORIENTACION" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>VIOLENCIA Y MALTRATO</label>
+						       <div class="input-group">
+								<input type="text" class="form-control" id="MALTRATO" name="MALTRATO" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>RUTAS DE VIOLENCIA</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="RUTAS" name="RUTAS" value="NO" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label>GESTANTE - CASO IVE</label>
+						    <div class="input-group">
+								<input type="text" class="form-control" id="GESTANTE" name="GESTANTE" value="NO APLICA" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('antecedentes');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="antecedentes" role="tabpanel">
+				<ul class="list list--star">
+					<li>Personales</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3">
+							<label>GENERALES</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="GENERALES" name="GENERALES" value="NO REFIERE" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>PATOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="PATOLOGICOS" name="PATOLOGICOS" value="NO REFIERE" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>FARMACOLOGICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOS" name="FARMACOLOGICOS" value="NO REFIERE" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>TOXICOS</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="TOXICOS" name="TOXICOS" value="NO REFIERE" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+						<div class="col-md-3">
+							<label>OTROS ANTECEDENTES</label>
+				            <div class="input-group">
+								<input type="text" class="form-control" id="OTROSA" name="OTROSA" value="NO REFIERE" required/>
+								<i class="form-group__bar"></i>
+				            </div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Familiares</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-3 mb-3">
+							<label>GENERALES</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GENERALESF" name="GENERALESF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>PATOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PATOLOGICOSF" name="PATOLOGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>TOXICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TOXICOSF" name="TOXICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>FARMACOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="FARMACOLOGICOSF" name="FARMACOLOGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>ALERGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ALERGICOSF" name="ALERGICOSF" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>OBSTETRICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="OBSTETRICOS" name="OBSTETRICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label>GINECOLOGICOS</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="GINECOLOGICOS" name="GINECOLOGICOS" value="No Refiere" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>				
+				<ul class="list list--star">
+					<li>Del menor (Entre 0 y 13 Años)</li>
+				</ul>
+				<hr>
+	        	<div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+						<div class="col-md-6 mb-3">
+							<label>ANTECEDENTES DE LA MADRE EN EL PERIODO DE GESTACION</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="PERIODOGESTACION" name="PERIODOGESTACION" value="No Aplica" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label>COMPLICACIONES DEL EMBARAZO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="COMPLICACIONES" name="COMPLICACIONES" value="No Aplica" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+						<div class="col-md-2 mb-3">
+							<label>TIPO DE PARTO</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="TIPOPARTO" name="TIPOPARTO" value="No Aplica" required/>
+								<i class="form-group__bar"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Como resuelve los problemas con su hijo</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="PROBLEMASHIJO" name="PROBLEMASHIJO"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('factores');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="factores" role="tabpanel">
+				<ul class="list list--star">
+					<li>Examen Mental</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="row col-md-12 mb-4 mt-1">
+							<div class="col-md-3">
+								<label>APARIENCIA GENERAL</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="APARIENCIA" name="APARIENCIA" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ACTITUD</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ACTITUD" name="ACTITUD" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ATENCION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ATENCION" name="ATENCION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>CONCIENCIA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="CONCIENCIA" name="CONCIENCIA" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ORIENTACION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ORIENTACION" name="ORIENTACION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>LENGUAJE</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="LENGUAJE" name="LENGUAJE" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>AFECTO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="AFECTO" name="AFECTO" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>MEMORIA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="MEMORIA" name="MEMORIA" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>PENSAMIENTO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="PENSAMIENTO" name="PENSAMIENTO" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>HABITO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="HABITO" name="HABITO" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>SUEÑO</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="SUEÑO" name="SUEÑO" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>ALIMENTACION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="ALIMENTACION" name="ALIMENTACION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>INTELIGENCIA</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="INTELIGENCIA" name="INTELIGENCIA" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>RETARDO MENTAL</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="RETARDOM" name="RETARDOM" value="NO" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>INTROSPECCION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="INTROSPECCION" name="INTROSPECCION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>PROSPECCION</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="PROSPECCION" name="PROSPECCION" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label>SOMATIZACIONES</label>
+					            <div class="input-group">
+									<input type="text" class="form-control" id="SOMATIZACIONES" name="SOMATIZACIONES" value="Normal" required/>
+									<i class="form-group__bar"></i>
+								</div>
+							</div>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Anemnesis</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="ANEMNESIS" name="ANEMNESIS"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Espectativas frente al proceso de intervencion</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="ESPECTATIVAS" name="ESPECTATIVAS"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<div class="col-md-12 form-group">
+					<button class="btn btn-primary btn--icon-text mr-2" type="button" (click)="Siguiente('descrip');"><i class="zmdi zmdi-square-right"></i> Siguiente</button>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="descrip" role="tabpanel">
+				<ul class="list list--star">
+					<li>Intervención de medicina familiar</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="INTERVENCION" name="INTERVENCION"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Diagnóstico</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<select class="select2 diagnostico" id="DIAGNOSTICO" name="DIAGNOSTICO">							
+			            </select>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+				<ul class="list list--star">
+					<li>Plan de manejo</li>
+				</ul>
+				<hr>
+			    <div class="card">
+					<div class="col-md-12 mb-4 mt-1 form-group">
+						<textarea class="form-control" id="PLANMANEJO" name="PLANMANEJO"></textarea>
+						<i class="form-group__bar"></i>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row form-group">
+			<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Guardar();"><i class="zmdi zmdi-floppy"></i> Guardar Registro</button>
+			<button class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="Cancelar();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+		</div>
+	</form>
+</div>
+
+<div id="print" *ngIf="print" class="row" style="font-weight: bolder; color: #000000;"></div>
