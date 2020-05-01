@@ -244,3 +244,11 @@ Route::get('getdiagtrat', 'API\CodifController@getDiagTrat')->name('getDiagTrat'
 Route::get('reportes/citas', 'API\ReportesController@getReporteCita')->name('getReporteCita');
 Route::get('reportes/citas/table', 'API\ReportesController@getReporteCitaT')->name('getReporteCitaT');
 /*************************fin Reportes************************************************/
+
+/************************Promocion y Prevencion*****************************************************/
+Route::get('promocionprevencion/list', 'API\PromocionPrevencionController@getAllPromotions')->name('getAllPromotions');
+Route::post('promocionprevencion/create', 'API\PromocionPrevencionController@createNewPromotion')->name('createNewPromotion');
+Route::get('promocionprevencion/{promotion}', 'API\PromocionPrevencionController@getSinglePromotion')->name('getSinglePromotion');
+Route::put('promocionprevencion/update/{promotion}', 'API\PromocionPrevencionController@updatePromotion')->name('updatePromotion');
+Route::delete('promocionprevencion/delete/{promotion}', 'API\PromocionPrevencionController@deletePromotion')->name('deletePromotion');
+/************************Fin Promocion y Prevencion*****************************************************/
