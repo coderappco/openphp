@@ -251,4 +251,16 @@ Route::post('promocionprevencion/create', 'API\PromocionPrevencionController@cre
 Route::get('promocionprevencion/{promotion}', 'API\PromocionPrevencionController@getSinglePromotion')->name('getSinglePromotion');
 Route::put('promocionprevencion/update/{promotion}', 'API\PromocionPrevencionController@updatePromotion')->name('updatePromotion');
 Route::delete('promocionprevencion/delete/{promotion}', 'API\PromocionPrevencionController@deletePromotion')->name('deletePromotion');
+/* Servicios */
+Route::get('serviciosprevencion/list', 'API\ServiciosPrevencionController@getAllServices')->name('getAllServices');
+Route::post('serviciosprevencion/create', 'API\ServiciosPrevencionController@createNewServices')->name('createNewServices');
+Route::get('serviciosprevencion/{services}', 'API\ServiciosPrevencionController@getSingleServices')->name('getSingleServices');
+Route::put('serviciosprevencion/update/{services}', 'API\ServiciosPrevencionController@updateServices')->name('updateServices');
+Route::delete('serviciosprevencion/delete/{services}', 'API\ServiciosPrevencionController@deleteServices')->name('deleteServices');
+/* Medicamentos */
+Route::get('medicamentosprevencion/list', 'API\MedicamentosPrevencionController@getAllMedicines')->name('getAllMedicines');
+Route::post('medicamentosprevencion/create', 'API\MedicamentosPrevencionController@createNewMedicine')->name('createNewMedicine');
+Route::get('medicamentosprevencion/{medicine}', 'API\MedicamentosPrevencionController@getSingleMedicine')->name('getSingleMedicine');
+Route::put('medicamentosprevencion/update/{medicine}', 'API\MedicamentosPrevencionController@updateMedicine')->name('updateMedicine');
+Route::delete('medicamentosprevencion/delete/{medicine}', 'API\MedicamentosPrevencionController@deleteMedicine')->name('deleteMedicine');
 /************************Fin Promocion y Prevencion*****************************************************/

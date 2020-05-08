@@ -15,21 +15,21 @@
         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
           data-parent="#accordion">
           <div class="card-body">
-            <form [formGroup]="promocionForm">
-              <div class="tab-container">
-                <ul class="nav nav-tabs nav-fill" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#datosb" role="tab">PROGRAMA</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#infog" role="tab">SERVICIOS</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#contratos" role="tab">MEDICAMENTOS</a>
-                  </li>
-                </ul>
-                <div class="tab-content">
-                  <div class="tab-pane active fade show" id="datosb" role="tabpanel">
+            <div class="tab-container">
+              <ul class="nav nav-tabs nav-fill" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#datosb" role="tab">PROGRAMA</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#infog" role="tab">SERVICIOS</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#contratos" role="tab">MEDICAMENTOS</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active fade show" id="datosb" role="tabpanel">
+                  <form [formGroup]="promocionForm" action="" (ngSubmit)="saveRecord()">
                     <div class="row col-md-12">
                       <!-- <div class="col-md-3 mb-3">
                         <div class="form-group">
@@ -157,7 +157,8 @@
                           <i class="form-group__bar"></i>
                         </div>
                       </div>
-                      <div class="col-md-12" *ngIf="showIsPregnant">
+                      <ng-container *ngIf="showIsPregnant">{{showIsPregnant}}</ng-container>
+                      <div class="col-md-12" *ngIf="!showIsPregnant">
                         <label for="gestantes">Gestantes</label>
                         <div class="form-group">
                           <div class="toggle-switch">
@@ -168,48 +169,84 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row form-group">
+                      <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="saveNewRecord();"><i
+                          class="zmdi zmdi-floppy"></i> Registrar</button>
+                      <button *ngIf="paciente_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button"
+                        (click)="clearAll('PROGRAMA');"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+                    </div>
+                  </form>
+                  <!-- Begin Load Table -->
+                  <div class="table-responsive">
+                    <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
+                    </table>
                   </div>
-                  <div class="tab-pane fade" id="infog" role="tabpanel">
+                  <!-- End Load Table -->
+                </div>
+                <div class="tab-pane fade" id="infog" role="tabpanel">
+                  <form [formGroup]="serviciosForm" action="">
                     <div class="row col-md-12">
                       <div class="col-md-6">
                         <label>Código servicio</label>
                         <div class="input-group mb-3">
                           <input type="text" placeholder="Código" id="COD_SERVICIO" class="form-control"
-                            formControlName="COD_SERVICIO" />
+                            formControlName="COD_SERVICIO" required />
                           <i class="form-group__bar"></i>
+                        </div>
+                        <div *ngIf="fs.COD_SERVICIO.invalid && (fs.COD_SERVICIO.dirty || fs.COD_SERVICIO.touched)" class="text-danger">
+                          <div *ngIf="fs.COD_SERVICIO.errors.required">Por favor, agregue el nombre del servicio.</div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <label>Nombre servicio</label>
                         <div class="input-group mb-3">
                           <input type="text" placeholder="Servicio" id="NOM_SERVICIO" class="form-control"
-                            formControlName="NOM_SERVICIO" />
+                            formControlName="NOM_SERVICIO" required />
                           <i class="form-group__bar"></i>
+                        </div>
+                        <div *ngIf="fs.NOM_SERVICIO.invalid && (fs.NOM_SERVICIO.dirty || fs.NOM_SERVICIO.touched)" class="text-danger">
+                          <div *ngIf="fs.NOM_SERVICIO.errors.required">Por favor, agregue el nombre del servicio.</div>
                         </div>
                       </div>
                     </div>
+                    <div class="row form-group">
+                      <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="saveNewServices();"><i
+                          class="zmdi zmdi-floppy"></i> Registrar</button>
+                      <button *ngIf="paciente_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button"
+                        (click)="clearAll('SERVICIOS');"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+                    </div>
+                  </form>
+                  <!-- Begin Load Table -->
+                  <div class="table-responsive">
+                    <table id="data-table-services" class="table table-hover table-striped table-sm table-bordered">
+                    </table>
                   </div>
-                  <div class="tab-pane fade" id="contratos" role="tabpanel">
+                  <!-- End Load Table -->
+                </div>
+                <div class="tab-pane fade" id="contratos" role="tabpanel">
+                  <form [formGroup]="medicamentosForm" action="" (ngSubmit)="saveNewMedicines()">
                     <div class="row col-md-12">
                       <div class="col-md-6">
                         <label>Código medicamento</label>
                         <div class="input-group mb-3">
                           <input type="text" placeholder="Código" id="COD_MEDICAMENTO" class="form-control"
-                            formControlName="COD_MEDICAMENTO" />
+                            formControlName="COD_MEDICAMENTO" [ngClass]="{ 'is-invalid': (fm.COD_MEDICAMENTO.dirty || fm.COD_MEDICAMENTO.touched) && fm.COD_MEDICAMENTO.invalid }" required />
                           <i class="form-group__bar"></i>
+                        </div>
+                        <div *ngIf="fm.COD_MEDICAMENTO.invalid && (fm.COD_MEDICAMENTO.dirty || fm.COD_MEDICAMENTO.touched)" class="text-danger">
+                          <div *ngIf="fm.COD_MEDICAMENTO.errors.required">Por favor, agregue el código del medicamentos.</div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <label>Nombre medicamento</label>
                         <div class="input-group mb-3">
                           <input type="text" placeholder="Medicamento" id="NOM_MEDICAMENTO" class="form-control"
-                            formControlName="NOM_MEDICAMENTO" />
+                            formControlName="NOM_MEDICAMENTO" [ngClass]="{ 'is-invalid': (fm.NOM_MEDICAMENTO.dirty || fm.NOM_MEDICAMENTO.touched) && fm.NOM_MEDICAMENTO.invalid }" />
                           <i class="form-group__bar"></i>
                         </div>
-                      </div>
-                      <div class="col-md-1">
-                        <i class="zmdi zmdi-accounts-add zmdi-hc-3x mt-4 actions__item--active" style="cursor: pointer;"
-                          title="Crear rango de edad" data-toggle="tooltip" (click)="agregar()"></i>
+                        <div *ngIf="fm.NOM_MEDICAMENTO.invalid && (fm.NOM_MEDICAMENTO.dirty || fm.NOM_MEDICAMENTO.touched)" class="text-danger">
+                          <div *ngIf="fm.NOM_MEDICAMENTO.errors.required">Por favor, agregue el nombre del medicamentos.</div>
+                        </div>
                       </div>
                     </div>
                     <!-- <div class="table-responsive">
@@ -221,25 +258,31 @@
                         <p-column field="nombre" header="nombre"></p-column>
                       </p-datatable>
                     </div> -->
+                    <div class="row form-group">
+                      <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="saveNewMedicines();"><i
+                          class="zmdi zmdi-floppy"></i> Registrar</button>
+                      <button *ngIf="paciente_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button"
+                        (click)="clearAll('MEDICAMENTOS');"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+                    </div>
+                  </form>
+                  <!-- Begin Load Table -->
+                  <div class="table-responsive">
+                    <table id="data-table-medicines" class="table table-hover table-striped table-sm table-bordered">
+                    </table>
                   </div>
+                  <!-- End Load Table -->
                 </div>
               </div>
-              <div class="row form-group">
-                <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="saveNewRecord();"><i
-                    class="zmdi zmdi-floppy"></i> Registrar</button>
-                <button *ngIf="paciente_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button"
-                  (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
-              </div>
-            </form>
+            </div>
+            <!-- <div class="row form-group">
+              <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="saveNewRecord();"><i
+                  class="zmdi zmdi-floppy"></i> Registrar</button>
+              <button *ngIf="paciente_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button"
+                (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
-    <!-- Begin Load Table -->
-    <div class="table-responsive">
-      <table id="data-table" class="table table-hover table-striped table-sm table-bordered">
-      </table>
-    </div>
-    <!-- End Load Table -->
   </div>
 </div>
