@@ -6,7 +6,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\PyPServicios;
+use App\Models\FACITEM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +27,11 @@ class ServiciosPrevencionController extends Controller{
    * getAllServices
    */
   public function getAllServices(Request $request){
-    $services   = new PyPServicios();
-    $getRecords = $services->getAllListRecords();
+    $services = new FACITEM();
+    $module   = "";
+    $params = (object)$module;
+    $params->module = "SERVICIOS";
+    $getRecords = $services->getAllListRecords($params);
 
     if(count($getRecords) > 0){
       return response()->json(array("success" => true, "data" => $getRecords), 200);
@@ -41,7 +44,7 @@ class ServiciosPrevencionController extends Controller{
    * createNewServices
    */
   public function createNewServices(Request $request){
-    $services = new PyPServicios();
+    $services = new FACITEM();
 
     $form_data = [
       'COD_SERVICIO' => $request->get('COD_SERVICIO'),
@@ -50,7 +53,7 @@ class ServiciosPrevencionController extends Controller{
 
     $data  = (object)$form_data;
     /* save new record */
-    $store = $services->saveNewRecord($data);
+    $store = $services->saveNewRecord("SERVICIOS", $data);
     
     if($store){
       return response()->json(array("success" => true, "msg" => $this->create_message), 201);
@@ -63,8 +66,8 @@ class ServiciosPrevencionController extends Controller{
    * getSingleServices
    */
   public function getSingleServices($id){
-    $services  = new PyPServicios();
-    $getRecord = $services->getSingleRecord($id);
+    $services  = new FACITEM();
+    $getRecord = $services->getSingleRecord("SERVICIOS", $id);
     
     if($getRecord){
       return response()->json(array("success" => true, "item" => $getRecord), 200);
@@ -77,7 +80,7 @@ class ServiciosPrevencionController extends Controller{
    * updateServices
    */
   public function updateServices(Request $request, $id){
-    $services = new PyPServicios();
+    $services = new FACITEM();
 
     $form_data = [
       'ID_SERVICIO'  => $id,
@@ -87,7 +90,7 @@ class ServiciosPrevencionController extends Controller{
 
     $data  = (object)$form_data;
     /* update record */
-    $update = $services->updateRecord($data);
+    $update = $services->updateRecord("SERVICIOS", $data);
 
     if($update){
       return response()->json(array("success" => true, "msg" => $this->update_message), 200);
@@ -101,7 +104,7 @@ class ServiciosPrevencionController extends Controller{
    */
   public function deleteServices($id){
     $services_id = $id;
-    $services    = new PyPServicios();
+    $services    = new FACITEM();
 
     try {
       if($services_id != ""){
@@ -110,7 +113,7 @@ class ServiciosPrevencionController extends Controller{
         ];
 
         $data   = (object)$data;
-        $delete = $services->deleteRecord($data);
+        $delete = $services->deleteRecord("SERVICIOS", $data);
 
         /* delete record */
         if($delete){

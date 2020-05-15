@@ -6,7 +6,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\PyPMedicamentos;
+use App\Models\FACITEM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +27,11 @@ class MedicamentosPrevencionController extends Controller{
    * getAllMedicines
    */
   public function getAllMedicines(Request $request){
-    $medicines  = new PyPMedicamentos();
-    $getRecords = $medicines->getAllListRecords();
+    $medicines  = new FACITEM();
+    $module   = "";
+    $params = (object)$module;
+    $params->module = "MEDICAMENTOS";
+    $getRecords = $medicines->getAllListRecords($params);
 
     if(count($getRecords) > 0){
       return response()->json(array("success" => true, "data" => $getRecords), 200);
@@ -41,7 +44,7 @@ class MedicamentosPrevencionController extends Controller{
    * createNewMedicine
    */
   public function createNewMedicine(Request $request){
-    $medicines = new PyPMedicamentos();
+    $medicines = new FACITEM();
 
     $form_data = [
       'COD_MEDICAMENTO' => $request->get('COD_MEDICAMENTO'),
@@ -50,7 +53,7 @@ class MedicamentosPrevencionController extends Controller{
 
     $data  = (object)$form_data;
     /* save new record */
-    $store = $medicines->saveNewRecord($data);
+    $store = $medicines->saveNewRecord("MEDICAMENTOS", $data);
     
     if($store){
       return response()->json(array("success" => true, "msg" => $this->create_message), 201);
@@ -63,8 +66,8 @@ class MedicamentosPrevencionController extends Controller{
    * getSingleMedicine
    */
   public function getSingleMedicine($id){
-    $medicines = new PyPMedicamentos();
-    $getRecord = $medicines->getSingleRecord($id);
+    $medicines = new FACITEM();
+    $getRecord = $medicines->getSingleRecord("MEDICAMENTOS", $id);
     
     if($getRecord){
       return response()->json(array("success" => true, "item" => $getRecord), 200);
@@ -77,7 +80,7 @@ class MedicamentosPrevencionController extends Controller{
    * updateMedicine
    */
   public function updateMedicine(Request $request, $id){
-    $medicines = new PyPMedicamentos();
+    $medicines = new FACITEM();
 
     $form_data = [
       'ID_MEDICAMENTO'  => $id,
@@ -87,7 +90,7 @@ class MedicamentosPrevencionController extends Controller{
 
     $data  = (object)$form_data;
     /* update record */
-    $update = $medicines->updateRecord($data);
+    $update = $medicines->updateRecord("MEDICAMENTOS", $data);
 
     if($update){
       return response()->json(array("success" => true, "msg" => $this->update_message), 200);
@@ -101,7 +104,7 @@ class MedicamentosPrevencionController extends Controller{
    */
   public function deleteMedicine($id){
     $medicines_id = $id;
-    $medicines    = new PyPMedicamentos();
+    $medicines    = new FACITEM();
 
     try {
       if($medicines_id != ""){
@@ -110,7 +113,7 @@ class MedicamentosPrevencionController extends Controller{
         ];
 
         $data   = (object)$data;
-        $delete = $medicines->deleteRecord($data);
+        $delete = $medicines->deleteRecord("MEDICAMENTOS", $data);
 
         /* delete record */
         if($delete){

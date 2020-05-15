@@ -45,7 +45,6 @@ export class PromocionprevencionComponent implements OnInit {
 
     $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
         var target = $(e.target).attr("href");
-        console.log(target)
         if(target == "#datosb"){
           $($.fn.dataTable.tables( true ) ).css('width', '100%');
           $($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
@@ -362,13 +361,13 @@ export class PromocionprevencionComponent implements OnInit {
       ajax: this.globals.apiUrl+'/serviciosprevencion/list',
       columns: [
         {
-          title: 'Código Servicio', data: 'COD_SERVICIO', className: "align-middle", "render": function ( data, type, row, meta ) {
-            return row.COD_SERVICIO;
+          title: 'Código Servicio', data: 'COD_ITEM', className: "align-middle", "render": function ( data, type, row, meta ) {
+            return row.COD_ITEM;
           }
         },
         {
-          title: 'Nom. del Servicio', data: 'NOM_SERVICIO', className: "align-middle", "render": function ( data, type, row, meta ) {
-            return row.NOM_SERVICIO;
+          title: 'Nom. del Servicio', data: 'NOM_ITEM', className: "align-middle", "render": function ( data, type, row, meta ) {
+            return row.NOM_ITEM;
           }
         },
         {
@@ -377,9 +376,9 @@ export class PromocionprevencionComponent implements OnInit {
           }
         },
         {
-          title: 'Acción', data: 'COD_SERVICIO', "render": function ( data, type, row, meta ) {
-            let editar = '<button date="'+row.ID_SERVICIO+'" class="btn btn-light btn--icon btn-sm btn-edit-services" title="Editar registro" data-toggle="tooltip"><i class="actions__item zmdi zmdi-edit"></i></button> ';
-            let eliminar = '<button date="'+row.ID_SERVICIO+'" class="btn btn-light btn--icon btn-sm btn-del-services" title="Eliminar registro" data-toggle="tooltip"><i class="actions__item zmdi zmdi-delete"></i></button>';
+          title: 'Acción', data: 'COD_ITEM', "render": function ( data, type, row, meta ) {
+            let editar = '<button date="'+row.ID_ITEM+'" class="btn btn-light btn--icon btn-sm btn-edit-services" title="Editar registro" data-toggle="tooltip"><i class="actions__item zmdi zmdi-edit"></i></button> ';
+            let eliminar = '<button date="'+row.ID_ITEM+'" class="btn btn-light btn--icon btn-sm btn-del-services" title="Eliminar registro" data-toggle="tooltip"><i class="actions__item zmdi zmdi-delete"></i></button>';
             return editar + eliminar;
           }
         }
@@ -427,13 +426,13 @@ export class PromocionprevencionComponent implements OnInit {
       ajax: this.globals.apiUrl+'/medicamentosprevencion/list',
       columns: [
         {
-          title: 'Código Medicamento', data: 'COD_MEDICAMENTO', className: "align-middle", "render": function ( data, type, row, meta ) {
-            return row.COD_MEDICAMENTO;
+          title: 'Código Medicamento', data: 'COD_ITEM', className: "align-middle", "render": function ( data, type, row, meta ) {
+            return row.COD_ITEM;
           }
         },
         {
-          title: 'Nom. del Medicamento', data: 'NOM_MEDICAMENTO', className: "align-middle", "render": function ( data, type, row, meta ) {
-            return row.NOM_MEDICAMENTO;
+          title: 'Nom. del Medicamento', data: 'NOM_ITEM', className: "align-middle", "render": function ( data, type, row, meta ) {
+            return row.NOM_ITEM;
           }
         },
         {
@@ -442,9 +441,9 @@ export class PromocionprevencionComponent implements OnInit {
           }
         },
         {
-          title: 'Acción', data: 'COD_MEDICAMENTO', "render": function ( data, type, row, meta ) {
-            let editar = '<button date="'+row.ID_MEDICAMENTO+'" class="btn btn-light btn--icon btn-sm btn-edit-medicines" title="Editar registro" data-toggle="tooltip"><i class="actions__item zmdi zmdi-edit"></i></button> ';
-            let eliminar = '<button date="'+row.ID_MEDICAMENTO+'" class="btn btn-light btn--icon btn-sm btn-del-medicines" title="Eliminar registro" data-toggle="tooltip"><i class="actions__item zmdi zmdi-delete"></i></button>';
+          title: 'Acción', data: 'COD_ITEM', "render": function ( data, type, row, meta ) {
+            let editar = '<button date="'+row.ID_ITEM+'" class="btn btn-light btn--icon btn-sm btn-edit-medicines" title="Editar registro" data-toggle="tooltip"><i class="actions__item zmdi zmdi-edit"></i></button> ';
+            let eliminar = '<button date="'+row.ID_ITEM+'" class="btn btn-light btn--icon btn-sm btn-del-medicines" title="Eliminar registro" data-toggle="tooltip"><i class="actions__item zmdi zmdi-delete"></i></button>';
             return editar + eliminar;
           }
         }
@@ -512,8 +511,8 @@ export class PromocionprevencionComponent implements OnInit {
       $('html, body').animate({ scrollTop: $('#foco').offset().top }, 'slow');
       $('.btn-addp').html('<i class="zmdi zmdi-floppy"></i> Actualizar');
 
-      this.serviciosForm.get('COD_SERVICIO').setValue(services.COD_SERVICIO);
-      this.serviciosForm.get('NOM_SERVICIO').setValue(services.NOM_SERVICIO);
+      this.serviciosForm.get('COD_SERVICIO').setValue(services.COD_ITEM);
+      this.serviciosForm.get('NOM_SERVICIO').setValue(services.NOM_ITEM);
     });
   }
 
@@ -529,8 +528,8 @@ export class PromocionprevencionComponent implements OnInit {
       $('html, body').animate({ scrollTop: $('#foco').offset().top }, 'slow');
       $('.btn-addp').html('<i class="zmdi zmdi-floppy"></i> Actualizar');
 
-      this.medicamentosForm.get('COD_MEDICAMENTO').setValue(medicine.COD_MEDICAMENTO);
-      this.medicamentosForm.get('NOM_MEDICAMENTO').setValue(medicine.NOM_MEDICAMENTO);
+      this.medicamentosForm.get('COD_MEDICAMENTO').setValue(medicine.COD_ITEM);
+      this.medicamentosForm.get('NOM_MEDICAMENTO').setValue(medicine.NOM_ITEM);
     });
   }
 
