@@ -37,7 +37,7 @@ class PyPPrograma extends Model{
    */
   public function getAllListRecords(){
     $query = $this
-    ->selectRaw('ID_PYP, COD_PROG_PYP, NOM_PROG_PYP, ACTIVO, EDAD_INICIAL, U_EDAD_INICIAL, EDAD_FINAL, U_EDAD_FINAL, GENERO, ZONA, GESTANTE, FEC_CREACION')
+    ->selectRaw('ID_PYP, COD_PROG_PYP, NOM_PROG_PYP, ACTIVO, FEC_CREACION')
     ->FilterByActive()
     ->orderBy('ID_PYP', 'ASC')
     ->get();
@@ -50,16 +50,9 @@ class PyPPrograma extends Model{
    * @return boolean true || false
    */
   public function saveNewRecord($data){
-    $this->COD_PROG_PYP	  = $data->COD_PROG_PYP;
-    $this->NOM_PROG_PYP	  = $data->NOM_PROG_PYP;
-    $this->ACTIVO	        = $data->ACTIVO;
-    $this->EDAD_INICIAL	  = $data->EDAD_INICIAL;
-    $this->U_EDAD_INICIAL = $data->U_EDAD_INICIAL;
-    $this->EDAD_FINAL	    = $data->EDAD_FINAL;
-    $this->U_EDAD_FINAL	  = $data->U_EDAD_FINAL;
-    $this->GENERO	        = $data->GENERO;
-    $this->ZONA	          = $data->ZONA;
-    $this->GESTANTE	      = $data->GESTANTE;
+    $this->COD_PROG_PYP = $data->COD_PROG_PYP;
+    $this->NOM_PROG_PYP = $data->NOM_PROG_PYP;
+    $this->ACTIVO	      = 1;
 
     if($this->save()){
       return true;
@@ -74,7 +67,7 @@ class PyPPrograma extends Model{
    */
   public function getSingleRecord($id){
     $query = $this
-    ->selectRaw('ID_PYP, COD_PROG_PYP, NOM_PROG_PYP, ACTIVO, EDAD_INICIAL, U_EDAD_INICIAL, EDAD_FINAL, U_EDAD_FINAL, GENERO, ZONA, GESTANTE, FEC_CREACION')
+    ->selectRaw('ID_PYP, COD_PROG_PYP, NOM_PROG_PYP, ACTIVO, FEC_CREACION')
     ->FilterByActive()
     ->where('ID_PYP', $id)
     ->get()->first();
@@ -87,16 +80,8 @@ class PyPPrograma extends Model{
    */
   public function updateRecord($data){
     $response = $this->find($data->ID_PYP);
-    $response->COD_PROG_PYP	  = $data->COD_PROG_PYP;
-    $response->NOM_PROG_PYP	  = $data->NOM_PROG_PYP;
-    $response->ACTIVO	        = $data->ACTIVO;
-    $response->EDAD_INICIAL	  = $data->EDAD_INICIAL;
-    $response->U_EDAD_INICIAL = $data->U_EDAD_INICIAL;
-    $response->EDAD_FINAL	    = $data->EDAD_FINAL;
-    $response->U_EDAD_FINAL	  = $data->U_EDAD_FINAL;
-    $response->GENERO	        = $data->GENERO;
-    $response->ZONA	          = $data->ZONA;
-    $response->GESTANTE	      = $data->GESTANTE;
+    $response->COD_PROG_PYP = $data->COD_PROG_PYP;
+    $response->NOM_PROG_PYP = $data->NOM_PROG_PYP;
 
     if($response->save()){
       return true;

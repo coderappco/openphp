@@ -116,15 +116,7 @@ export class PromocionprevencionComponent implements OnInit {
   initForm() {
     this.promocionForm = this.formBuilder.group({
       COD_PROGRAMA: ['', [Validators.required]],
-      NOMBRE_PROGRAMA: [''],
-      ACTIVO: [''],
-      EDAD_INICIAL: ['', [Validators.required]],
-      UNIDAD_EDAD_INICIAL: [''],
-      EDAD_FINAL: ['', [Validators.required]],
-      UNIDAD_EDAD_FINAL: [''],
-      GENEROS: [''],
-      ZONA: [''],
-      GESTANTES: ['']
+      NOMBRE_PROGRAMA: ['']
     });
   }
 
@@ -153,20 +145,8 @@ export class PromocionprevencionComponent implements OnInit {
     }
 
     if(this.promotion_id == 0){
-      var isPregnant = 0;
-      var activo   = $('#activo').prop('checked') == true ? 1 : 0;
-      var gestante = $('#GESTANTES').prop('checked') == true ? 1 : 0;
-
       this.promocionForm.get('COD_PROGRAMA').setValue($('#COD_PROGRAMA').val());
       this.promocionForm.get('NOMBRE_PROGRAMA').setValue($('#NOMBRE_PROGRAMA').val());
-      this.promocionForm.get('ACTIVO').setValue(activo);
-      this.promocionForm.get('EDAD_INICIAL').setValue($('#EDAD_INICIAL').val());
-      this.promocionForm.get('UNIDAD_EDAD_INICIAL').setValue($('#UNIDAD_EDAD_INICIAL').val());
-      this.promocionForm.get('EDAD_FINAL').setValue($('#EDAD_FINAL').val());
-      this.promocionForm.get('UNIDAD_EDAD_FINAL').setValue($('#UNIDAD_EDAD_FINAL').val());
-      this.promocionForm.get('GENEROS').setValue($('#GENEROS option:selected').val());
-      this.promocionForm.get('ZONA').setValue($('#ZONA option:selected').val());
-      this.promocionForm.get('GESTANTES').setValue(gestante);
 
       this.api.createNewPromotion(this.promocionForm.value).subscribe(data => {
         if(data.success == true){
@@ -176,29 +156,21 @@ export class PromocionprevencionComponent implements OnInit {
           this.table = $('#data-table').DataTable(this.fillTable());
         } else {
           this.toastCtrl.showMessage(data.msg);
+          this.clearAll("PROGRAMA");
         }
       });
     } else {
-      var activo   = $('#activo').prop('checked') == true ? 1 : 0;
-      var gestante = $('#GESTANTES').prop('checked') == true ? 1 : 0;
-
       this.promocionForm.get('COD_PROGRAMA').setValue($('#COD_PROGRAMA').val());
       this.promocionForm.get('NOMBRE_PROGRAMA').setValue($('#NOMBRE_PROGRAMA').val());
-      this.promocionForm.get('ACTIVO').setValue(activo);
-      this.promocionForm.get('EDAD_INICIAL').setValue($('#EDAD_INICIAL').val());
-      this.promocionForm.get('UNIDAD_EDAD_INICIAL').setValue($('#UNIDAD_EDAD_INICIAL').val());
-      this.promocionForm.get('EDAD_FINAL').setValue($('#EDAD_FINAL').val());
-      this.promocionForm.get('UNIDAD_EDAD_FINAL').setValue($('#UNIDAD_EDAD_FINAL').val());
-      this.promocionForm.get('GENEROS').setValue($('#GENEROS option:selected').val());
-      this.promocionForm.get('ZONA').setValue($('#ZONA option:selected').val());
-      this.promocionForm.get('GESTANTES').setValue(gestante);
 
       this.api.updatePromotion(this.promotion_id, this.promocionForm.value).subscribe(data => {
         if(data.success){
           this.toastCtrl.showMessage(data.msg);
           this.table = $('#data-table').DataTable(this.fillTable());
+          this.clearAll("PROGRAMA");
         } else {
           this.toastCtrl.showMessage(data.msg);
+          this.clearAll("PROGRAMA");
         }
         $('html, body').animate({ scrollTop: $('#foco').offset().top }, 'slow');
       });
@@ -488,14 +460,6 @@ export class PromocionprevencionComponent implements OnInit {
 
       this.promocionForm.get('COD_PROGRAMA').setValue(promotion.COD_PROG_PYP);
       this.promocionForm.get('NOMBRE_PROGRAMA').setValue(promotion.NOM_PROG_PYP);
-      this.promocionForm.get('ACTIVO').setValue(promotion.ACTIVO);
-      this.promocionForm.get('EDAD_INICIAL').setValue(promotion.EDAD_INICIAL);
-      this.promocionForm.get('UNIDAD_EDAD_INICIAL').setValue(promotion.U_EDAD_INICIAL);
-      this.promocionForm.get('EDAD_FINAL').setValue(promotion.EDAD_FINAL);
-      this.promocionForm.get('UNIDAD_EDAD_FINAL').setValue(promotion.U_EDAD_FINAL);
-      this.promocionForm.get('GENEROS').setValue(promotion.GENERO);
-      this.promocionForm.get('ZONA').setValue(promotion.ZONA);
-      this.promocionForm.get('GESTANTES').setValue(promotion.GESTANTE);
     });
   }
 
@@ -604,16 +568,6 @@ export class PromocionprevencionComponent implements OnInit {
         this.promotion_id = 0;
         this.promocionForm.get('COD_PROGRAMA').setValue('');
         this.promocionForm.get('NOMBRE_PROGRAMA').setValue('');
-        this.promocionForm.get('ACTIVO').setValue('');
-        this.promocionForm.get('EDAD_INICIAL').setValue('');
-        this.promocionForm.get('UNIDAD_EDAD_INICIAL').setValue('');
-        this.promocionForm.get('EDAD_FINAL').setValue('');
-        this.promocionForm.get('GENEROS').setValue('');
-        this.promocionForm.get('ZONA').setValue('');
-        this.promocionForm.get('GESTANTES').setValue('');
-        $('#activo').prop('checked', true);
-        $('#GENEROS').val('').trigger('change');
-        $('#ZONA').val('').trigger('change');
         this.initForm();
         break;
 

@@ -41,16 +41,8 @@ class PromocionPrevencionController extends Controller{
     $promotion = new PyPPrograma();
 
     $form_data = [
-      'COD_PROG_PYP'   => $request->get('COD_PROGRAMA'),
-      'NOM_PROG_PYP'   => $request->get('NOMBRE_PROGRAMA'),
-      'ACTIVO'         => $request->get('ACTIVO'),
-      'EDAD_INICIAL'   => $request->get('EDAD_INICIAL'),
-      'U_EDAD_INICIAL' => $request->get('UNIDAD_EDAD_INICIAL'),
-      'EDAD_FINAL'     => $request->get('EDAD_FINAL'),
-      'U_EDAD_FINAL'   => $request->get('UNIDAD_EDAD_FINAL'),
-      'GENERO'         => $request->get('GENEROS'),
-      'ZONA'           => $request->get('ZONA'),
-      'GESTANTE'       => $request->get('GESTANTES')
+      'COD_PROG_PYP' => $request->get('COD_PROGRAMA'),
+      'NOM_PROG_PYP' => $request->get('NOMBRE_PROGRAMA')
     ];
 
     $data  = (object)$form_data;
@@ -85,17 +77,9 @@ class PromocionPrevencionController extends Controller{
     $promotion = new PyPPrograma();
 
     $form_data = [
-      'ID_PYP'         => $id,
-      'COD_PROG_PYP'   => $request->get('COD_PROGRAMA'),
-      'NOM_PROG_PYP'   => $request->get('NOMBRE_PROGRAMA'),
-      'ACTIVO'         => $request->get('ACTIVO'),
-      'EDAD_INICIAL'   => $request->get('EDAD_INICIAL'),
-      'U_EDAD_INICIAL' => $request->get('UNIDAD_EDAD_INICIAL'),
-      'EDAD_FINAL'     => $request->get('EDAD_FINAL'),
-      'U_EDAD_FINAL'   => $request->get('UNIDAD_EDAD_FINAL'),
-      'GENERO'         => $request->get('GENEROS'),
-      'ZONA'           => $request->get('ZONA'),
-      'GESTANTE'       => $request->get('GESTANTES')
+      'ID_PYP'       => $id,
+      'COD_PROG_PYP' => $request->get('COD_PROGRAMA'),
+      'NOM_PROG_PYP' => $request->get('NOMBRE_PROGRAMA')
     ];
 
     $data  = (object)$form_data;

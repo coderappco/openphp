@@ -43,37 +43,29 @@
                           <i class="form-group__bar"></i>
                         </div>
                       </div> -->
-                      <div class="col-md-3">
+                      <div class="col-md-6">
                         <label for="COD_PROGRAMA">Código Programa <span style="color: #ff6b68;">*</span></label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
-                          </div>
+                        <div class="input-group mb-3">
                           <input type="text" id="COD_PROGRAMA" placeholder="Código Programa" class="form-control"
-                            formControlName="COD_PROGRAMA"
-                            [ngClass]="{ 'is-invalid': submitted && f.COD_PROGRAMA.errors }" />
-                          <div *ngIf="submitted && f.COD_PROGRAMA.errors" class="invalid-feedback">
-                            <div *ngIf="f.COD_PROGRAMA.errors.required">Por favor, agregue el código de programa.</div>
-                          </div>
-                          <i class="form-group__bar"></i>
+                            formControlName="COD_PROGRAMA" [ngClass]="{ 'is-invalid': submitted && f.COD_PROGRAMA.errors }" required />
+                            <i class="form-group__bar"></i>
+                        </div>
+                        <div *ngIf="submitted && f.COD_PROGRAMA.errors || f.COD_PROGRAMA.invalid && (f.COD_PROGRAMA.dirty || f.COD_PROGRAMA.touched)" class="text-danger">
+                          <div *ngIf="f.COD_PROGRAMA.errors.required">Por favor, agregue el código del programa.</div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <label for="NOMBRE_PROGRAMA">Programa</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
-                          </div>
+                        <label for="NOMBRE_PROGRAMA">Nombre del Programa <span class="text-red">*</span></label>
+                        <div class="input-group mb-3">
                           <input type="text" id="NOMBRE_PROGRAMA" placeholder="Nombre del programa" class="form-control"
-                            formControlName="NOMBRE_PROGRAMA"
-                            [ngClass]="{ 'is-invalid': submitted && f.NOMBRE_PROGRAMA.errors }" />
-                          <div *ngIf="submitted && f.NOMBRE_PROGRAMA.errors" class="invalid-feedback">
-                            <div *ngIf="f.NOMBRE_PROGRAMA.errors.required">Por favor, agregue el programa.</div>
-                          </div>
-                          <i class="form-group__bar"></i>
+                            formControlName="NOMBRE_PROGRAMA" [ngClass]="{ 'is-invalid': submitted && f.NOMBRE_PROGRAMA.errors }" required />
+                            <i class="form-group__bar"></i>
+                        </div>
+                        <div *ngIf="submitted && f.NOMBRE_PROGRAMA.errors || f.NOMBRE_PROGRAMA.invalid && (f.NOMBRE_PROGRAMA.dirty || f.NOMBRE_PROGRAMA.touched)" class="text-danger">
+                          <div *ngIf="f.NOMBRE_PROGRAMA.errors.required">Por favor, agregue el nombre del programa.</div>
                         </div>
                       </div>
-                      <div class="col-md-1">
+                      <!-- <div class="col-md-1">
                         <label>Activo</label>
                         <div class="form-group">
                           <div class="toggle-switch">
@@ -81,8 +73,8 @@
                             <i class="toggle-switch__helper"></i>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-md-3 mb-5">
+                      </div> -->
+                      <!-- <div class="col-md-3 mb-5">
                         <label for="EDAD_INICIAL">Edad Inicial <span style="color: #ff6b68;">*</span></label>
                         <div class="input-group">
                           <div class="input-group-prepend">
@@ -96,8 +88,8 @@
                           </div>
                           <i class="form-group__bar"></i>
                         </div>
-                      </div>
-                      <div class="col-md-3">
+                      </div> -->
+                      <!-- <div class="col-md-3">
                         <label for="UNIDAD_EDAD_INICIAL">Unidad Edad Inicial</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
@@ -122,8 +114,8 @@
                           </div>
                           <i class="form-group__bar"></i>
                         </div>
-                      </div>
-                      <div class="col-md-3">
+                      </div> -->
+                      <!-- <div class="col-md-3">
                         <label for="UNIDAD_EDAD_FINAL">Unidad Edad Final</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
@@ -133,8 +125,8 @@
                             formControlName="UNIDAD_EDAD_FINAL" />
                           <i class="form-group__bar"></i>
                         </div>
-                      </div>
-                      <div class="col-md-3">
+                      </div> -->
+                      <!-- <div class="col-md-3">
                         <div class="form-group">
                           <label for="GENEROS">Género</label>
                           <select class="select2 generos" data-placeholder="Seleccione..." id="GENEROS"
@@ -146,8 +138,8 @@
                           </select>
                           <i class="form-group__bar"></i>
                         </div>
-                      </div>
-                      <div class="col-md-3">
+                      </div> -->
+                      <!-- <div class="col-md-3">
                         <div class="form-group">
                           <label for="ZONA">Zona</label>
                           <select class="select2 zona" id="ZONA" formControlName="ZONA" data-placeholder="Seleccione...">
@@ -156,8 +148,8 @@
                           </select>
                           <i class="form-group__bar"></i>
                         </div>
-                      </div>
-                      <ng-container *ngIf="showIsPregnant">{{showIsPregnant}}</ng-container>
+                      </div> -->
+                      <!-- <ng-container *ngIf="showIsPregnant">{{showIsPregnant}}</ng-container>
                       <div class="col-md-12" *ngIf="!showIsPregnant">
                         <label for="gestantes">Gestantes</label>
                         <div class="form-group">
@@ -167,7 +159,7 @@
                             <i class="toggle-switch__helper"></i>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="row form-group">
                       <button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="saveNewRecord();"><i
@@ -194,7 +186,7 @@
                           <i class="form-group__bar"></i>
                         </div>
                         <div *ngIf="fs.COD_SERVICIO.invalid && (fs.COD_SERVICIO.dirty || fs.COD_SERVICIO.touched)" class="text-danger">
-                          <div *ngIf="fs.COD_SERVICIO.errors.required">Por favor, agregue el nombre del servicio.</div>
+                          <div *ngIf="fs.COD_SERVICIO.errors.required">Por favor, agregue el código del servicio.</div>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -234,7 +226,7 @@
                           <i class="form-group__bar"></i>
                         </div>
                         <div *ngIf="fm.COD_MEDICAMENTO.invalid && (fm.COD_MEDICAMENTO.dirty || fm.COD_MEDICAMENTO.touched)" class="text-danger">
-                          <div *ngIf="fm.COD_MEDICAMENTO.errors.required">Por favor, agregue el código del medicamentos.</div>
+                          <div *ngIf="fm.COD_MEDICAMENTO.errors.required">Por favor, agregue el código del medicamento.</div>
                         </div>
                       </div>
                       <div class="col-md-6">
