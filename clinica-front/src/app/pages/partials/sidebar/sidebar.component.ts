@@ -37,8 +37,6 @@ export class SidebarComponent implements OnInit {
 		if(us.user.FOTO != null)
 			this.foto = this.globals.urlPhoto+"photos/ID("+us.user.ID_USUARIO+")"+us.user.FOTO;
 		this.initForm();
-		console.log('this.role');
-		console.log(this.role);
 	}	
 
 	ngAfterViewInit(): void {

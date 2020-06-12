@@ -1,6 +1,6 @@
 <header class="content__title" id="foco">
-    <h1>Servicios</h1>
-	<small>Podra registrar los servicios al sistema (Servicios, Medicamentos, Examen de Laboratorio)!</small>
+    <h1>Servicios /Medicamentos /Examenes de Laboratorio /Insumos</h1>
+	<small>Podra registrar los Servicios, Medicamentos, Examen de Laboratorio e insumos al sistema</small>
 </header>
 <div class="card">
 	<div class="card-body">
@@ -8,7 +8,7 @@
 			<div class="card">
 	           	<div class="card-header" role="tab" id="headingOne">
 	                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-	                    Datos del servicio a registrar
+	                  <i class="zmdi zmdi-collection-plus"></i> Adicionar datos 
 	                </a>
 	            </div>
 
@@ -22,7 +22,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
 										</div>
-										<input type="text" id="COD_ITEM" placeholder="Código" class="form-control" formControlName="COD_ITEM" [ngClass]="{ 'is-invalid': submitted && f.COD_ITEM.errors }" />
+										<input type="text" id="COD_ITEM" placeholder="Código de serv/ med/ ins/ exam" class="form-control" formControlName="COD_ITEM" [ngClass]="{ 'is-invalid': submitted && f.COD_ITEM.errors }" />
 										<div *ngIf="submitted && f.COD_ITEM.errors" class="invalid-feedback">
 											<div *ngIf="f.COD_ITEM.errors.required">Por favor, agregue el código de identificación.</div>
 										</div>
@@ -30,12 +30,12 @@
 									</div>
 								</div>
 								<div class="col-md-3">
-									<label for="NOM_ITEM">Servicio <span style="color: #ff6b68;">*</span></label>
+									<label for="NOM_ITEM">Nombre <span style="color: #ff6b68;">*</span></label>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
 										</div>
-										<input type="text" id="NOM_ITEM" placeholder="Nombre" class="form-control" formControlName="NOM_ITEM" [ngClass]="{ 'is-invalid': submitted && f.NOM_ITEM.errors }" />
+										<input type="text" id="NOM_ITEM" placeholder="Nombre del serv/ med/ ins/ exam" class="form-control" formControlName="NOM_ITEM" [ngClass]="{ 'is-invalid': submitted && f.NOM_ITEM.errors }" />
 										<div *ngIf="submitted && f.NOM_ITEM.errors" class="invalid-feedback">
 											<div *ngIf="f.NOM_ITEM.errors.required">Por favor, agregue el nombre de servcicio.</div>
 										</div>
@@ -43,42 +43,42 @@
 									</div>
 								</div>
 								<div class="col-md-3">
-									<label for="COT_NTFS">NTFS</label>
+									<label for="COT_NTFS">Cod. NTFS</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
 										</div>
-										<input type="text" id="COT_NTFS" placeholder="Código" class="form-control" formControlName="COT_NTFS"/>
+										<input type="text" id="COT_NTFS" placeholder="Código NTFS" class="form-control" formControlName="COT_NTFS"/>
 										<i class="form-group__bar"></i>
 									</div>
 								</div>
 								<div class="col-md-3">
-									<label for="COD_CUP">CUP</label>
+									<label for="COD_CUP">Cod. CUP</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
 										</div>
-										<input type="text" id="COD_CUP" placeholder="Código" class="form-control" formControlName="COD_CUP"/>
+										<input type="text" id="COD_CUP" placeholder="Código CUP" class="form-control" formControlName="COD_CUP"/>
 										<i class="form-group__bar"></i>
 									</div>
 								</div>
 								<div class="col-md-3 mb-5">
-									<label for="COD_ISS">ISS</label>
+									<label for="COD_ISS">Cod. ISS</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
 										</div>
-										<input type="text" id="COD_ISS" placeholder="Código" class="form-control" formControlName="COD_ISS"/>
+										<input type="text" id="COD_ISS" placeholder="Código ISS" class="form-control" formControlName="COD_ISS"/>
 										<i class="form-group__bar"></i>
 									</div>
 								</div>
 								<div class="col-md-3">
-									<label for="COD_CUM">CUM</label>
+									<label for="COD_CUM">Cod. CUM</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="zmdi zmdi-view-headline"></i></span>
 										</div>
-										<input type="text" id="COD_CUM" placeholder="Código" class="form-control" formControlName="COD_CUM"/>
+										<input type="text" id="COD_CUM" placeholder="Código de Medicamento" class="form-control" formControlName="COD_CUM"/>
 										<i class="form-group__bar"></i>
 									</div>
 								</div>
@@ -88,7 +88,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
 										</div>
-										<input type="text" id="NOM_GENERICO" placeholder="Nombre" class="form-control" formControlName="NOM_GENERICO"/>
+										<input type="text" id="NOM_GENERICO" placeholder="Nombre Genérico Medicamento" class="form-control" formControlName="NOM_GENERICO"/>
 										<i class="form-group__bar"></i>
 									</div>
 								</div>
@@ -98,36 +98,88 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="zmdi zmdi-card-membership"></i></span>
 										</div>
-										<input type="text" id="NOM_COMERCIAL" placeholder="Nombre" class="form-control" formControlName="NOM_COMERCIAL"/>
+										<input type="text" id="NOM_COMERCIAL" placeholder="Nombre Comercial del Medicamento" class="form-control" formControlName="NOM_COMERCIAL"/>
 										<i class="form-group__bar"></i>
+									</div>
+								</div>
+								<div class="row col-md-12">
+									<div class="col-md-3">
+										<label for="EDAD_INICIAL">Edad Inicial</label>
+										<div class="input-group mb-3">
+											<input type="text" id="EDAD_INICIAL" placeholder="Edad Inicial" class="form-control" formControlName="EDAD_INICIAL">
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group mb-3">
+											<label for="Unidad edad inicial">Unidad Edad Inicial</label>
+											<select class="select2" id="UNID_EDAD_INICIAL" formControlName="UNID_EDAD_INICIAL" data-placeholder="Seleccione...">
+												<option value="1" [selected]="true">DÍAS</option>
+												<option value="2">MES</option>
+												<option value="3">AÑO</option>
+											</select>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<label for="EDAD_FINAL">Edad Final</label>
+										<div class="input-group mb-3">
+											<input type="text" id="EDAD_FINAL" formControlName="EDAD_FINAL" placeholder="Edad final" class="form-control">
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group mb-3">
+											<label for="Unidad edad final">Unidad Edad Final</label>
+											<select class="select2" id="UNID_EDAD_FINAL" formControlName="UNID_EDAD_FINAL" data-placeholder="Seleccione...">
+												<option value="1" [selected]="true">DÍAS</option>
+												<option value="2">MES</option>
+												<option value="3">AÑO</option>
+											</select>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+								</div>
+								<div class="row col-md-12">
+									<div class="col-md-3">
+										<div class="form-group mb-3">
+											<label for="GENERO">Género</label>
+											<select class="select2 genero" id="GENERO" formControlName="GENERO" data-placeholder="Seleccione...">
+												<option></option>
+												<option value="1">Masculino</option>
+												<option value="2">Femenino</option>
+												<option value="3" [selected]="true">Ambos</option>
+											</select>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<label for="POS">POS</label>
+										<div class="form-group">
+											<div class="toggle-switch">
+												<input type="checkbox" class="toggle-switch__checkbox" name="POS" id="POS" checked>
+												<i class="toggle-switch__helper"></i>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="col-md-12 mb-4">
 									<div class="btn-group btn-group-toggle" data-toggle="buttons">
-		                                <label class="btn">
-		                                    <input type="radio" name="datos" id="medi" autocomplete="off" value="1"> Medicamento
-		                                </label>
-		                                <label class="btn active">
-		                                    <input type="radio" name="datos" id="servi" autocomplete="off" value="2" checked> Servicio
-		                                </label>
-		                                <label class="btn">
-		                                    <input type="radio" name="datos" id="exam" autocomplete="off" value="3"> Exámen de laboratorio
-		                                </label>
-		                                <label class="btn">
-		                                    <input type="radio" name="datos" id="insu" autocomplete="off" value="4"> Insumo
-		                                </label>
-	                            	</div>
-	                            </div>
-	                            <div class="col-md-2">
-									<label for="POS">POS</label>
-									<div class="form-group">
-				                        <div class="toggle-switch">
-				                            <input type="checkbox" class="toggle-switch__checkbox" name="POS" id="POS" checked>
-				                            <i class="toggle-switch__helper"></i>
-				                        </div>
-				                    </div>
+											<label class="btn">
+													<input type="radio" name="datos" id="medi" autocomplete="off" value="1"> Medicamento
+											</label>
+											<label class="btn active">
+													<input type="radio" name="datos" id="servi" autocomplete="off" value="2" checked> Servicio
+											</label>
+											<label class="btn">
+													<input type="radio" name="datos" id="exam" autocomplete="off" value="3"> Exámen de laboratorio
+											</label>
+											<label class="btn">
+													<input type="radio" name="datos" id="insu" autocomplete="off" value="4"> Insumo
+											</label>
+									</div>
 								</div>
-                            </div>
+							</div>
 							<div class="row form-group">
 								<button class="btn btn-primary btn--icon-text btn-addp mr-2" type="button" (click)="Registrar();"><i class="zmdi zmdi-floppy"></i> Registrar</button>
 								<button *ngIf="items_id != 0" class="btn btn-primary btn--icon-text btn-cancelp" type="button" (click)="clearAll();"><i class="zmdi zmdi-close-circle"></i> Cancelar</button>		
